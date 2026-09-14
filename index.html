@@ -38,6 +38,104 @@
       background-size: 45px 45px;
     }
 
+    /* ==========================================
+       PANTALLA DE ENTRADA
+       ========================================== */
+
+    .welcome-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.9), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(255,220,232,.7), transparent 30%),
+        linear-gradient(135deg, #fff7fa, #fce9f1 50%, #fffaf7);
+      transition: opacity .8s ease, visibility .8s ease;
+    }
+
+    .welcome-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .welcome-content {
+      max-width: 600px;
+      animation: aparecer 1.2s ease;
+    }
+
+    .welcome-small {
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #a66b82;
+      margin-bottom: 25px;
+    }
+
+    .welcome-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(55px, 12vw, 100px);
+      line-height: .8;
+      font-weight: 500;
+      color: #8d526b;
+      margin-bottom: 10px;
+    }
+
+    .welcome-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(25px, 6vw, 45px);
+      color: #6d4a57;
+      letter-spacing: 3px;
+      margin-bottom: 25px;
+    }
+
+    .welcome-xv {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 70px;
+      color: #c493a7;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+
+    .welcome-divider {
+      width: 80px;
+      height: 1px;
+      background: #c79aaa;
+      margin: 0 auto 30px;
+    }
+
+    .enter-button {
+      border: none;
+      border-radius: 50px;
+      padding: 17px 35px;
+      background: linear-gradient(135deg, #b97691, #d49caf);
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(157, 91, 118, .25);
+      transition: .3s ease;
+    }
+
+    .enter-button:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 15px 35px rgba(157, 91, 118, .35);
+    }
+
+    .welcome-hint {
+      margin-top: 18px;
+      font-size: 11px;
+      color: #a47787;
+      letter-spacing: 1px;
+    }
+
     .hero {
       min-height: 100vh;
       display: flex;
@@ -363,10 +461,49 @@
 <body>
 
   <!-- ==========================================
+       PANTALLA DE ENTRADA
+       ========================================== -->
+
+  <div class="welcome-screen" id="welcomeScreen">
+
+    <div class="welcome-content">
+
+      <div class="welcome-small">
+        Una noche para recordar
+      </div>
+
+      <h2>Danna</h2>
+
+      <div class="welcome-name">
+        Valentina Garzón Medina
+      </div>
+
+      <div class="welcome-xv">
+        XV
+      </div>
+
+      <div class="welcome-divider"></div>
+
+      <button
+        class="enter-button"
+        id="enterButton">
+        ✨ TOCAR PARA ENTRAR
+      </button>
+
+      <div class="welcome-hint">
+        🎵 La música comenzará al entrar
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==========================================
        MÚSICA
        ========================================== -->
 
-  <audio id="musica" loop autoplay>
+  <audio id="musica" loop preload="auto">
     <source src="musica.mp3" type="audio/mpeg">
   </audio>
 
@@ -543,46 +680,69 @@
   const musicButton =
     document.getElementById("musicButton");
 
+  const welcomeScreen =
+    document.getElementById("welcomeScreen");
+
+  const enterButton =
+    document.getElementById("enterButton");
+
   let reproduciendo = false;
 
   let silenciada = false;
 
 
   /*
-   * Intentar reproducir automáticamente
+   * ============================================
+   * ENTRAR Y COMENZAR MÚSICA
+   * ============================================
    */
 
-  window.addEventListener("load", async () => {
+  enterButton.addEventListener(
+    "click",
+    async () => {
 
-    try {
+      try {
 
-      await musica.play();
+        /*
+         * Como este play ocurre
+         * directamente después del toque
+         * del usuario, el navegador
+         * permite reproducir el sonido.
+         */
 
-      reproduciendo = true;
+        musica.muted = false;
 
-      silenciada = false;
+        await musica.play();
 
-      actualizarBoton();
+        reproduciendo = true;
 
-    } catch (error) {
+        silenciada = false;
 
-      console.log(
-        "El navegador bloqueó la reproducción automática."
-      );
+        actualizarBoton();
 
-      reproduciendo = false;
+      } catch (error) {
 
-      silenciada = false;
+        console.error(
+          "No se pudo reproducir la música:",
+          error
+        );
 
-      actualizarBoton();
+      }
+
+      /*
+       * Ocultar pantalla de entrada
+       */
+
+      welcomeScreen.classList.add("hidden");
 
     }
-
-  });
+  );
 
 
   /*
-   * Botón para silenciar / activar
+   * ============================================
+   * BOTÓN DE MÚSICA
+   * ============================================
    */
 
   musicButton.addEventListener(
@@ -590,8 +750,8 @@
     async () => {
 
       /*
-       * Si el navegador bloqueó el autoplay,
-       * el primer toque inicia la música.
+       * Si todavía no está reproduciendo,
+       * intentar iniciarla.
        */
 
       if (!reproduciendo) {
@@ -635,7 +795,8 @@
       }
 
       /*
-       * Si está silenciada, volver a activar.
+       * Si está silenciada,
+       * volver a activar.
        */
 
       else {
@@ -654,7 +815,9 @@
 
 
   /*
-   * Actualizar apariencia del botón
+   * ============================================
+   * ACTUALIZAR BOTÓN DE MÚSICA
+   * ============================================
    */
 
   function actualizarBoton() {
