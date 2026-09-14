@@ -270,26 +270,18 @@
       bottom: 22px;
       right: 22px;
       z-index: 2000;
-
       width: 58px;
       height: 58px;
-
       border: none;
       border-radius: 50%;
-
       background: linear-gradient(135deg, #b97691, #d49caf);
       color: white;
-
       font-size: 23px;
-
       cursor: pointer;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       box-shadow: 0 8px 25px rgba(157, 91, 118, .35);
-
       transition: .3s ease;
     }
 
@@ -374,15 +366,15 @@
        MÚSICA
        ========================================== -->
 
-  <audio id="musica" loop>
+  <audio id="musica" loop autoplay>
     <source src="musica.mp3" type="audio/mpeg">
   </audio>
 
   <button
     id="musicButton"
     class="music-button"
-    aria-label="Reproducir música"
-    title="Reproducir música">
+    aria-label="Activar música"
+    title="Activar música">
     🎵
   </button>
 
@@ -553,63 +545,181 @@
 
   let reproduciendo = false;
 
+  let silenciada = false;
 
-  musicButton.addEventListener("click", async () => {
 
-    if (!reproduciendo) {
+  /*
+   * Intentar reproducir automáticamente
+   */
 
-      try {
+  window.addEventListener("load", async () => {
 
-        await musica.play();
+    try {
 
-        reproduciendo = true;
+      await musica.play();
 
-        musicButton.textContent = "🔊";
+      reproduciendo = true;
 
-        musicButton.classList.add("playing");
+      silenciada = false;
 
-        musicButton.setAttribute(
-          "aria-label",
-          "Pausar música"
-        );
+      actualizarBoton();
 
-        musicButton.setAttribute(
-          "title",
-          "Pausar música"
-        );
+    } catch (error) {
 
-      } catch (error) {
-
-        console.error(
-          "No se pudo reproducir la música:",
-          error
-        );
-
-      }
-
-    } else {
-
-      musica.pause();
+      console.log(
+        "El navegador bloqueó la reproducción automática."
+      );
 
       reproduciendo = false;
 
-      musicButton.textContent = "🎵";
+      silenciada = false;
 
-      musicButton.classList.remove("playing");
-
-      musicButton.setAttribute(
-        "aria-label",
-        "Reproducir música"
-      );
-
-      musicButton.setAttribute(
-        "title",
-        "Reproducir música"
-      );
+      actualizarBoton();
 
     }
 
   });
+
+
+  /*
+   * Botón para silenciar / activar
+   */
+
+  musicButton.addEventListener(
+    "click",
+    async () => {
+
+      /*
+       * Si el navegador bloqueó el autoplay,
+       * el primer toque inicia la música.
+       */
+
+      if (!reproduciendo) {
+
+        try {
+
+          musica.muted = false;
+
+          await musica.play();
+
+          reproduciendo = true;
+
+          silenciada = false;
+
+          actualizarBoton();
+
+        } catch (error) {
+
+          console.error(
+            "No se pudo reproducir la música:",
+            error
+          );
+
+        }
+
+        return;
+
+      }
+
+
+      /*
+       * Si está sonando, silenciar.
+       */
+
+      if (!silenciada) {
+
+        musica.muted = true;
+
+        silenciada = true;
+
+      }
+
+      /*
+       * Si está silenciada, volver a activar.
+       */
+
+      else {
+
+        musica.muted = false;
+
+        silenciada = false;
+
+      }
+
+
+      actualizarBoton();
+
+    }
+  );
+
+
+  /*
+   * Actualizar apariencia del botón
+   */
+
+  function actualizarBoton() {
+
+    if (!reproduciendo) {
+
+      musicButton.textContent = "🎵";
+
+      musicButton.setAttribute(
+        "aria-label",
+        "Activar música"
+      );
+
+      musicButton.setAttribute(
+        "title",
+        "Activar música"
+      );
+
+      musicButton.classList.remove(
+        "playing"
+      );
+
+    }
+
+    else if (silenciada) {
+
+      musicButton.textContent = "🔇";
+
+      musicButton.setAttribute(
+        "aria-label",
+        "Activar música"
+      );
+
+      musicButton.setAttribute(
+        "title",
+        "Activar música"
+      );
+
+      musicButton.classList.remove(
+        "playing"
+      );
+
+    }
+
+    else {
+
+      musicButton.textContent = "🔊";
+
+      musicButton.setAttribute(
+        "aria-label",
+        "Silenciar música"
+      );
+
+      musicButton.setAttribute(
+        "title",
+        "Silenciar música"
+      );
+
+      musicButton.classList.add(
+        "playing"
+      );
+
+    }
+
+  }
 
 
   /*
