@@ -261,11 +261,67 @@
       font-size: 13px;
     }
 
+    /* ==========================================
+       BOTÓN DE MÚSICA
+       ========================================== */
+
+    .music-button {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 2000;
+
+      width: 58px;
+      height: 58px;
+
+      border: none;
+      border-radius: 50%;
+
+      background: linear-gradient(135deg, #b97691, #d49caf);
+      color: white;
+
+      font-size: 23px;
+
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      box-shadow: 0 8px 25px rgba(157, 91, 118, .35);
+
+      transition: .3s ease;
+    }
+
+    .music-button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 30px rgba(157, 91, 118, .45);
+    }
+
+    .music-button.playing {
+      animation: musicaPulso 1.5s infinite;
+    }
+
+    @keyframes musicaPulso {
+      0% {
+        box-shadow: 0 8px 25px rgba(157, 91, 118, .35);
+      }
+
+      50% {
+        box-shadow: 0 8px 35px rgba(157, 91, 118, .65);
+      }
+
+      100% {
+        box-shadow: 0 8px 25px rgba(157, 91, 118, .35);
+      }
+    }
+
     @keyframes aparecer {
       from {
         opacity: 0;
         transform: translateY(25px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -273,6 +329,7 @@
     }
 
     @media (max-width: 700px) {
+
       .hero {
         min-height: 90vh;
       }
@@ -290,22 +347,53 @@
       .message {
         font-size: 20px;
       }
+
+      .music-button {
+        width: 52px;
+        height: 52px;
+        bottom: 18px;
+        right: 18px;
+        font-size: 20px;
+      }
     }
 
     @media (max-width: 400px) {
+
       .gallery {
         columns: 1;
       }
+
     }
+
   </style>
 </head>
 
 <body>
 
+  <!-- ==========================================
+       MÚSICA
+       ========================================== -->
+
+  <audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <button
+    id="musicButton"
+    class="music-button"
+    aria-label="Reproducir música"
+    title="Reproducir música">
+    🎵
+  </button>
+
+
   <section class="hero">
+
     <div class="hero-content">
 
-      <div class="small-title">Una noche para recordar</div>
+      <div class="small-title">
+        Una noche para recordar
+      </div>
 
       <h1>Danna</h1>
 
@@ -315,7 +403,10 @@
 
       <div class="fifteen">
         XV
-        <span>Mis 15 Años</span>
+
+        <span>
+          Mis 15 Años
+        </span>
       </div>
 
       <div class="divider"></div>
@@ -337,17 +428,28 @@
         multiple
       >
 
-      <div class="upload-status" id="uploadStatus"></div>
+      <div
+        class="upload-status"
+        id="uploadStatus">
+      </div>
 
     </div>
+
   </section>
 
 
   <section class="gallery-section">
 
     <div class="section-title">
-      <small>Recuerdos de una noche mágica</small>
-      <h2>Álbum de recuerdos</h2>
+
+      <small>
+        Recuerdos de una noche mágica
+      </small>
+
+      <h2>
+        Álbum de recuerdos
+      </h2>
+
     </div>
 
     <div id="loading" class="loading">
@@ -356,7 +458,10 @@
 
     <div id="gallery" class="gallery"></div>
 
-    <div id="empty" class="empty" style="display:none;">
+    <div
+      id="empty"
+      class="empty"
+      style="display:none;">
       Sé el primero en compartir una foto de esta noche ✨
     </div>
 
@@ -369,8 +474,18 @@
 
 
   <div class="modal" id="modal">
-    <div class="close" id="closeModal">×</div>
-    <img id="modalImage" src="" alt="Foto de los 15 años">
+
+    <div
+      class="close"
+      id="closeModal">
+      ×
+    </div>
+
+    <img
+      id="modalImage"
+      src=""
+      alt="Foto de los 15 años">
+
   </div>
 
 
@@ -383,15 +498,14 @@
    */
 
   const CLOUDINARY_CLOUD_NAME = "sdijrxgo";
+
   const CLOUDINARY_UPLOAD_PRESET = "danna15";
 
-  const SUPABASE_URL = "https://utkqspswdjamfmhzalov.supabase.co";
+  const SUPABASE_URL =
+    "https://utkqspswdjamfmhzalov.supabase.co";
 
-  /*
-   * IMPORTANTE:
-   * Pega aquí tu Publishable Key de Supabase.
-   */
-  const SUPABASE_KEY = "sb_publishable_rBWSVkYl3T_ai_0ZQ6Av1A_jTgXR_59";
+  const SUPABASE_KEY =
+    "sb_publishable_rBWSVkYl3T_ai_0ZQ6Av1A_jTgXR_59";
 
 
   /*
@@ -400,15 +514,102 @@
    * ============================================
    */
 
-  const input = document.getElementById("photoInput");
-  const gallery = document.getElementById("gallery");
-  const loading = document.getElementById("loading");
-  const empty = document.getElementById("empty");
-  const status = document.getElementById("uploadStatus");
+  const input =
+    document.getElementById("photoInput");
 
-  const modal = document.getElementById("modal");
-  const modalImage = document.getElementById("modalImage");
-  const closeModal = document.getElementById("closeModal");
+  const gallery =
+    document.getElementById("gallery");
+
+  const loading =
+    document.getElementById("loading");
+
+  const empty =
+    document.getElementById("empty");
+
+  const status =
+    document.getElementById("uploadStatus");
+
+  const modal =
+    document.getElementById("modal");
+
+  const modalImage =
+    document.getElementById("modalImage");
+
+  const closeModal =
+    document.getElementById("closeModal");
+
+
+  /*
+   * ============================================
+   * MÚSICA
+   * ============================================
+   */
+
+  const musica =
+    document.getElementById("musica");
+
+  const musicButton =
+    document.getElementById("musicButton");
+
+  let reproduciendo = false;
+
+
+  musicButton.addEventListener("click", async () => {
+
+    if (!reproduciendo) {
+
+      try {
+
+        await musica.play();
+
+        reproduciendo = true;
+
+        musicButton.textContent = "🔊";
+
+        musicButton.classList.add("playing");
+
+        musicButton.setAttribute(
+          "aria-label",
+          "Pausar música"
+        );
+
+        musicButton.setAttribute(
+          "title",
+          "Pausar música"
+        );
+
+      } catch (error) {
+
+        console.error(
+          "No se pudo reproducir la música:",
+          error
+        );
+
+      }
+
+    } else {
+
+      musica.pause();
+
+      reproduciendo = false;
+
+      musicButton.textContent = "🎵";
+
+      musicButton.classList.remove("playing");
+
+      musicButton.setAttribute(
+        "aria-label",
+        "Reproducir música"
+      );
+
+      musicButton.setAttribute(
+        "title",
+        "Reproducir música"
+      );
+
+    }
+
+  });
 
 
   /*
@@ -432,15 +633,20 @@
       );
 
       if (!response.ok) {
-        throw new Error("No se pudieron cargar las fotos.");
+        throw new Error(
+          "No se pudieron cargar las fotos."
+        );
       }
 
-      const photos = await response.json();
+      const photos =
+        await response.json();
 
       loading.style.display = "none";
 
       if (!photos.length) {
+
         empty.style.display = "block";
+
         return;
       }
 
@@ -448,21 +654,32 @@
 
       photos.forEach(photo => {
 
-        const container = document.createElement("div");
+        const container =
+          document.createElement("div");
+
         container.className = "photo";
 
-        const img = document.createElement("img");
+        const img =
+          document.createElement("img");
 
         img.src = photo.url;
+
         img.loading = "lazy";
-        img.alt = "Foto de los 15 años de Danna";
+
+        img.alt =
+          "Foto de los 15 años de Danna";
 
         img.onclick = () => {
-          modalImage.src = photo.url;
+
+          modalImage.src =
+            photo.url;
+
           modal.classList.add("active");
+
         };
 
         container.appendChild(img);
+
         gallery.appendChild(container);
 
       });
@@ -485,102 +702,150 @@
    * ============================================
    */
 
-  input.addEventListener("change", async function() {
+  input.addEventListener(
+    "change",
+    async function() {
 
-    const files = Array.from(this.files);
+      const files =
+        Array.from(this.files);
 
-    if (!files.length) return;
+      if (!files.length) return;
 
-    status.style.display = "block";
-    status.textContent = "Preparando tus fotos...";
+      status.style.display = "block";
 
-    for (let i = 0; i < files.length; i++) {
-
-      const file = files[i];
-
-      try {
-
-        status.textContent =
-          `Subiendo foto ${i + 1} de ${files.length}...`;
-
-        /*
-         * Cloudinary
-         */
-
-        const formData = new FormData();
-
-        formData.append("file", file);
-        formData.append(
-          "upload_preset",
-          CLOUDINARY_UPLOAD_PRESET
-        );
-
-        const cloudinaryResponse = await fetch(
-          `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
-          {
-            method: "POST",
-            body: formData
-          }
-        );
-
-        if (!cloudinaryResponse.ok) {
-          throw new Error("Error subiendo la imagen.");
-        }
-
-        const cloudinaryData =
-          await cloudinaryResponse.json();
+      status.textContent =
+        "Preparando tus fotos...";
 
 
-        /*
-         * Supabase
-         */
+      for (
+        let i = 0;
+        i < files.length;
+        i++
+      ) {
 
-        const supabaseResponse = await fetch(
-          `${SUPABASE_URL}/rest/v1/fotos`,
-          {
-            method: "POST",
+        const file = files[i];
 
-            headers: {
-              "Content-Type": "application/json",
-              "apikey": SUPABASE_KEY,
-              "Authorization": `Bearer ${SUPABASE_KEY}`,
-              "Prefer": "return=minimal"
-            },
+        try {
 
-            body: JSON.stringify({
-              url: cloudinaryData.secure_url,
-              public_id: cloudinaryData.public_id
-            })
-          }
-        );
+          status.textContent =
+            `Subiendo foto ${i + 1} de ${files.length}...`;
 
 
-        if (!supabaseResponse.ok) {
-          throw new Error(
-            "La imagen se subió, pero no pudo registrarse."
+          /*
+           * Cloudinary
+           */
+
+          const formData =
+            new FormData();
+
+          formData.append(
+            "file",
+            file
           );
+
+          formData.append(
+            "upload_preset",
+            CLOUDINARY_UPLOAD_PRESET
+          );
+
+
+          const cloudinaryResponse =
+            await fetch(
+              `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+              {
+                method: "POST",
+                body: formData
+              }
+            );
+
+
+          if (!cloudinaryResponse.ok) {
+
+            throw new Error(
+              "Error subiendo la imagen."
+            );
+
+          }
+
+
+          const cloudinaryData =
+            await cloudinaryResponse.json();
+
+
+          /*
+           * Supabase
+           */
+
+          const supabaseResponse =
+            await fetch(
+              `${SUPABASE_URL}/rest/v1/fotos`,
+              {
+                method: "POST",
+
+                headers: {
+                  "Content-Type":
+                    "application/json",
+
+                  "apikey":
+                    SUPABASE_KEY,
+
+                  "Authorization":
+                    `Bearer ${SUPABASE_KEY}`,
+
+                  "Prefer":
+                    "return=minimal"
+                },
+
+                body: JSON.stringify({
+
+                  url:
+                    cloudinaryData.secure_url,
+
+                  public_id:
+                    cloudinaryData.public_id
+
+                })
+
+              }
+            );
+
+
+          if (!supabaseResponse.ok) {
+
+            throw new Error(
+              "La imagen se subió, pero no pudo registrarse."
+            );
+
+          }
+
+        } catch (error) {
+
+          console.error(error);
+
+          status.textContent =
+            "Hubo un problema al subir una de las fotos.";
+
+          break;
+
         }
 
-      } catch (error) {
-
-        console.error(error);
-
-        status.textContent =
-          "Hubo un problema al subir una de las fotos.";
-
-        break;
       }
+
+
+      status.textContent =
+        "✨ ¡Fotos compartidas!";
+
+      input.value = "";
+
+
+      setTimeout(() => {
+
+        location.reload();
+
+      }, 1200);
+
     }
-
-    status.textContent = "✨ ¡Fotos compartidas!";
-
-    input.value = "";
-
-    setTimeout(() => {
-      location.reload();
-    }, 1200);
-
-  });
+  );
 
 
   /*
@@ -590,13 +855,18 @@
    */
 
   closeModal.onclick = () => {
+
     modal.classList.remove("active");
+
   };
+
 
   modal.onclick = (event) => {
 
     if (event.target === modal) {
+
       modal.classList.remove("active");
+
     }
 
   };
