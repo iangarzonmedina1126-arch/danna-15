@@ -694,6 +694,12 @@
     // TODAS
     // ==========================
 
+    const normales =
+      photos.filter(
+        photo => photo.favorito !== true
+      );
+
+
     if (photos.length === 0) {
 
       gallery.innerHTML =
@@ -706,7 +712,19 @@
     }
 
 
-    photos.forEach(
+    if (normales.length === 0) {
+
+      gallery.innerHTML =
+        `<div class="empty">
+          Todas las fotos han sido seleccionadas como favoritas ⭐
+        </div>`;
+
+      return;
+
+    }
+
+
+    normales.forEach(
       photo => {
 
         crearTarjetaFoto(
