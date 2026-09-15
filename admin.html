@@ -143,30 +143,20 @@
       color: #a7657b;
     }
 
-    .filters {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 25px;
-      flex-wrap: wrap;
-    }
-
-    .filter {
-      padding: 10px 16px;
-      border-radius: 12px;
-      background: white;
+    .section-title {
+      font-size: 32px;
+      margin: 35px 0 18px;
       color: #805565;
-      border: 1px solid #e1c5ce;
-    }
-
-    .filter.active {
-      background: #b9798d;
-      color: white;
     }
 
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 20px;
+    }
+
+    #favoritesGallery {
+      margin-bottom: 35px;
     }
 
     .photo-card {
@@ -222,6 +212,8 @@
       padding: 50px;
       color: #8c737b;
       grid-column: 1 / -1;
+      background: rgba(255,255,255,0.6);
+      border-radius: 18px;
     }
 
     .loading {
@@ -231,6 +223,7 @@
     }
 
     @media (max-width: 600px) {
+
       .top h1 {
         font-size: 34px;
       }
@@ -247,6 +240,11 @@
       .photo-actions {
         flex-direction: column;
       }
+
+      .section-title {
+        font-size: 28px;
+      }
+
     }
   </style>
 </head>
@@ -255,10 +253,14 @@
 
   <!-- LOGIN -->
   <section class="login-screen" id="loginScreen">
+
     <div class="login-box">
 
       <h1>Administración</h1>
-      <p>Danna Valentina · Mis 15 Años</p>
+
+      <p>
+        Danna Valentina · Mis 15 Años
+      </p>
 
       <input
         type="email"
@@ -274,61 +276,109 @@
         autocomplete="current-password"
       >
 
-      <button class="login-button" id="loginButton">
+      <button
+        class="login-button"
+        id="loginButton"
+      >
         INICIAR SESIÓN
       </button>
 
-      <div class="error" id="loginError"></div>
+      <div
+        class="error"
+        id="loginError"
+      ></div>
 
     </div>
+
   </section>
 
 
   <!-- PANEL -->
-  <main class="admin-panel" id="adminPanel">
+  <main
+    class="admin-panel"
+    id="adminPanel"
+  >
 
     <div class="top">
-      <h1>Panel de fotos</h1>
 
-      <button class="logout" id="logoutButton">
+      <h1>
+        Panel de fotos
+      </h1>
+
+      <button
+        class="logout"
+        id="logoutButton"
+      >
         Cerrar sesión
       </button>
+
     </div>
 
 
     <div class="stats">
 
       <div class="stat">
-        <span>Fotos</span>
-        <strong id="totalPhotos">0</strong>
+
+        <span>
+          Fotos
+        </span>
+
+        <strong id="totalPhotos">
+          0
+        </strong>
+
       </div>
+
 
       <div class="stat">
-        <span>Favoritas</span>
-        <strong id="favoritePhotos">0</strong>
+
+        <span>
+          Favoritas
+        </span>
+
+        <strong id="favoritePhotos">
+          0
+        </strong>
+
       </div>
 
     </div>
 
 
-    <div class="filters">
-
-      <button class="filter active" id="allButton">
-        📸 Todas
-      </button>
-
-      <button class="filter" id="favoritesButton">
-        ⭐ Favoritas
-      </button>
-
-    </div>
-
-
-    <div class="loading" id="loading">
+    <div
+      class="loading"
+      id="loading"
+    >
       Cargando fotos...
     </div>
 
-    <div class="gallery" id="gallery"></div>
+
+    <!-- FAVORITAS -->
+    <h2
+      class="section-title"
+      id="favoritesTitle"
+    >
+      ⭐ Fotos favoritas
+    </h2>
+
+    <div
+      class="gallery"
+      id="favoritesGallery"
+    ></div>
+
+
+    <!-- TODAS -->
+    <h2
+      class="section-title"
+      id="allPhotosTitle"
+    >
+      📸 Todas las fotos
+    </h2>
+
+    <div
+      class="gallery"
+      id="gallery"
+    ></div>
 
   </main>
 
@@ -342,131 +392,190 @@
     "sb_publishable_rBWSVkYl3T_ai_0ZQ6Av1A_jTgXR_59";
 
 
-  const loginScreen = document.getElementById("loginScreen");
-  const adminPanel = document.getElementById("adminPanel");
+  const loginScreen =
+    document.getElementById("loginScreen");
 
-  const loginButton = document.getElementById("loginButton");
-  const logoutButton = document.getElementById("logoutButton");
+  const adminPanel =
+    document.getElementById("adminPanel");
 
-  const loginError = document.getElementById("loginError");
+  const loginButton =
+    document.getElementById("loginButton");
 
-  const gallery = document.getElementById("gallery");
-  const loading = document.getElementById("loading");
+  const logoutButton =
+    document.getElementById("logoutButton");
 
-  const totalPhotos = document.getElementById("totalPhotos");
-  const favoritePhotos = document.getElementById("favoritePhotos");
+  const loginError =
+    document.getElementById("loginError");
 
-  const allButton = document.getElementById("allButton");
-  const favoritesButton = document.getElementById("favoritesButton");
+  const gallery =
+    document.getElementById("gallery");
+
+  const favoritesGallery =
+    document.getElementById("favoritesGallery");
+
+  const loading =
+    document.getElementById("loading");
+
+  const totalPhotos =
+    document.getElementById("totalPhotos");
+
+  const favoritePhotos =
+    document.getElementById("favoritePhotos");
 
 
   let session = null;
+
   let photos = [];
-  let showFavoritesOnly = false;
 
 
   // ==========================
   // INICIAR SESIÓN
   // ==========================
 
-  loginButton.addEventListener("click", async () => {
+  loginButton.addEventListener(
+    "click",
+    async () => {
 
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+      const email =
+        document.getElementById("email").value.trim();
 
-    loginError.textContent = "";
+      const password =
+        document.getElementById("password").value;
 
-    if (!email || !password) {
-      loginError.textContent = "Escribe tu correo y contraseña.";
-      return;
-    }
+      loginError.textContent = "";
 
-    loginButton.disabled = true;
-    loginButton.textContent = "ENTRANDO...";
 
-    try {
+      if (!email || !password) {
 
-      const response = await fetch(
-        `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
-        {
-          method: "POST",
+        loginError.textContent =
+          "Escribe tu correo y contraseña.";
 
-          headers: {
-            "Content-Type": "application/json",
-            "apikey": SUPABASE_KEY
-          },
+        return;
 
-          body: JSON.stringify({
-            email: email,
-            password: password
-          })
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(
-          data.error_description ||
-          data.msg ||
-          "Correo o contraseña incorrectos."
-        );
       }
 
-      session = data;
 
-      loginScreen.style.display = "none";
-      adminPanel.style.display = "block";
+      loginButton.disabled = true;
 
-      cargarFotos();
+      loginButton.textContent =
+        "ENTRANDO...";
 
-    } catch (error) {
 
-      console.error(error);
+      try {
 
-      loginError.textContent =
-        error.message || "No se pudo iniciar sesión.";
+        const response =
+          await fetch(
+            `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
+            {
+              method: "POST",
 
-    } finally {
+              headers: {
+                "Content-Type": "application/json",
+                "apikey": SUPABASE_KEY
+              },
 
-      loginButton.disabled = false;
-      loginButton.textContent = "INICIAR SESIÓN";
+              body: JSON.stringify({
+                email: email,
+                password: password
+              })
+
+            }
+          );
+
+
+        const data =
+          await response.json();
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            data.error_description ||
+            data.msg ||
+            "Correo o contraseña incorrectos."
+          );
+
+        }
+
+
+        session = data;
+
+
+        loginScreen.style.display =
+          "none";
+
+        adminPanel.style.display =
+          "block";
+
+
+        cargarFotos();
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        loginError.textContent =
+          error.message ||
+          "No se pudo iniciar sesión.";
+
+      } finally {
+
+        loginButton.disabled =
+          false;
+
+        loginButton.textContent =
+          "INICIAR SESIÓN";
+
+      }
 
     }
-
-  });
+  );
 
 
   // ==========================
   // CERRAR SESIÓN
   // ==========================
 
-  logoutButton.addEventListener("click", async () => {
+  logoutButton.addEventListener(
+    "click",
+    async () => {
 
-    if (session?.access_token) {
+      if (session?.access_token) {
 
-      await fetch(
-        `${SUPABASE_URL}/auth/v1/logout`,
-        {
-          method: "POST",
+        await fetch(
+          `${SUPABASE_URL}/auth/v1/logout`,
+          {
+            method: "POST",
 
-          headers: {
-            "apikey": SUPABASE_KEY,
-            "Authorization": `Bearer ${session.access_token}`
+            headers: {
+              "apikey": SUPABASE_KEY,
+              "Authorization":
+                `Bearer ${session.access_token}`
+            }
+
           }
-        }
-      );
+        );
+
+      }
+
+
+      session = null;
+
+
+      adminPanel.style.display =
+        "none";
+
+      loginScreen.style.display =
+        "flex";
+
+
+      document.getElementById(
+        "password"
+      ).value = "";
 
     }
-
-    session = null;
-
-    adminPanel.style.display = "none";
-    loginScreen.style.display = "flex";
-
-    document.getElementById("password").value = "";
-
-  });
+  );
 
 
   // ==========================
@@ -475,40 +584,62 @@
 
   async function cargarFotos() {
 
-    loading.style.display = "block";
+    loading.style.display =
+      "block";
+
     gallery.innerHTML = "";
+
+    favoritesGallery.innerHTML = "";
+
 
     try {
 
-      const response = await fetch(
-        `${SUPABASE_URL}/rest/v1/fotos?select=id,url,public_id,favorito,created_at&order=created_at.desc`,
-        {
-          headers: {
-            "apikey": SUPABASE_KEY,
-            "Authorization": `Bearer ${session.access_token}`
+      const response =
+        await fetch(
+          `${SUPABASE_URL}/rest/v1/fotos?select=id,url,public_id,favorito,created_at&order=created_at.desc`,
+          {
+            headers: {
+              "apikey": SUPABASE_KEY,
+              "Authorization":
+                `Bearer ${session.access_token}`
+            }
           }
-        }
-      );
+        );
+
 
       if (!response.ok) {
-        throw new Error("No se pudieron cargar las fotos.");
+
+        throw new Error(
+          "No se pudieron cargar las fotos."
+        );
+
       }
 
-      photos = await response.json();
+
+      photos =
+        await response.json();
+
 
       actualizarContadores();
+
       mostrarFotos();
+
 
     } catch (error) {
 
       console.error(error);
 
+
       gallery.innerHTML =
-        `<div class="empty">Error al cargar las fotos.</div>`;
+        `<div class="empty">
+          Error al cargar las fotos.
+        </div>`;
+
 
     } finally {
 
-      loading.style.display = "none";
+      loading.style.display =
+        "none";
 
     }
 
@@ -523,94 +654,180 @@
 
     gallery.innerHTML = "";
 
-    let lista = photos;
+    favoritesGallery.innerHTML = "";
 
-    if (showFavoritesOnly) {
 
-      lista = photos.filter(photo => photo.favorito === true);
+    const favoritas =
+      photos.filter(
+        photo => photo.favorito === true
+      );
+
+
+    // ==========================
+    // FAVORITAS
+    // ==========================
+
+    if (favoritas.length === 0) {
+
+      favoritesGallery.innerHTML =
+        `<div class="empty">
+          Todavía no has seleccionado fotos favoritas ⭐
+        </div>`;
+
+    } else {
+
+      favoritas.forEach(
+        photo => {
+
+          crearTarjetaFoto(
+            photo,
+            favoritesGallery
+          );
+
+        }
+      );
 
     }
 
-    if (lista.length === 0) {
+
+    // ==========================
+    // TODAS
+    // ==========================
+
+    if (photos.length === 0) {
 
       gallery.innerHTML =
         `<div class="empty">
-          ${
-            showFavoritesOnly
-              ? "No tienes fotos favoritas todavía ⭐"
-              : "No hay fotos."
-          }
+          No hay fotos.
         </div>`;
 
       return;
+
     }
 
 
-    lista.forEach(photo => {
+    photos.forEach(
+      photo => {
 
-      const card = document.createElement("div");
+        crearTarjetaFoto(
+          photo,
+          gallery
+        );
 
-      card.className = "photo-card";
+      }
+    );
 
-
-      const image = document.createElement("img");
-
-      image.src = photo.url;
-      image.alt = "Foto de invitado";
-      image.loading = "lazy";
-
-
-      const actions = document.createElement("div");
-
-      actions.className = "photo-actions";
+  }
 
 
-      const favoriteButton =
-        document.createElement("button");
+  // ==========================
+  // CREAR TARJETA
+  // ==========================
 
-      favoriteButton.className =
-        "favorite-button" +
-        (photo.favorito ? " active" : "");
+  function crearTarjetaFoto(
+    photo,
+    contenedor
+  ) {
 
-      favoriteButton.textContent =
+    const card =
+      document.createElement("div");
+
+    card.className =
+      "photo-card";
+
+
+    const image =
+      document.createElement("img");
+
+    image.src =
+      photo.url;
+
+    image.alt =
+      "Foto de invitado";
+
+    image.loading =
+      "lazy";
+
+
+    const actions =
+      document.createElement("div");
+
+    actions.className =
+      "photo-actions";
+
+
+    const favoriteButton =
+      document.createElement("button");
+
+    favoriteButton.className =
+      "favorite-button" +
+      (
         photo.favorito
-          ? "⭐ Favorita"
-          : "☆ Favorito";
+          ? " active"
+          : ""
+      );
 
 
-      favoriteButton.addEventListener("click", () => {
+    favoriteButton.textContent =
+      photo.favorito
+        ? "⭐ Favorita"
+        : "☆ Favorito";
+
+
+    favoriteButton.addEventListener(
+      "click",
+      () => {
 
         cambiarFavorito(
           photo.id,
           !photo.favorito
         );
 
-      });
+      }
+    );
 
 
-      const deleteButton =
-        document.createElement("button");
+    const deleteButton =
+      document.createElement("button");
 
-      deleteButton.className = "delete-button";
-      deleteButton.textContent = "🗑️ Eliminar";
+    deleteButton.className =
+      "delete-button";
+
+    deleteButton.textContent =
+      "🗑️ Eliminar";
 
 
-      deleteButton.addEventListener("click", () => {
+    deleteButton.addEventListener(
+      "click",
+      () => {
 
         eliminarFoto(photo);
 
-      });
+      }
+    );
 
 
-      actions.appendChild(favoriteButton);
-      actions.appendChild(deleteButton);
+    actions.appendChild(
+      favoriteButton
+    );
 
-      card.appendChild(image);
-      card.appendChild(actions);
+    actions.appendChild(
+      deleteButton
+    );
 
-      gallery.appendChild(card);
 
-    });
+    card.appendChild(
+      image
+    );
+
+    card.appendChild(
+      actions
+    );
+
+
+    contenedor.appendChild(
+      card
+    );
 
   }
 
@@ -619,50 +836,74 @@
   // FAVORITOS
   // ==========================
 
-  async function cambiarFavorito(id, favorito) {
+  async function cambiarFavorito(
+    id,
+    favorito
+  ) {
 
     try {
 
-      const response = await fetch(
-        `${SUPABASE_URL}/rest/v1/fotos?id=eq.${id}`,
-        {
-          method: "PATCH",
+      const response =
+        await fetch(
+          `${SUPABASE_URL}/rest/v1/fotos?id=eq.${id}`,
+          {
+            method: "PATCH",
 
-          headers: {
-            "Content-Type": "application/json",
-            "apikey": SUPABASE_KEY,
-            "Authorization": `Bearer ${session.access_token}`,
-            "Prefer": "return=minimal"
-          },
+            headers: {
+              "Content-Type":
+                "application/json",
 
-          body: JSON.stringify({
-            favorito: favorito
-          })
-        }
-      );
+              "apikey":
+                SUPABASE_KEY,
+
+              "Authorization":
+                `Bearer ${session.access_token}`,
+
+              "Prefer":
+                "return=minimal"
+            },
+
+            body: JSON.stringify({
+              favorito:
+                favorito
+            })
+
+          }
+        );
 
 
       if (!response.ok) {
-        throw new Error("No se pudo cambiar el favorito.");
+
+        throw new Error(
+          "No se pudo cambiar el favorito."
+        );
+
       }
 
 
-      const photo = photos.find(
-        item => item.id === id
-      );
+      const photo =
+        photos.find(
+          item => item.id === id
+        );
+
 
       if (photo) {
-        photo.favorito = favorito;
+
+        photo.favorito =
+          favorito;
+
       }
 
 
       actualizarContadores();
+
       mostrarFotos();
 
 
     } catch (error) {
 
       console.error(error);
+
 
       alert(
         "No se pudo cambiar el estado de favorito."
@@ -677,37 +918,55 @@
   // ELIMINAR FOTO
   // ==========================
 
-  async function eliminarFoto(photo) {
+  async function eliminarFoto(
+    photo
+  ) {
 
-    const confirmar = confirm(
-      "¿Seguro que quieres eliminar esta foto?\n\n" +
-      "La foto será eliminada de la galería y de Cloudinary.\n\n" +
-      "Esta acción no se puede deshacer."
-    );
+    const confirmar =
+      confirm(
+        "¿Seguro que quieres eliminar esta foto?\n\n" +
+        "La foto será eliminada de la galería y de Cloudinary.\n\n" +
+        "Esta acción no se puede deshacer."
+      );
+
 
     if (!confirmar) return;
 
+
     try {
 
-      const response = await fetch(
-        `${SUPABASE_URL}/functions/v1/smooth-handler`,
-        {
-          method: "POST",
+      const response =
+        await fetch(
+          `${SUPABASE_URL}/functions/v1/smooth-handler`,
+          {
+            method: "POST",
 
-          headers: {
-            "Content-Type": "application/json",
-            "apikey": SUPABASE_KEY,
-            "Authorization": `Bearer ${session.access_token}`
-          },
+            headers: {
+              "Content-Type":
+                "application/json",
 
-          body: JSON.stringify({
-            id: photo.id,
-            public_id: photo.public_id
-          })
-        }
-      );
+              "apikey":
+                SUPABASE_KEY,
 
-      const data = await response.json();
+              "Authorization":
+                `Bearer ${session.access_token}`
+            },
+
+            body: JSON.stringify({
+              id:
+                photo.id,
+
+              public_id:
+                photo.public_id
+            })
+
+          }
+        );
+
+
+      const data =
+        await response.json();
+
 
       if (!response.ok) {
 
@@ -719,20 +978,28 @@
 
       }
 
-      photos = photos.filter(
-        item => item.id !== photo.id
-      );
+
+      photos =
+        photos.filter(
+          item =>
+            item.id !== photo.id
+        );
+
 
       actualizarContadores();
+
       mostrarFotos();
+
 
       alert(
         "La foto fue eliminada correctamente."
       );
 
+
     } catch (error) {
 
       console.error(error);
+
 
       alert(
         "No se pudo eliminar la foto.\n\n" +
@@ -753,40 +1020,14 @@
     totalPhotos.textContent =
       photos.length;
 
+
     favoritePhotos.textContent =
       photos.filter(
-        photo => photo.favorito === true
+        photo =>
+          photo.favorito === true
       ).length;
 
   }
-
-
-  // ==========================
-  // FILTROS
-  // ==========================
-
-  allButton.addEventListener("click", () => {
-
-    showFavoritesOnly = false;
-
-    allButton.classList.add("active");
-    favoritesButton.classList.remove("active");
-
-    mostrarFotos();
-
-  });
-
-
-  favoritesButton.addEventListener("click", () => {
-
-    showFavoritesOnly = true;
-
-    favoritesButton.classList.add("active");
-    allButton.classList.remove("active");
-
-    mostrarFotos();
-
-  });
 
 </script>
 
