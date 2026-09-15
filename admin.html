@@ -1,0 +1,787 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Administración | Danna Valentina</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #fff5f7, #f8e4ea);
+      color: #4b3a40;
+    }
+
+    .login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255,255,255,0.9);
+      padding: 40px 30px;
+      border-radius: 25px;
+      box-shadow: 0 15px 40px rgba(100, 50, 70, 0.15);
+      text-align: center;
+    }
+
+    h1, h2 {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .login-box h1 {
+      font-size: 42px;
+      margin: 0 0 5px;
+    }
+
+    .login-box p {
+      color: #8c737b;
+      margin-bottom: 30px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border: 1px solid #e3cbd3;
+      border-radius: 12px;
+      font-family: 'Montserrat', sans-serif;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #c58c9e;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .login-button {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      background: #b9798d;
+      color: white;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .login-button:hover {
+      background: #a7657b;
+    }
+
+    .error {
+      color: #b33b50;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .admin-panel {
+      display: none;
+      max-width: 1200px;
+      margin: auto;
+      padding: 25px 18px 50px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .top h1 {
+      font-size: 42px;
+      margin: 0;
+    }
+
+    .logout {
+      background: #fff;
+      color: #9a6475;
+      border: 1px solid #dcb8c3;
+      padding: 10px 16px;
+      border-radius: 12px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.85);
+      padding: 18px 25px;
+      border-radius: 18px;
+      box-shadow: 0 5px 20px rgba(100,50,70,0.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 28px;
+      color: #a7657b;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .filter {
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: white;
+      color: #805565;
+      border: 1px solid #e1c5ce;
+    }
+
+    .filter.active {
+      background: #b9798d;
+      color: white;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .photo-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(100,50,70,0.12);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-actions {
+      padding: 12px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .favorite-button,
+    .delete-button {
+      flex: 1;
+      padding: 11px 5px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .favorite-button {
+      background: #fff1b8;
+      color: #856d1d;
+    }
+
+    .favorite-button.active {
+      background: #e7c85a;
+      color: #5f4c00;
+    }
+
+    .delete-button {
+      background: #f8d9df;
+      color: #9c344d;
+    }
+
+    .delete-button:hover {
+      background: #f2bec9;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 50px;
+      color: #8c737b;
+      grid-column: 1 / -1;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 30px;
+      color: #8c737b;
+    }
+
+    @media (max-width: 600px) {
+      .top h1 {
+        font-size: 34px;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .photo-card img {
+        height: 180px;
+      }
+
+      .photo-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOGIN -->
+  <section class="login-screen" id="loginScreen">
+    <div class="login-box">
+
+      <h1>Administración</h1>
+      <p>Danna Valentina · Mis 15 Años</p>
+
+      <input
+        type="email"
+        id="email"
+        placeholder="Correo del administrador"
+        autocomplete="email"
+      >
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Contraseña"
+        autocomplete="current-password"
+      >
+
+      <button class="login-button" id="loginButton">
+        INICIAR SESIÓN
+      </button>
+
+      <div class="error" id="loginError"></div>
+
+    </div>
+  </section>
+
+
+  <!-- PANEL -->
+  <main class="admin-panel" id="adminPanel">
+
+    <div class="top">
+      <h1>Panel de fotos</h1>
+
+      <button class="logout" id="logoutButton">
+        Cerrar sesión
+      </button>
+    </div>
+
+
+    <div class="stats">
+
+      <div class="stat">
+        <span>Fotos</span>
+        <strong id="totalPhotos">0</strong>
+      </div>
+
+      <div class="stat">
+        <span>Favoritas</span>
+        <strong id="favoritePhotos">0</strong>
+      </div>
+
+    </div>
+
+
+    <div class="filters">
+
+      <button class="filter active" id="allButton">
+        📸 Todas
+      </button>
+
+      <button class="filter" id="favoritesButton">
+        ⭐ Favoritas
+      </button>
+
+    </div>
+
+
+    <div class="loading" id="loading">
+      Cargando fotos...
+    </div>
+
+    <div class="gallery" id="gallery"></div>
+
+  </main>
+
+
+<script>
+
+  const SUPABASE_URL =
+    "https://utkqspswdjamfmhzalov.supabase.co";
+
+  const SUPABASE_KEY =
+    "sb_publishable_rBWSVkYl3T_ai_0ZQ6Av1A_jTgXR_59";
+
+
+  const loginScreen = document.getElementById("loginScreen");
+  const adminPanel = document.getElementById("adminPanel");
+
+  const loginButton = document.getElementById("loginButton");
+  const logoutButton = document.getElementById("logoutButton");
+
+  const loginError = document.getElementById("loginError");
+
+  const gallery = document.getElementById("gallery");
+  const loading = document.getElementById("loading");
+
+  const totalPhotos = document.getElementById("totalPhotos");
+  const favoritePhotos = document.getElementById("favoritePhotos");
+
+  const allButton = document.getElementById("allButton");
+  const favoritesButton = document.getElementById("favoritesButton");
+
+
+  let session = null;
+  let photos = [];
+  let showFavoritesOnly = false;
+
+
+  // ==========================
+  // INICIAR SESIÓN
+  // ==========================
+
+  loginButton.addEventListener("click", async () => {
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    loginError.textContent = "";
+
+    if (!email || !password) {
+      loginError.textContent = "Escribe tu correo y contraseña.";
+      return;
+    }
+
+    loginButton.disabled = true;
+    loginButton.textContent = "ENTRANDO...";
+
+    try {
+
+      const response = await fetch(
+        `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": SUPABASE_KEY
+          },
+
+          body: JSON.stringify({
+            email: email,
+            password: password
+          })
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.error_description ||
+          data.msg ||
+          "Correo o contraseña incorrectos."
+        );
+      }
+
+      session = data;
+
+      loginScreen.style.display = "none";
+      adminPanel.style.display = "block";
+
+      cargarFotos();
+
+    } catch (error) {
+
+      console.error(error);
+
+      loginError.textContent =
+        error.message || "No se pudo iniciar sesión.";
+
+    } finally {
+
+      loginButton.disabled = false;
+      loginButton.textContent = "INICIAR SESIÓN";
+
+    }
+
+  });
+
+
+  // ==========================
+  // CERRAR SESIÓN
+  // ==========================
+
+  logoutButton.addEventListener("click", async () => {
+
+    if (session?.access_token) {
+
+      await fetch(
+        `${SUPABASE_URL}/auth/v1/logout`,
+        {
+          method: "POST",
+
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Authorization": `Bearer ${session.access_token}`
+          }
+        }
+      );
+
+    }
+
+    session = null;
+
+    adminPanel.style.display = "none";
+    loginScreen.style.display = "flex";
+
+    document.getElementById("password").value = "";
+
+  });
+
+
+  // ==========================
+  // CARGAR FOTOS
+  // ==========================
+
+  async function cargarFotos() {
+
+    loading.style.display = "block";
+    gallery.innerHTML = "";
+
+    try {
+
+      const response = await fetch(
+        `${SUPABASE_URL}/rest/v1/fotos?select=id,url,public_id,favorito,created_at&order=created_at.desc`,
+        {
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Authorization": `Bearer ${session.access_token}`
+          }
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("No se pudieron cargar las fotos.");
+      }
+
+      photos = await response.json();
+
+      actualizarContadores();
+      mostrarFotos();
+
+    } catch (error) {
+
+      console.error(error);
+
+      gallery.innerHTML =
+        `<div class="empty">Error al cargar las fotos.</div>`;
+
+    } finally {
+
+      loading.style.display = "none";
+
+    }
+
+  }
+
+
+  // ==========================
+  // MOSTRAR FOTOS
+  // ==========================
+
+  function mostrarFotos() {
+
+    gallery.innerHTML = "";
+
+    let lista = photos;
+
+    if (showFavoritesOnly) {
+
+      lista = photos.filter(photo => photo.favorito === true);
+
+    }
+
+    if (lista.length === 0) {
+
+      gallery.innerHTML =
+        `<div class="empty">
+          ${
+            showFavoritesOnly
+              ? "No tienes fotos favoritas todavía ⭐"
+              : "No hay fotos."
+          }
+        </div>`;
+
+      return;
+    }
+
+
+    lista.forEach(photo => {
+
+      const card = document.createElement("div");
+
+      card.className = "photo-card";
+
+
+      const image = document.createElement("img");
+
+      image.src = photo.url;
+      image.alt = "Foto de invitado";
+      image.loading = "lazy";
+
+
+      const actions = document.createElement("div");
+
+      actions.className = "photo-actions";
+
+
+      const favoriteButton =
+        document.createElement("button");
+
+      favoriteButton.className =
+        "favorite-button" +
+        (photo.favorito ? " active" : "");
+
+      favoriteButton.textContent =
+        photo.favorito
+          ? "⭐ Favorita"
+          : "☆ Favorito";
+
+
+      favoriteButton.addEventListener("click", () => {
+
+        cambiarFavorito(
+          photo.id,
+          !photo.favorito
+        );
+
+      });
+
+
+      const deleteButton =
+        document.createElement("button");
+
+      deleteButton.className = "delete-button";
+      deleteButton.textContent = "🗑️ Eliminar";
+
+
+      deleteButton.addEventListener("click", () => {
+
+        eliminarFoto(photo);
+
+      });
+
+
+      actions.appendChild(favoriteButton);
+      actions.appendChild(deleteButton);
+
+      card.appendChild(image);
+      card.appendChild(actions);
+
+      gallery.appendChild(card);
+
+    });
+
+  }
+
+
+  // ==========================
+  // FAVORITOS
+  // ==========================
+
+  async function cambiarFavorito(id, favorito) {
+
+    try {
+
+      const response = await fetch(
+        `${SUPABASE_URL}/rest/v1/fotos?id=eq.${id}`,
+        {
+          method: "PATCH",
+
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": SUPABASE_KEY,
+            "Authorization": `Bearer ${session.access_token}`,
+            "Prefer": "return=minimal"
+          },
+
+          body: JSON.stringify({
+            favorito: favorito
+          })
+        }
+      );
+
+
+      if (!response.ok) {
+        throw new Error("No se pudo cambiar el favorito.");
+      }
+
+
+      const photo = photos.find(
+        item => item.id === id
+      );
+
+      if (photo) {
+        photo.favorito = favorito;
+      }
+
+
+      actualizarContadores();
+      mostrarFotos();
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      alert(
+        "No se pudo cambiar el estado de favorito."
+      );
+
+    }
+
+  }
+
+
+  // ==========================
+  // ELIMINAR FOTO
+  // ==========================
+
+  async function eliminarFoto(photo) {
+
+    const confirmar = confirm(
+      "¿Seguro que quieres eliminar esta foto?\n\n" +
+      "Esta acción no se puede deshacer."
+    );
+
+    if (!confirmar) return;
+
+
+    try {
+
+      const response = await fetch(
+        `${SUPABASE_URL}/rest/v1/fotos?id=eq.${photo.id}`,
+        {
+          method: "DELETE",
+
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Authorization": `Bearer ${session.access_token}`,
+            "Prefer": "return=minimal"
+          }
+        }
+      );
+
+
+      if (!response.ok) {
+        throw new Error("No se pudo eliminar la foto.");
+      }
+
+
+      photos = photos.filter(
+        item => item.id !== photo.id
+      );
+
+
+      actualizarContadores();
+      mostrarFotos();
+
+
+      alert(
+        "La foto fue eliminada de la galería."
+      );
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      alert(
+        "No se pudo eliminar la foto."
+      );
+
+    }
+
+  }
+
+
+  // ==========================
+  // CONTADORES
+  // ==========================
+
+  function actualizarContadores() {
+
+    totalPhotos.textContent =
+      photos.length;
+
+    favoritePhotos.textContent =
+      photos.filter(
+        photo => photo.favorito === true
+      ).length;
+
+  }
+
+
+  // ==========================
+  // FILTROS
+  // ==========================
+
+  allButton.addEventListener("click", () => {
+
+    showFavoritesOnly = false;
+
+    allButton.classList.add("active");
+    favoritesButton.classList.remove("active");
+
+    mostrarFotos();
+
+  });
+
+
+  favoritesButton.addEventListener("click", () => {
+
+    showFavoritesOnly = true;
+
+    favoritesButton.classList.add("active");
+    allButton.classList.remove("active");
+
+    mostrarFotos();
+
+  });
+
+</script>
+
+</body>
+</html>
+```
