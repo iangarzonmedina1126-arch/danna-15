@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -37,6 +38,7 @@
         radial-gradient(#d6a7b9 1px, transparent 1px);
       background-size: 45px 45px;
     }
+
 
     /* ==========================================
        PANTALLA DE ENTRADA
@@ -135,6 +137,7 @@
       color: #a47787;
       letter-spacing: 1px;
     }
+
 
     .hero {
       min-height: 100vh;
@@ -239,6 +242,11 @@
       display: none;
     }
 
+
+    /* ==========================================
+       GALERÍA
+       ========================================== */
+
     .gallery-section {
       padding: 70px 20px 100px;
       max-width: 1200px;
@@ -264,6 +272,15 @@
       font-size: clamp(38px, 6vw, 58px);
       font-weight: 500;
       color: #805365;
+    }
+
+    .favorites-title {
+      margin-top: 70px;
+      margin-bottom: 35px;
+    }
+
+    .favorites-title h2 {
+      color: #9b687c;
     }
 
     .gallery {
@@ -308,6 +325,7 @@
       padding: 30px;
     }
 
+
     .footer {
       text-align: center;
       padding: 50px 20px;
@@ -316,6 +334,11 @@
       letter-spacing: 2px;
       text-transform: uppercase;
     }
+
+
+    /* ==========================================
+       MODAL
+       ========================================== */
 
     .modal {
       display: none;
@@ -348,6 +371,7 @@
       cursor: pointer;
     }
 
+
     .upload-status {
       display: none;
       margin: 20px auto 0;
@@ -358,6 +382,7 @@
       color: #8d526b;
       font-size: 13px;
     }
+
 
     /* ==========================================
        BOTÓN DE MÚSICA
@@ -393,6 +418,7 @@
     }
 
     @keyframes musicaPulso {
+
       0% {
         box-shadow: 0 8px 25px rgba(157, 91, 118, .35);
       }
@@ -404,9 +430,12 @@
       100% {
         box-shadow: 0 8px 25px rgba(157, 91, 118, .35);
       }
+
     }
 
+
     @keyframes aparecer {
+
       from {
         opacity: 0;
         transform: translateY(25px);
@@ -416,7 +445,9 @@
         opacity: 1;
         transform: translateY(0);
       }
+
     }
+
 
     @media (max-width: 700px) {
 
@@ -445,7 +476,9 @@
         right: 18px;
         font-size: 20px;
       }
+
     }
+
 
     @media (max-width: 400px) {
 
@@ -458,7 +491,9 @@
   </style>
 </head>
 
+
 <body>
+
 
   <!-- ==========================================
        PANTALLA DE ENTRADA
@@ -487,7 +522,9 @@
       <button
         class="enter-button"
         id="enterButton">
+
         ✨ TOCAR PARA ENTRAR
+
       </button>
 
       <div class="welcome-hint">
@@ -499,22 +536,35 @@
   </div>
 
 
+
   <!-- ==========================================
        MÚSICA
        ========================================== -->
 
   <audio id="musica" loop preload="auto">
-    <source src="musica.mp3" type="audio/mpeg">
+
+    <source
+      src="musica.mp3"
+      type="audio/mpeg">
+
   </audio>
+
 
   <button
     id="musicButton"
     class="music-button"
     aria-label="Activar música"
     title="Activar música">
+
     🎵
+
   </button>
 
+
+
+  <!-- ==========================================
+       HERO
+       ========================================== -->
 
   <section class="hero">
 
@@ -524,38 +574,47 @@
         Una noche para recordar
       </div>
 
-      <h1>Danna</h1>
+      <h1>
+        Danna
+      </h1>
 
       <div class="surname">
         Valentina Garzón Medina
       </div>
 
       <div class="fifteen">
+
         XV
 
         <span>
           Mis 15 Años
         </span>
+
       </div>
 
       <div class="divider"></div>
 
       <p class="message">
+
         Gracias por acompañarme en este momento tan especial.
         Comparte tus mejores fotografías y hagamos juntos
         un álbum lleno de recuerdos inolvidables. ✨
+
       </p>
 
-      <label class="photo-button" for="photoInput">
+      <label
+        class="photo-button"
+        for="photoInput">
+
         📸 &nbsp; COMPARTIR UNA FOTO
+
       </label>
 
       <input
         type="file"
         id="photoInput"
         accept="image/*"
-        multiple
-      >
+        multiple>
 
       <div
         class="upload-status"
@@ -567,7 +626,13 @@
   </section>
 
 
+
+  <!-- ==========================================
+       GALERÍA
+       ========================================== -->
+
   <section class="gallery-section">
+
 
     <div class="section-title">
 
@@ -581,33 +646,97 @@
 
     </div>
 
-    <div id="loading" class="loading">
+
+    <div
+      id="loading"
+      class="loading">
+
       Cargando recuerdos...
+
     </div>
 
-    <div id="gallery" class="gallery"></div>
+
+
+    <!-- ==========================================
+         FAVORITAS
+         ========================================== -->
+
+    <div
+      id="favoritesSection"
+      style="display: none;">
+
+      <div class="section-title favorites-title">
+
+        <small>
+          Seleccionadas para recordar
+        </small>
+
+        <h2>
+          ⭐ Fotos favoritas
+        </h2>
+
+      </div>
+
+
+      <div
+        id="favoritesGallery"
+        class="gallery">
+      </div>
+
+    </div>
+
+
+
+    <!-- ==========================================
+         TODAS LAS FOTOS
+         ========================================== -->
+
+    <div
+      id="gallery"
+      class="gallery">
+    </div>
+
 
     <div
       id="empty"
       class="empty"
-      style="display:none;">
+      style="display: none;">
+
       Sé el primero en compartir una foto de esta noche ✨
+
     </div>
+
 
   </section>
 
 
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+
   <footer class="footer">
+
     Danna Valentina Garzón Medina · Mis 15 Años
+
   </footer>
 
 
-  <div class="modal" id="modal">
+
+  <!-- ==========================================
+       MODAL
+       ========================================== -->
+
+  <div
+    class="modal"
+    id="modal">
 
     <div
       class="close"
       id="closeModal">
+
       ×
+
     </div>
 
     <img
@@ -618,17 +747,19 @@
   </div>
 
 
+
 <script>
 
-  /*
-   * ============================================
-   * CONFIGURACIÓN
-   * ============================================
-   */
 
-  const CLOUDINARY_CLOUD_NAME = "sdijrxgo";
+  /* ============================================
+     CONFIGURACIÓN
+     ============================================ */
 
-  const CLOUDINARY_UPLOAD_PRESET = "danna15";
+  const CLOUDINARY_CLOUD_NAME =
+    "sdijrxgo";
+
+  const CLOUDINARY_UPLOAD_PRESET =
+    "danna15";
 
   const SUPABASE_URL =
     "https://utkqspswdjamfmhzalov.supabase.co";
@@ -637,17 +768,22 @@
     "sb_publishable_rBWSVkYl3T_ai_0ZQ6Av1A_jTgXR_59";
 
 
-  /*
-   * ============================================
-   * ELEMENTOS
-   * ============================================
-   */
+
+  /* ============================================
+     ELEMENTOS
+     ============================================ */
 
   const input =
     document.getElementById("photoInput");
 
   const gallery =
     document.getElementById("gallery");
+
+  const favoritesGallery =
+    document.getElementById("favoritesGallery");
+
+  const favoritesSection =
+    document.getElementById("favoritesSection");
 
   const loading =
     document.getElementById("loading");
@@ -668,11 +804,10 @@
     document.getElementById("closeModal");
 
 
-  /*
-   * ============================================
-   * MÚSICA
-   * ============================================
-   */
+
+  /* ============================================
+     MÚSICA
+     ============================================ */
 
   const musica =
     document.getElementById("musica");
@@ -691,24 +826,16 @@
   let silenciada = false;
 
 
-  /*
-   * ============================================
-   * ENTRAR Y COMENZAR MÚSICA
-   * ============================================
-   */
+
+  /* ============================================
+     ENTRAR Y COMENZAR MÚSICA
+     ============================================ */
 
   enterButton.addEventListener(
     "click",
     async () => {
 
       try {
-
-        /*
-         * Como este play ocurre
-         * directamente después del toque
-         * del usuario, el navegador
-         * permite reproducir el sonido.
-         */
 
         musica.muted = false;
 
@@ -729,9 +856,6 @@
 
       }
 
-      /*
-       * Ocultar pantalla de entrada
-       */
 
       welcomeScreen.classList.add("hidden");
 
@@ -739,20 +863,14 @@
   );
 
 
-  /*
-   * ============================================
-   * BOTÓN DE MÚSICA
-   * ============================================
-   */
+
+  /* ============================================
+     BOTÓN DE MÚSICA
+     ============================================ */
 
   musicButton.addEventListener(
     "click",
     async () => {
-
-      /*
-       * Si todavía no está reproduciendo,
-       * intentar iniciarla.
-       */
 
       if (!reproduciendo) {
 
@@ -782,10 +900,6 @@
       }
 
 
-      /*
-       * Si está sonando, silenciar.
-       */
-
       if (!silenciada) {
 
         musica.muted = true;
@@ -793,11 +907,6 @@
         silenciada = true;
 
       }
-
-      /*
-       * Si está silenciada,
-       * volver a activar.
-       */
 
       else {
 
@@ -814,11 +923,10 @@
   );
 
 
-  /*
-   * ============================================
-   * ACTUALIZAR BOTÓN DE MÚSICA
-   * ============================================
-   */
+
+  /* ============================================
+     ACTUALIZAR BOTÓN DE MÚSICA
+     ============================================ */
 
   function actualizarBoton() {
 
@@ -885,77 +993,122 @@
   }
 
 
-  /*
-   * ============================================
-   * CARGAR GALERÍA
-   * ============================================
-   */
+
+  /* ============================================
+     CARGAR GALERÍA
+     ============================================ */
 
   async function loadPhotos() {
 
     try {
 
-      const response = await fetch(
-        `${SUPABASE_URL}/rest/v1/fotos?select=url&order=created_at.desc`,
-        {
-          headers: {
-            "apikey": SUPABASE_KEY,
-            "Authorization": `Bearer ${SUPABASE_KEY}`
+      const response =
+        await fetch(
+          `${SUPABASE_URL}/rest/v1/fotos?select=url,favorito&order=created_at.desc`,
+          {
+            headers: {
+              "apikey":
+                SUPABASE_KEY,
+
+              "Authorization":
+                `Bearer ${SUPABASE_KEY}`
+            }
           }
-        }
-      );
+        );
+
 
       if (!response.ok) {
+
         throw new Error(
           "No se pudieron cargar las fotos."
         );
+
       }
+
 
       const photos =
         await response.json();
 
-      loading.style.display = "none";
+
+      loading.style.display =
+        "none";
+
+
+      gallery.innerHTML =
+        "";
+
+      favoritesGallery.innerHTML =
+        "";
+
+
+      /* ============================================
+         FOTOS FAVORITAS
+         ============================================ */
+
+      const favoritas =
+        photos.filter(
+          photo =>
+            photo.favorito === true
+        );
+
+
+      if (favoritas.length > 0) {
+
+        favoritesSection.style.display =
+          "block";
+
+
+        favoritas.forEach(
+          photo => {
+
+            crearFoto(
+              photo,
+              favoritesGallery
+            );
+
+          }
+        );
+
+      }
+
+      else {
+
+        favoritesSection.style.display =
+          "none";
+
+      }
+
+
+
+      /* ============================================
+         TODAS LAS FOTOS
+         ============================================ */
 
       if (!photos.length) {
 
-        empty.style.display = "block";
+        empty.style.display =
+          "block";
 
         return;
+
       }
 
-      empty.style.display = "none";
 
-      photos.forEach(photo => {
+      empty.style.display =
+        "none";
 
-        const container =
-          document.createElement("div");
 
-        container.className = "photo";
+      photos.forEach(
+        photo => {
 
-        const img =
-          document.createElement("img");
+          crearFoto(
+            photo,
+            gallery
+          );
 
-        img.src = photo.url;
+        }
+      );
 
-        img.loading = "lazy";
-
-        img.alt =
-          "Foto de los 15 años de Danna";
-
-        img.onclick = () => {
-
-          modalImage.src =
-            photo.url;
-
-          modal.classList.add("active");
-
-        };
-
-        container.appendChild(img);
-
-        gallery.appendChild(container);
-
-      });
 
     } catch (error) {
 
@@ -969,11 +1122,63 @@
   }
 
 
-  /*
-   * ============================================
-   * SUBIR FOTOS
-   * ============================================
-   */
+
+  /* ============================================
+     CREAR FOTO
+     ============================================ */
+
+  function crearFoto(
+    photo,
+    contenedor
+  ) {
+
+    const container =
+      document.createElement("div");
+
+    container.className =
+      "photo";
+
+
+    const img =
+      document.createElement("img");
+
+    img.src =
+      photo.url;
+
+    img.loading =
+      "lazy";
+
+    img.alt =
+      "Foto de los 15 años de Danna";
+
+
+    img.onclick = () => {
+
+      modalImage.src =
+        photo.url;
+
+      modal.classList.add(
+        "active"
+      );
+
+    };
+
+
+    container.appendChild(
+      img
+    );
+
+    contenedor.appendChild(
+      container
+    );
+
+  }
+
+
+
+  /* ============================================
+     SUBIR FOTOS
+     ============================================ */
 
   input.addEventListener(
     "change",
@@ -982,9 +1187,14 @@
       const files =
         Array.from(this.files);
 
-      if (!files.length) return;
 
-      status.style.display = "block";
+      if (!files.length)
+        return;
+
+
+      status.style.display =
+        "block";
+
 
       status.textContent =
         "Preparando tus fotos...";
@@ -996,7 +1206,9 @@
         i++
       ) {
 
-        const file = files[i];
+        const file =
+          files[i];
+
 
         try {
 
@@ -1004,17 +1216,17 @@
             `Subiendo foto ${i + 1} de ${files.length}...`;
 
 
-          /*
-           * Cloudinary
-           */
+          /* Cloudinary */
 
           const formData =
             new FormData();
+
 
           formData.append(
             "file",
             file
           );
+
 
           formData.append(
             "upload_preset",
@@ -1027,7 +1239,9 @@
               `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
               {
                 method: "POST",
-                body: formData
+
+                body:
+                  formData
               }
             );
 
@@ -1045,9 +1259,8 @@
             await cloudinaryResponse.json();
 
 
-          /*
-           * Supabase
-           */
+
+          /* Supabase */
 
           const supabaseResponse =
             await fetch(
@@ -1056,6 +1269,7 @@
                 method: "POST",
 
                 headers: {
+
                   "Content-Type":
                     "application/json",
 
@@ -1067,17 +1281,19 @@
 
                   "Prefer":
                     "return=minimal"
+
                 },
 
-                body: JSON.stringify({
+                body:
+                  JSON.stringify({
 
-                  url:
-                    cloudinaryData.secure_url,
+                    url:
+                      cloudinaryData.secure_url,
 
-                  public_id:
-                    cloudinaryData.public_id
+                    public_id:
+                      cloudinaryData.public_id
 
-                })
+                  })
 
               }
             );
@@ -1095,8 +1311,10 @@
 
           console.error(error);
 
+
           status.textContent =
             "Hubo un problema al subir una de las fotos.";
+
 
           break;
 
@@ -1108,48 +1326,57 @@
       status.textContent =
         "✨ ¡Fotos compartidas!";
 
-      input.value = "";
+
+      input.value =
+        "";
 
 
-      setTimeout(() => {
+      setTimeout(
+        () => {
 
-        location.reload();
+          location.reload();
 
-      }, 1200);
+        },
+        1200
+      );
 
     }
   );
 
 
-  /*
-   * ============================================
-   * MODAL
-   * ============================================
-   */
+
+  /* ============================================
+     MODAL
+     ============================================ */
 
   closeModal.onclick = () => {
 
-    modal.classList.remove("active");
+    modal.classList.remove(
+      "active"
+    );
 
   };
 
 
   modal.onclick = (event) => {
 
-    if (event.target === modal) {
+    if (
+      event.target === modal
+    ) {
 
-      modal.classList.remove("active");
+      modal.classList.remove(
+        "active"
+      );
 
     }
 
   };
 
 
-  /*
-   * ============================================
-   * INICIO
-   * ============================================
-   */
+
+  /* ============================================
+     INICIO
+     ============================================ */
 
   loadPhotos();
 
