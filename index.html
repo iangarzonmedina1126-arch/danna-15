@@ -39,7 +39,6 @@
       background-size: 45px 45px;
     }
 
-
     /* ==========================================
        PANTALLA DE ENTRADA
        ========================================== */
@@ -137,7 +136,6 @@
       color: #a47787;
       letter-spacing: 1px;
     }
-
 
     .hero {
       min-height: 100vh;
@@ -242,7 +240,6 @@
       display: none;
     }
 
-
     /* ==========================================
        GALERÍA
        ========================================== */
@@ -325,7 +322,6 @@
       padding: 30px;
     }
 
-
     .footer {
       text-align: center;
       padding: 50px 20px;
@@ -334,7 +330,6 @@
       letter-spacing: 2px;
       text-transform: uppercase;
     }
-
 
     /* ==========================================
        MODAL
@@ -371,7 +366,6 @@
       cursor: pointer;
     }
 
-
     .upload-status {
       display: none;
       margin: 20px auto 0;
@@ -382,7 +376,6 @@
       color: #8d526b;
       font-size: 13px;
     }
-
 
     /* ==========================================
        BOTÓN DE MÚSICA
@@ -433,7 +426,6 @@
 
     }
 
-
     @keyframes aparecer {
 
       from {
@@ -447,7 +439,6 @@
       }
 
     }
-
 
     @media (max-width: 700px) {
 
@@ -479,7 +470,6 @@
 
     }
 
-
     @media (max-width: 400px) {
 
       .gallery {
@@ -491,9 +481,7 @@
   </style>
 </head>
 
-
 <body>
-
 
   <!-- ==========================================
        PANTALLA DE ENTRADA
@@ -535,8 +523,6 @@
 
   </div>
 
-
-
   <!-- ==========================================
        MÚSICA
        ========================================== -->
@@ -549,7 +535,6 @@
 
   </audio>
 
-
   <button
     id="musicButton"
     class="music-button"
@@ -559,8 +544,6 @@
     🎵
 
   </button>
-
-
 
   <!-- ==========================================
        HERO
@@ -625,14 +608,11 @@
 
   </section>
 
-
-
   <!-- ==========================================
        GALERÍA
        ========================================== -->
 
   <section class="gallery-section">
-
 
     <div class="section-title">
 
@@ -646,7 +626,6 @@
 
     </div>
 
-
     <div
       id="loading"
       class="loading">
@@ -654,8 +633,6 @@
       Cargando recuerdos...
 
     </div>
-
-
 
     <!-- ==========================================
          FAVORITAS
@@ -677,7 +654,6 @@
 
       </div>
 
-
       <div
         id="favoritesGallery"
         class="gallery">
@@ -685,17 +661,14 @@
 
     </div>
 
-
-
     <!-- ==========================================
-         TODAS LAS FOTOS
+         ÁLBUM NORMAL
          ========================================== -->
 
     <div
       id="gallery"
       class="gallery">
     </div>
-
 
     <div
       id="empty"
@@ -706,10 +679,7 @@
 
     </div>
 
-
   </section>
-
-
 
   <!-- ==========================================
        FOOTER
@@ -720,8 +690,6 @@
     Danna Valentina Garzón Medina · Mis 15 Años
 
   </footer>
-
-
 
   <!-- ==========================================
        MODAL
@@ -746,10 +714,7 @@
 
   </div>
 
-
-
 <script>
-
 
   /* ============================================
      CONFIGURACIÓN
@@ -766,7 +731,6 @@
 
   const SUPABASE_KEY =
     "sb_publishable_rBWSVkYl3T_ai_0ZQ6Av1A_jTgXR_59";
-
 
 
   /* ============================================
@@ -804,7 +768,6 @@
     document.getElementById("closeModal");
 
 
-
   /* ============================================
      MÚSICA
      ============================================ */
@@ -824,7 +787,6 @@
   let reproduciendo = false;
 
   let silenciada = false;
-
 
 
   /* ============================================
@@ -856,12 +818,10 @@
 
       }
 
-
       welcomeScreen.classList.add("hidden");
 
     }
   );
-
 
 
   /* ============================================
@@ -916,12 +876,10 @@
 
       }
 
-
       actualizarBoton();
 
     }
   );
-
 
 
   /* ============================================
@@ -993,7 +951,6 @@
   }
 
 
-
   /* ============================================
      CARGAR GALERÍA
      ============================================ */
@@ -1007,11 +964,13 @@
           `${SUPABASE_URL}/rest/v1/fotos?select=url,favorito&order=created_at.desc`,
           {
             headers: {
+
               "apikey":
                 SUPABASE_KEY,
 
               "Authorization":
                 `Bearer ${SUPABASE_KEY}`
+
             }
           }
         );
@@ -1034,6 +993,8 @@
         "none";
 
 
+      /* Limpiar galerías */
+
       gallery.innerHTML =
         "";
 
@@ -1042,7 +1003,7 @@
 
 
       /* ============================================
-         FOTOS FAVORITAS
+         SEPARAR FAVORITAS Y NORMALES
          ============================================ */
 
       const favoritas =
@@ -1051,6 +1012,16 @@
             photo.favorito === true
         );
 
+      const normales =
+        photos.filter(
+          photo =>
+            photo.favorito !== true
+        );
+
+
+      /* ============================================
+         MOSTRAR FAVORITAS
+         ============================================ */
 
       if (favoritas.length > 0) {
 
@@ -1079,36 +1050,54 @@
       }
 
 
-
       /* ============================================
-         TODAS LAS FOTOS
+         MOSTRAR FOTOS NORMALES
          ============================================ */
 
-      if (!photos.length) {
+      if (normales.length > 0) {
 
         empty.style.display =
-          "block";
+          "none";
 
-        return;
+
+        normales.forEach(
+          photo => {
+
+            crearFoto(
+              photo,
+              gallery
+            );
+
+          }
+        );
 
       }
 
+      else {
 
-      empty.style.display =
-        "none";
+        /*
+         * Si no hay ninguna foto en absoluto,
+         * mostramos el mensaje.
+         *
+         * Si solamente hay favoritas,
+         * no mostramos "Sé el primero..."
+         */
 
+        if (photos.length === 0) {
 
-      photos.forEach(
-        photo => {
-
-          crearFoto(
-            photo,
-            gallery
-          );
+          empty.style.display =
+            "block";
 
         }
-      );
 
+        else {
+
+          empty.style.display =
+            "none";
+
+        }
+
+      }
 
     } catch (error) {
 
@@ -1120,7 +1109,6 @@
     }
 
   }
-
 
 
   /* ============================================
@@ -1173,7 +1161,6 @@
     );
 
   }
-
 
 
   /* ============================================
@@ -1257,7 +1244,6 @@
 
           const cloudinaryData =
             await cloudinaryResponse.json();
-
 
 
           /* Supabase */
@@ -1344,7 +1330,6 @@
   );
 
 
-
   /* ============================================
      MODAL
      ============================================ */
@@ -1371,7 +1356,6 @@
     }
 
   };
-
 
 
   /* ============================================
