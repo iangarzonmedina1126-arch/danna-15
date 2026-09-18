@@ -11,7 +11,6 @@
 
   <title>Danna Valentina | Mis 15 Años</title>
 
-
   <link
     rel="preconnect"
     href="https://fonts.googleapis.com">
@@ -25,7 +24,6 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
     rel="stylesheet">
 
-
   <style>
 
     * {
@@ -34,12 +32,10 @@
       padding: 0;
     }
 
-
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 80px;
     }
-
 
     body {
       min-height: 100vh;
@@ -68,7 +64,6 @@
 
       overflow-x: hidden;
     }
-
 
     body::before {
       content: "";
@@ -133,19 +128,16 @@
         visibility 1s ease;
     }
 
-
     .welcome-screen.hidden {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
 
-
     .welcome-content {
       max-width: 600px;
       animation: aparecer 1.2s ease;
     }
-
 
     .welcome-small {
       font-size: 11px;
@@ -155,7 +147,6 @@
       margin-bottom: 25px;
       animation: aparecer 1s ease .2s both;
     }
-
 
     .welcome-content h2 {
       font-family: 'Cormorant Garamond', serif;
@@ -178,7 +169,6 @@
         aparecer 1s ease .4s both;
     }
 
-
     .welcome-name {
       font-family: 'Cormorant Garamond', serif;
 
@@ -198,7 +188,6 @@
         aparecer 1s ease .6s both;
     }
 
-
     .welcome-xv {
       font-family: 'Cormorant Garamond', serif;
 
@@ -214,7 +203,6 @@
         aparecer 1s ease .8s both;
     }
 
-
     .welcome-divider {
       width: 80px;
       height: 1px;
@@ -226,7 +214,6 @@
       animation:
         aparecer 1s ease 1s both;
     }
-
 
     .enter-button {
       border: none;
@@ -263,7 +250,6 @@
         aparecer 1s ease 1.2s both;
     }
 
-
     .enter-button:hover {
       transform:
         translateY(-3px)
@@ -272,7 +258,6 @@
       box-shadow:
         0 15px 35px rgba(157, 91, 118, .35);
     }
-
 
     .welcome-hint {
       margin-top: 18px;
@@ -315,7 +300,6 @@
         0 5px 20px rgba(100, 55, 70, .08);
     }
 
-
     .navigation-container {
       max-width: 1100px;
 
@@ -334,11 +318,9 @@
       scrollbar-width: none;
     }
 
-
     .navigation-container::-webkit-scrollbar {
       display: none;
     }
-
 
     .navigation a {
       flex-shrink: 0;
@@ -360,8 +342,41 @@
       transition: .3s ease;
     }
 
-
     .navigation a:hover {
+      background: #f5dce6;
+
+      color: #8d526b;
+    }
+
+    /* BOTÓN SORPRÉNDEME EN LA NAVEGACIÓN */
+
+    .nav-random-button {
+      flex-shrink: 0;
+
+      border: none;
+
+      background: transparent;
+
+      color: #805365;
+
+      font-family: 'Montserrat', sans-serif;
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: .5px;
+
+      padding: 9px 14px;
+
+      border-radius: 30px;
+
+      cursor: pointer;
+
+      transition: .3s ease;
+    }
+
+    .nav-random-button:hover {
       background: #f5dce6;
 
       color: #8d526b;
@@ -388,14 +403,12 @@
       position: relative;
     }
 
-
     .hero-content {
       max-width: 850px;
 
       animation:
         aparecer 1.4s ease;
     }
-
 
     .small-title {
       font-size: 13px;
@@ -408,7 +421,6 @@
 
       margin-bottom: 25px;
     }
-
 
     h1 {
       font-family: 'Cormorant Garamond', serif;
@@ -428,7 +440,6 @@
       margin-bottom: 15px;
     }
 
-
     .surname {
       font-family: 'Cormorant Garamond', serif;
 
@@ -442,7 +453,6 @@
 
       color: #6d4a57;
     }
-
 
     .fifteen {
       font-family: 'Cormorant Garamond', serif;
@@ -462,7 +472,6 @@
       margin: 25px 0;
     }
 
-
     .fifteen span {
       display: block;
 
@@ -479,7 +488,6 @@
       margin-top: 12px;
     }
 
-
     .divider {
       width: 90px;
 
@@ -489,7 +497,6 @@
 
       margin: 30px auto;
     }
-
 
     .message {
       max-width: 600px;
@@ -504,7 +511,6 @@
 
       color: #765561;
     }
-
 
     .photo-button {
       display: inline-flex;
@@ -548,14 +554,12 @@
       transition: .3s ease;
     }
 
-
     .photo-button:hover {
       transform: translateY(-3px);
 
       box-shadow:
         0 15px 35px rgba(157, 91, 118, .35);
     }
-
 
     #photoInput {
       display: none;
@@ -574,13 +578,11 @@
       margin: auto;
     }
 
-
     .section-title {
       text-align: center;
 
       margin-bottom: 45px;
     }
-
 
     .section-title small {
       display: block;
@@ -596,7 +598,6 @@
       margin-bottom: 10px;
     }
 
-
     .section-title h2 {
       font-family: 'Cormorant Garamond', serif;
 
@@ -611,18 +612,15 @@
       color: #805365;
     }
 
-
     .favorites-title {
       margin-top: 70px;
 
       margin-bottom: 35px;
     }
 
-
     .favorites-title h2 {
       color: #9b687c;
     }
-
 
     .birthday-title {
       margin-top: 80px;
@@ -630,23 +628,19 @@
       margin-bottom: 35px;
     }
 
-
     .birthday-title h2 {
       color: #9b687c;
     }
 
-
     .album-title {
       margin-top: 80px;
     }
-
 
     .gallery {
       columns: 3 250px;
 
       column-gap: 18px;
     }
-
 
     .photo {
       width: 100%;
@@ -669,14 +663,12 @@
       transition: .3s ease;
     }
 
-
     .photo:hover {
       transform: translateY(-4px);
 
       box-shadow:
         0 15px 35px rgba(100, 55, 70, .18);
     }
-
 
     .photo img {
       display: block;
@@ -685,7 +677,6 @@
 
       height: auto;
     }
-
 
     .empty {
       text-align: center;
@@ -699,230 +690,12 @@
       font-size: 22px;
     }
 
-
     .loading {
       text-align: center;
 
       color: #a66b82;
 
       padding: 30px;
-    }
-
-
-    /* ==========================================
-       🎲 SORPRÉNDEME
-       ========================================== */
-
-    .random-memory-container {
-      text-align: center;
-
-      margin: 50px auto;
-    }
-
-
-    .random-memory-button {
-      border: none;
-
-      border-radius: 50px;
-
-      padding: 15px 28px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #b97691,
-          #d49caf
-        );
-
-      color: white;
-
-      font-family: 'Montserrat', sans-serif;
-
-      font-weight: 600;
-
-      letter-spacing: 1px;
-
-      cursor: pointer;
-
-      box-shadow:
-        0 8px 25px rgba(157,91,118,.25);
-
-      transition: .3s ease;
-    }
-
-
-    .random-memory-button:hover {
-      transform:
-        translateY(-3px)
-        scale(1.02);
-    }
-
-
-    .random-memory-container p {
-      margin-top: 10px;
-
-      color: #a47787;
-
-      font-size: 12px;
-    }
-
-
-    /* ==========================================
-       💌 MENSAJES
-       ========================================== */
-
-    .messages-section {
-      max-width: 900px;
-
-      margin: 80px auto 0;
-
-      padding: 0 20px;
-    }
-
-
-    .message-form {
-      max-width: 600px;
-
-      margin: auto;
-
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 12px;
-    }
-
-
-    .message-form input,
-    .message-form textarea {
-      width: 100%;
-
-      border: 1px solid #e4c4d0;
-
-      border-radius: 15px;
-
-      padding: 14px 16px;
-
-      background:
-        rgba(255,255,255,.8);
-
-      color: #5d424d;
-
-      font-family: 'Montserrat', sans-serif;
-
-      outline: none;
-    }
-
-
-    .message-form textarea {
-      min-height: 120px;
-
-      resize: vertical;
-    }
-
-
-    .message-form input:focus,
-    .message-form textarea:focus {
-      border-color: #b97691;
-    }
-
-
-    .message-form button {
-      border: none;
-
-      border-radius: 30px;
-
-      padding: 15px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #b97691,
-          #d49caf
-        );
-
-      color: white;
-
-      font-family: 'Montserrat', sans-serif;
-
-      font-weight: 600;
-
-      cursor: pointer;
-
-      transition: .3s ease;
-    }
-
-
-    .message-form button:hover {
-      transform:
-        translateY(-2px);
-    }
-
-
-    .message-form button:disabled {
-      opacity: .6;
-
-      cursor: wait;
-
-      transform: none;
-    }
-
-
-    .message-status {
-      text-align: center;
-
-      color: #8d526b;
-
-      font-size: 13px;
-
-      min-height: 20px;
-    }
-
-
-    .messages-container {
-      margin-top: 45px;
-
-      display: grid;
-
-      gap: 15px;
-    }
-
-
-    .message-card {
-      background:
-        rgba(255,255,255,.75);
-
-      border-radius: 18px;
-
-      padding: 20px;
-
-      box-shadow:
-        0 8px 25px rgba(100,55,70,.08);
-
-      animation:
-        aparecer .5s ease;
-    }
-
-
-    .message-card strong {
-      display: block;
-
-      color: #8d526b;
-
-      margin-bottom: 8px;
-    }
-
-
-    .message-card p {
-      font-family:
-        'Cormorant Garamond',
-        serif;
-
-      font-size: 20px;
-
-      line-height: 1.5;
-
-      color: #765561;
     }
 
 
@@ -968,11 +741,9 @@
       padding: 20px;
     }
 
-
     .modal.active {
       display: flex;
     }
-
 
     .modal img {
       max-width: 95vw;
@@ -986,7 +757,6 @@
       animation:
         aparecer .35s ease;
     }
-
 
     .close {
       position: fixed;
@@ -1003,7 +773,6 @@
 
       z-index: 1100;
     }
-
 
     .upload-status {
       display: none;
@@ -1071,14 +840,12 @@
       transition: .3s ease;
     }
 
-
     .music-button:hover {
       transform: scale(1.08);
 
       box-shadow:
         0 12px 30px rgba(157, 91, 118, .45);
     }
-
 
     .music-button.playing {
       animation:
@@ -1109,7 +876,6 @@
 
     }
 
-
     @keyframes aparecer {
 
       from {
@@ -1139,16 +905,13 @@
         min-height: 90vh;
       }
 
-
       .navigation {
         padding: 9px 8px;
       }
 
-
       .navigation-container {
         justify-content: flex-start;
       }
-
 
       .navigation a {
         font-size: 10px;
@@ -1156,6 +919,11 @@
         padding: 8px 11px;
       }
 
+      .nav-random-button {
+        font-size: 10px;
+
+        padding: 8px 11px;
+      }
 
       .gallery {
         columns: 2 150px;
@@ -1163,18 +931,15 @@
         column-gap: 10px;
       }
 
-
       .photo {
         margin-bottom: 10px;
 
         border-radius: 10px;
       }
 
-
       .message {
         font-size: 20px;
       }
-
 
       .music-button {
         width: 52px;
@@ -1188,11 +953,6 @@
         font-size: 20px;
       }
 
-
-      .messages-section {
-        padding: 0 15px;
-      }
-
     }
 
 
@@ -1202,8 +962,13 @@
         columns: 1;
       }
 
-
       .navigation a {
+        font-size: 9px;
+
+        padding: 8px 9px;
+      }
+
+      .nav-random-button {
         font-size: 9px;
 
         padding: 8px 9px;
@@ -1233,24 +998,19 @@
         Una noche para recordar
       </div>
 
-
       <h2>
         Danna
       </h2>
-
 
       <div class="welcome-name">
         Valentina Garzón Medina
       </div>
 
-
       <div class="welcome-xv">
         XV
       </div>
 
-
       <div class="welcome-divider"></div>
-
 
       <button
         class="enter-button"
@@ -1259,7 +1019,6 @@
         ✨ TOCAR PARA ENTRAR
 
       </button>
-
 
       <div class="welcome-hint">
         🎵 La música comenzará al entrar
@@ -1305,6 +1064,15 @@
 
     <div class="navigation-container">
 
+      <button
+        id="randomMemoryButton"
+        class="nav-random-button">
+
+        🎲 Sorpréndeme
+
+      </button>
+
+
       <a href="#inicio">
         🏠 Inicio
       </a>
@@ -1325,8 +1093,8 @@
       </a>
 
 
-      <a href="#mensajes">
-        💌 Mensajes
+      <a href="mensajes.html">
+        💌 Mensajes para Danna
       </a>
 
     </div>
@@ -1348,16 +1116,13 @@
         Una noche para recordar
       </div>
 
-
       <h1>
         Danna
       </h1>
 
-
       <div class="surname">
         Valentina Garzón Medina
       </div>
-
 
       <div class="fifteen">
 
@@ -1369,9 +1134,7 @@
 
       </div>
 
-
       <div class="divider"></div>
-
 
       <p class="message">
 
@@ -1380,7 +1143,6 @@
         un álbum lleno de recuerdos inolvidables. ✨
 
       </p>
-
 
       <label
         class="photo-button"
@@ -1441,7 +1203,6 @@
           Seleccionadas para recordar
         </small>
 
-
         <h2>
           ⭐ Fotos de la noche
         </h2>
@@ -1474,7 +1235,6 @@
           Momentos especiales
         </small>
 
-
         <h2>
           👑 Fotos de la cumpleañera
         </h2>
@@ -1502,7 +1262,6 @@
         Recuerdos de una noche mágica
       </small>
 
-
       <h2>
         📸 Álbum de recuerdos
       </h2>
@@ -1517,25 +1276,6 @@
 
 
     <div
-      class="random-memory-container">
-
-      <button
-        id="randomMemoryButton"
-        class="random-memory-button">
-
-        🎲 SORPRÉNDEME
-
-      </button>
-
-
-      <p>
-        Descubre un recuerdo al azar ✨
-      </p>
-
-    </div>
-
-
-    <div
       id="empty"
       class="empty"
       style="display: none;">
@@ -1544,74 +1284,6 @@
 
     </div>
 
-
-  </section>
-
-
-  <!-- ==========================================
-       💌 MENSAJES PARA DANNA
-       ========================================== -->
-
-  <section
-    class="messages-section"
-    id="mensajes">
-
-
-    <div class="section-title">
-
-      <small>
-        Palabras para recordar
-      </small>
-
-
-      <h2>
-        💌 Mensajes para Danna
-      </h2>
-
-    </div>
-
-
-    <div class="message-form">
-
-
-      <input
-        type="text"
-        id="messageName"
-        placeholder="Tu nombre"
-        maxlength="50">
-
-
-      <textarea
-        id="messageText"
-        placeholder="Escribe un mensaje para Danna..."
-        maxlength="300"></textarea>
-
-
-      <button
-        id="sendMessageButton">
-
-        💌 Dejar mi mensaje
-
-      </button>
-
-
-      <div
-        id="messageStatus"
-        class="message-status">
-      </div>
-
-    </div>
-
-
-    <div
-      id="messagesContainer"
-      class="messages-container">
-
-      <div class="loading">
-        Cargando mensajes...
-      </div>
-
-    </div>
 
   </section>
 
@@ -2045,7 +1717,6 @@
 
         /* ==========================================
            SEPARAR FOTOS SIN DUPLICAR
-           
            CUMPLEAÑERA TIENE PRIORIDAD
            ========================================== */
 
@@ -2448,296 +2119,6 @@
 
 
     /* ============================================
-       💌 MENSAJES
-       ============================================ */
-
-    const messageName =
-      document.getElementById(
-        "messageName"
-      );
-
-
-    const messageText =
-      document.getElementById(
-        "messageText"
-      );
-
-
-    const sendMessageButton =
-      document.getElementById(
-        "sendMessageButton"
-      );
-
-
-    const messagesContainer =
-      document.getElementById(
-        "messagesContainer"
-      );
-
-
-    const messageStatus =
-      document.getElementById(
-        "messageStatus"
-      );
-
-
-    /* ============================================
-       CARGAR MENSAJES
-       ============================================ */
-
-    async function loadMessages() {
-
-      try {
-
-        const response =
-          await fetch(
-            `${SUPABASE_URL}/rest/v1/mensajes?select=nombre,mensaje,created_at&order=created_at.desc`,
-            {
-              headers: {
-
-                "apikey":
-                  SUPABASE_KEY,
-
-                "Authorization":
-                  `Bearer ${SUPABASE_KEY}`
-
-              }
-            }
-          );
-
-
-        if (
-          !response.ok
-        ) {
-
-          throw new Error(
-            "No se pudieron cargar los mensajes."
-          );
-
-        }
-
-
-        const messages =
-          await response.json();
-
-
-        messagesContainer.innerHTML =
-          "";
-
-
-        if (
-          messages.length === 0
-        ) {
-
-          messagesContainer.innerHTML =
-            `<div class="empty">
-              Todavía no hay mensajes. Sé el primero en dejar uno 💌
-            </div>`;
-
-          return;
-
-        }
-
-
-        messages.forEach(
-          message => {
-
-            const card =
-              document.createElement(
-                "div"
-              );
-
-
-            card.className =
-              "message-card";
-
-
-            const name =
-              document.createElement(
-                "strong"
-              );
-
-
-            name.textContent =
-              `💗 ${message.nombre}`;
-
-
-            const text =
-              document.createElement(
-                "p"
-              );
-
-
-            text.textContent =
-              message.mensaje;
-
-
-            card.appendChild(
-              name
-            );
-
-
-            card.appendChild(
-              text
-            );
-
-
-            messagesContainer.appendChild(
-              card
-            );
-
-          }
-        );
-
-
-      } catch (error) {
-
-        console.error(
-          error
-        );
-
-
-        messagesContainer.innerHTML =
-          `<div class="empty">
-            No se pudieron cargar los mensajes.
-          </div>`;
-
-      }
-
-    }
-
-
-    /* ============================================
-       ENVIAR MENSAJE
-       ============================================ */
-
-    sendMessageButton.addEventListener(
-      "click",
-      async () => {
-
-        const nombre =
-          messageName.value.trim();
-
-
-        const mensaje =
-          messageText.value.trim();
-
-
-        if (
-          !nombre ||
-          !mensaje
-        ) {
-
-          messageStatus.textContent =
-            "Por favor escribe tu nombre y tu mensaje 💗";
-
-          return;
-
-        }
-
-
-        sendMessageButton.disabled =
-          true;
-
-
-        sendMessageButton.textContent =
-          "Enviando...";
-
-
-        messageStatus.textContent =
-          "";
-
-
-        try {
-
-          const response =
-            await fetch(
-              `${SUPABASE_URL}/rest/v1/mensajes`,
-              {
-                method: "POST",
-
-                headers: {
-
-                  "Content-Type":
-                    "application/json",
-
-                  "apikey":
-                    SUPABASE_KEY,
-
-                  "Authorization":
-                    `Bearer ${SUPABASE_KEY}`,
-
-                  "Prefer":
-                    "return=minimal"
-
-                },
-
-                body:
-                  JSON.stringify({
-
-                    nombre:
-                      nombre,
-
-                    mensaje:
-                      mensaje
-
-                  })
-
-              }
-            );
-
-
-          if (
-            !response.ok
-          ) {
-
-            throw new Error(
-              "No se pudo enviar el mensaje."
-            );
-
-          }
-
-
-          messageName.value =
-            "";
-
-
-          messageText.value =
-            "";
-
-
-          messageStatus.textContent =
-            "✨ ¡Tu mensaje fue enviado!";
-
-
-          await loadMessages();
-
-
-        } catch (error) {
-
-          console.error(
-            error
-          );
-
-
-          messageStatus.textContent =
-            "No se pudo enviar el mensaje. Intenta nuevamente.";
-
-        }
-
-
-        sendMessageButton.disabled =
-          false;
-
-
-        sendMessageButton.textContent =
-          "💌 Dejar mi mensaje";
-
-      }
-    );
-
-
-    /* ============================================
        🎲 SORPRÉNDEME
        ============================================ */
 
@@ -2848,8 +2229,6 @@
        ============================================ */
 
     loadPhotos();
-
-    loadMessages();
 
 
   </script>
