@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
   <meta charset="UTF-8">
@@ -128,8 +129,8 @@
         );
 
       transition:
-        opacity .8s ease,
-        visibility .8s ease;
+        opacity 1s ease,
+        visibility 1s ease;
     }
 
 
@@ -152,47 +153,84 @@
       text-transform: uppercase;
       color: #a66b82;
       margin-bottom: 25px;
+      animation: aparecer 1s ease .2s both;
     }
 
 
     .welcome-content h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(55px, 12vw, 100px);
+
+      font-size: clamp(
+        55px,
+        12vw,
+        100px
+      );
+
       line-height: .8;
+
       font-weight: 500;
+
       color: #8d526b;
+
       margin-bottom: 10px;
+
+      animation:
+        aparecer 1s ease .4s both;
     }
 
 
     .welcome-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(25px, 6vw, 45px);
+
+      font-size: clamp(
+        25px,
+        6vw,
+        45px
+      );
+
       color: #6d4a57;
+
       letter-spacing: 3px;
+
       margin-bottom: 25px;
+
+      animation:
+        aparecer 1s ease .6s both;
     }
 
 
     .welcome-xv {
       font-family: 'Cormorant Garamond', serif;
+
       font-size: 70px;
+
       color: #c493a7;
+
       font-weight: 600;
+
       margin-bottom: 25px;
+
+      animation:
+        aparecer 1s ease .8s both;
     }
 
 
     .welcome-divider {
       width: 80px;
       height: 1px;
+
       background: #c79aaa;
+
       margin: 0 auto 30px;
+
+      animation:
+        aparecer 1s ease 1s both;
     }
 
 
     .enter-button {
       border: none;
+
       border-radius: 50px;
 
       padding: 17px 35px;
@@ -209,7 +247,9 @@
       font-family: 'Montserrat', sans-serif;
 
       font-size: 13px;
+
       font-weight: 600;
+
       letter-spacing: 2px;
 
       cursor: pointer;
@@ -218,6 +258,9 @@
         0 10px 30px rgba(157, 91, 118, .25);
 
       transition: .3s ease;
+
+      animation:
+        aparecer 1s ease 1.2s both;
     }
 
 
@@ -233,9 +276,15 @@
 
     .welcome-hint {
       margin-top: 18px;
+
       font-size: 11px;
+
       color: #a47787;
+
       letter-spacing: 1px;
+
+      animation:
+        aparecer 1s ease 1.4s both;
     }
 
 
@@ -245,6 +294,7 @@
 
     .navigation {
       position: sticky;
+
       top: 0;
 
       z-index: 900;
@@ -268,11 +318,13 @@
 
     .navigation-container {
       max-width: 1100px;
+
       margin: auto;
 
       display: flex;
 
       justify-content: center;
+
       align-items: center;
 
       gap: 8px;
@@ -296,6 +348,7 @@
       color: #805365;
 
       font-size: 11px;
+
       font-weight: 600;
 
       letter-spacing: .5px;
@@ -310,6 +363,7 @@
 
     .navigation a:hover {
       background: #f5dce6;
+
       color: #8d526b;
     }
 
@@ -322,7 +376,9 @@
       min-height: 100vh;
 
       display: flex;
+
       align-items: center;
+
       justify-content: center;
 
       text-align: center;
@@ -335,15 +391,21 @@
 
     .hero-content {
       max-width: 850px;
-      animation: aparecer 1.4s ease;
+
+      animation:
+        aparecer 1.4s ease;
     }
 
 
     .small-title {
       font-size: 13px;
+
       letter-spacing: 5px;
+
       text-transform: uppercase;
+
       color: #a66b82;
+
       margin-bottom: 25px;
     }
 
@@ -420,6 +482,7 @@
 
     .divider {
       width: 90px;
+
       height: 1px;
 
       background: #c79aaa;
@@ -447,6 +510,7 @@
       display: inline-flex;
 
       align-items: center;
+
       justify-content: center;
 
       gap: 10px;
@@ -550,6 +614,7 @@
 
     .favorites-title {
       margin-top: 70px;
+
       margin-bottom: 35px;
     }
 
@@ -561,6 +626,7 @@
 
     .birthday-title {
       margin-top: 80px;
+
       margin-bottom: 35px;
     }
 
@@ -577,6 +643,7 @@
 
     .gallery {
       columns: 3 250px;
+
       column-gap: 18px;
     }
 
@@ -642,6 +709,227 @@
     }
 
 
+    /* ==========================================
+       🎲 SORPRÉNDEME
+       ========================================== */
+
+    .random-memory-container {
+      text-align: center;
+
+      margin: 50px auto;
+    }
+
+
+    .random-memory-button {
+      border: none;
+
+      border-radius: 50px;
+
+      padding: 15px 28px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b97691,
+          #d49caf
+        );
+
+      color: white;
+
+      font-family: 'Montserrat', sans-serif;
+
+      font-weight: 600;
+
+      letter-spacing: 1px;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 25px rgba(157,91,118,.25);
+
+      transition: .3s ease;
+    }
+
+
+    .random-memory-button:hover {
+      transform:
+        translateY(-3px)
+        scale(1.02);
+    }
+
+
+    .random-memory-container p {
+      margin-top: 10px;
+
+      color: #a47787;
+
+      font-size: 12px;
+    }
+
+
+    /* ==========================================
+       💌 MENSAJES
+       ========================================== */
+
+    .messages-section {
+      max-width: 900px;
+
+      margin: 80px auto 0;
+
+      padding: 0 20px;
+    }
+
+
+    .message-form {
+      max-width: 600px;
+
+      margin: auto;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+    }
+
+
+    .message-form input,
+    .message-form textarea {
+      width: 100%;
+
+      border: 1px solid #e4c4d0;
+
+      border-radius: 15px;
+
+      padding: 14px 16px;
+
+      background:
+        rgba(255,255,255,.8);
+
+      color: #5d424d;
+
+      font-family: 'Montserrat', sans-serif;
+
+      outline: none;
+    }
+
+
+    .message-form textarea {
+      min-height: 120px;
+
+      resize: vertical;
+    }
+
+
+    .message-form input:focus,
+    .message-form textarea:focus {
+      border-color: #b97691;
+    }
+
+
+    .message-form button {
+      border: none;
+
+      border-radius: 30px;
+
+      padding: 15px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b97691,
+          #d49caf
+        );
+
+      color: white;
+
+      font-family: 'Montserrat', sans-serif;
+
+      font-weight: 600;
+
+      cursor: pointer;
+
+      transition: .3s ease;
+    }
+
+
+    .message-form button:hover {
+      transform:
+        translateY(-2px);
+    }
+
+
+    .message-form button:disabled {
+      opacity: .6;
+
+      cursor: wait;
+
+      transform: none;
+    }
+
+
+    .message-status {
+      text-align: center;
+
+      color: #8d526b;
+
+      font-size: 13px;
+
+      min-height: 20px;
+    }
+
+
+    .messages-container {
+      margin-top: 45px;
+
+      display: grid;
+
+      gap: 15px;
+    }
+
+
+    .message-card {
+      background:
+        rgba(255,255,255,.75);
+
+      border-radius: 18px;
+
+      padding: 20px;
+
+      box-shadow:
+        0 8px 25px rgba(100,55,70,.08);
+
+      animation:
+        aparecer .5s ease;
+    }
+
+
+    .message-card strong {
+      display: block;
+
+      color: #8d526b;
+
+      margin-bottom: 8px;
+    }
+
+
+    .message-card p {
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size: 20px;
+
+      line-height: 1.5;
+
+      color: #765561;
+    }
+
+
+    /* ==========================================
+       FOOTER
+       ========================================== */
+
     .footer {
       text-align: center;
 
@@ -694,6 +982,9 @@
       object-fit: contain;
 
       border-radius: 10px;
+
+      animation:
+        aparecer .35s ease;
     }
 
 
@@ -709,6 +1000,8 @@
       font-size: 35px;
 
       cursor: pointer;
+
+      z-index: 1100;
     }
 
 
@@ -793,6 +1086,10 @@
     }
 
 
+    /* ==========================================
+       ANIMACIONES
+       ========================================== */
+
     @keyframes musicaPulso {
 
       0% {
@@ -855,6 +1152,7 @@
 
       .navigation a {
         font-size: 10px;
+
         padding: 8px 11px;
       }
 
@@ -890,6 +1188,11 @@
         font-size: 20px;
       }
 
+
+      .messages-section {
+        padding: 0 15px;
+      }
+
     }
 
 
@@ -897,6 +1200,13 @@
 
       .gallery {
         columns: 1;
+      }
+
+
+      .navigation a {
+        font-size: 9px;
+
+        padding: 8px 9px;
       }
 
     }
@@ -999,16 +1309,24 @@
         🏠 Inicio
       </a>
 
+
       <a href="#favoritas">
         ⭐ Fotos de la noche
       </a>
+
 
       <a href="#cumpleanera">
         👑 Cumpleañera
       </a>
 
+
       <a href="#album">
         📸 Álbum
+      </a>
+
+
+      <a href="#mensajes">
+        💌 Mensajes
       </a>
 
     </div>
@@ -1174,7 +1492,6 @@
 
     <!-- ==========================================
          📸 ÁLBUM DE RECUERDOS
-         SOLO FOTOS SIN CATEGORÍA
          ========================================== -->
 
     <div
@@ -1200,6 +1517,25 @@
 
 
     <div
+      class="random-memory-container">
+
+      <button
+        id="randomMemoryButton"
+        class="random-memory-button">
+
+        🎲 SORPRÉNDEME
+
+      </button>
+
+
+      <p>
+        Descubre un recuerdo al azar ✨
+      </p>
+
+    </div>
+
+
+    <div
       id="empty"
       class="empty"
       style="display: none;">
@@ -1208,6 +1544,74 @@
 
     </div>
 
+
+  </section>
+
+
+  <!-- ==========================================
+       💌 MENSAJES PARA DANNA
+       ========================================== -->
+
+  <section
+    class="messages-section"
+    id="mensajes">
+
+
+    <div class="section-title">
+
+      <small>
+        Palabras para recordar
+      </small>
+
+
+      <h2>
+        💌 Mensajes para Danna
+      </h2>
+
+    </div>
+
+
+    <div class="message-form">
+
+
+      <input
+        type="text"
+        id="messageName"
+        placeholder="Tu nombre"
+        maxlength="50">
+
+
+      <textarea
+        id="messageText"
+        placeholder="Escribe un mensaje para Danna..."
+        maxlength="300"></textarea>
+
+
+      <button
+        id="sendMessageButton">
+
+        💌 Dejar mi mensaje
+
+      </button>
+
+
+      <div
+        id="messageStatus"
+        class="message-status">
+      </div>
+
+    </div>
+
+
+    <div
+      id="messagesContainer"
+      class="messages-container">
+
+      <div class="loading">
+        Cargando mensajes...
+      </div>
+
+    </div>
 
   </section>
 
@@ -1278,51 +1682,75 @@
        ============================================ */
 
     const input =
-      document.getElementById("photoInput");
+      document.getElementById(
+        "photoInput"
+      );
 
 
     const gallery =
-      document.getElementById("gallery");
+      document.getElementById(
+        "gallery"
+      );
 
 
     const favoritesGallery =
-      document.getElementById("favoritesGallery");
+      document.getElementById(
+        "favoritesGallery"
+      );
 
 
     const favoritesSection =
-      document.getElementById("favoritesSection");
+      document.getElementById(
+        "favoritesSection"
+      );
 
 
     const birthdayGallery =
-      document.getElementById("birthdayGallery");
+      document.getElementById(
+        "birthdayGallery"
+      );
 
 
     const birthdaySection =
-      document.getElementById("birthdaySection");
+      document.getElementById(
+        "birthdaySection"
+      );
 
 
     const loading =
-      document.getElementById("loading");
+      document.getElementById(
+        "loading"
+      );
 
 
     const empty =
-      document.getElementById("empty");
+      document.getElementById(
+        "empty"
+      );
 
 
     const status =
-      document.getElementById("uploadStatus");
+      document.getElementById(
+        "uploadStatus"
+      );
 
 
     const modal =
-      document.getElementById("modal");
+      document.getElementById(
+        "modal"
+      );
 
 
     const modalImage =
-      document.getElementById("modalImage");
+      document.getElementById(
+        "modalImage"
+      );
 
 
     const closeModal =
-      document.getElementById("closeModal");
+      document.getElementById(
+        "closeModal"
+      );
 
 
     /* ============================================
@@ -1330,19 +1758,27 @@
        ============================================ */
 
     const musica =
-      document.getElementById("musica");
+      document.getElementById(
+        "musica"
+      );
 
 
     const musicButton =
-      document.getElementById("musicButton");
+      document.getElementById(
+        "musicButton"
+      );
 
 
     const welcomeScreen =
-      document.getElementById("welcomeScreen");
+      document.getElementById(
+        "welcomeScreen"
+      );
 
 
     const enterButton =
-      document.getElementById("enterButton");
+      document.getElementById(
+        "enterButton"
+      );
 
 
     let reproduciendo =
@@ -1427,6 +1863,7 @@
 
 
             actualizarBoton();
+
 
           } catch (error) {
 
@@ -1594,10 +2031,6 @@
           "none";
 
 
-        /* ==========================================
-           LIMPIAR TODAS LAS GALERÍAS
-           ========================================== */
-
         gallery.innerHTML =
           "";
 
@@ -1611,18 +2044,9 @@
 
 
         /* ==========================================
-           SEPARAR LAS FOTOS
+           SEPARAR FOTOS SIN DUPLICAR
            
-           IMPORTANTE:
-           
-           CUMPLEAÑERA TIENE PRIORIDAD.
-           
-           Una foto marcada como:
-           
-           favorito = true
-           cumpleanera = true
-           
-           SOLO aparecerá en Cumpleañera.
+           CUMPLEAÑERA TIENE PRIORIDAD
            ========================================== */
 
         const cumpleanera =
@@ -1652,7 +2076,9 @@
            MOSTRAR CUMPLEAÑERA
            ========================================== */
 
-        if (cumpleanera.length > 0) {
+        if (
+          cumpleanera.length > 0
+        ) {
 
           birthdaySection.style.display =
             "block";
@@ -1683,7 +2109,9 @@
            MOSTRAR FAVORITAS
            ========================================== */
 
-        if (favoritas.length > 0) {
+        if (
+          favoritas.length > 0
+        ) {
 
           favoritesSection.style.display =
             "block";
@@ -1711,10 +2139,12 @@
 
 
         /* ==========================================
-           MOSTRAR FOTOS NORMALES
+           MOSTRAR NORMALES
            ========================================== */
 
-        if (normales.length > 0) {
+        if (
+          normales.length > 0
+        ) {
 
           empty.style.display =
             "none";
@@ -1735,12 +2165,9 @@
 
         else {
 
-          /*
-           * Solo mostrar este mensaje cuando
-           * realmente no existe ninguna foto.
-           */
-
-          if (photos.length === 0) {
+          if (
+            photos.length === 0
+          ) {
 
             empty.style.display =
               "block";
@@ -1758,7 +2185,9 @@
 
       } catch (error) {
 
-        console.error(error);
+        console.error(
+          error
+        );
 
 
         loading.innerHTML =
@@ -1779,7 +2208,9 @@
     ) {
 
       const container =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
 
       container.className =
@@ -1787,7 +2218,9 @@
 
 
       const img =
-        document.createElement("img");
+        document.createElement(
+          "img"
+        );
 
 
       img.src =
@@ -1841,7 +2274,9 @@
           );
 
 
-        if (!files.length)
+        if (
+          !files.length
+        )
           return;
 
 
@@ -1901,7 +2336,9 @@
               );
 
 
-            if (!cloudinaryResponse.ok) {
+            if (
+              !cloudinaryResponse.ok
+            ) {
 
               throw new Error(
                 "Error subiendo la imagen."
@@ -1961,7 +2398,9 @@
               );
 
 
-            if (!supabaseResponse.ok) {
+            if (
+              !supabaseResponse.ok
+            ) {
 
               throw new Error(
                 "La imagen se subió, pero no pudo registrarse."
@@ -2009,6 +2448,352 @@
 
 
     /* ============================================
+       💌 MENSAJES
+       ============================================ */
+
+    const messageName =
+      document.getElementById(
+        "messageName"
+      );
+
+
+    const messageText =
+      document.getElementById(
+        "messageText"
+      );
+
+
+    const sendMessageButton =
+      document.getElementById(
+        "sendMessageButton"
+      );
+
+
+    const messagesContainer =
+      document.getElementById(
+        "messagesContainer"
+      );
+
+
+    const messageStatus =
+      document.getElementById(
+        "messageStatus"
+      );
+
+
+    /* ============================================
+       CARGAR MENSAJES
+       ============================================ */
+
+    async function loadMessages() {
+
+      try {
+
+        const response =
+          await fetch(
+            `${SUPABASE_URL}/rest/v1/mensajes?select=nombre,mensaje,created_at&order=created_at.desc`,
+            {
+              headers: {
+
+                "apikey":
+                  SUPABASE_KEY,
+
+                "Authorization":
+                  `Bearer ${SUPABASE_KEY}`
+
+              }
+            }
+          );
+
+
+        if (
+          !response.ok
+        ) {
+
+          throw new Error(
+            "No se pudieron cargar los mensajes."
+          );
+
+        }
+
+
+        const messages =
+          await response.json();
+
+
+        messagesContainer.innerHTML =
+          "";
+
+
+        if (
+          messages.length === 0
+        ) {
+
+          messagesContainer.innerHTML =
+            `<div class="empty">
+              Todavía no hay mensajes. Sé el primero en dejar uno 💌
+            </div>`;
+
+          return;
+
+        }
+
+
+        messages.forEach(
+          message => {
+
+            const card =
+              document.createElement(
+                "div"
+              );
+
+
+            card.className =
+              "message-card";
+
+
+            const name =
+              document.createElement(
+                "strong"
+              );
+
+
+            name.textContent =
+              `💗 ${message.nombre}`;
+
+
+            const text =
+              document.createElement(
+                "p"
+              );
+
+
+            text.textContent =
+              message.mensaje;
+
+
+            card.appendChild(
+              name
+            );
+
+
+            card.appendChild(
+              text
+            );
+
+
+            messagesContainer.appendChild(
+              card
+            );
+
+          }
+        );
+
+
+      } catch (error) {
+
+        console.error(
+          error
+        );
+
+
+        messagesContainer.innerHTML =
+          `<div class="empty">
+            No se pudieron cargar los mensajes.
+          </div>`;
+
+      }
+
+    }
+
+
+    /* ============================================
+       ENVIAR MENSAJE
+       ============================================ */
+
+    sendMessageButton.addEventListener(
+      "click",
+      async () => {
+
+        const nombre =
+          messageName.value.trim();
+
+
+        const mensaje =
+          messageText.value.trim();
+
+
+        if (
+          !nombre ||
+          !mensaje
+        ) {
+
+          messageStatus.textContent =
+            "Por favor escribe tu nombre y tu mensaje 💗";
+
+          return;
+
+        }
+
+
+        sendMessageButton.disabled =
+          true;
+
+
+        sendMessageButton.textContent =
+          "Enviando...";
+
+
+        messageStatus.textContent =
+          "";
+
+
+        try {
+
+          const response =
+            await fetch(
+              `${SUPABASE_URL}/rest/v1/mensajes`,
+              {
+                method: "POST",
+
+                headers: {
+
+                  "Content-Type":
+                    "application/json",
+
+                  "apikey":
+                    SUPABASE_KEY,
+
+                  "Authorization":
+                    `Bearer ${SUPABASE_KEY}`,
+
+                  "Prefer":
+                    "return=minimal"
+
+                },
+
+                body:
+                  JSON.stringify({
+
+                    nombre:
+                      nombre,
+
+                    mensaje:
+                      mensaje
+
+                  })
+
+              }
+            );
+
+
+          if (
+            !response.ok
+          ) {
+
+            throw new Error(
+              "No se pudo enviar el mensaje."
+            );
+
+          }
+
+
+          messageName.value =
+            "";
+
+
+          messageText.value =
+            "";
+
+
+          messageStatus.textContent =
+            "✨ ¡Tu mensaje fue enviado!";
+
+
+          await loadMessages();
+
+
+        } catch (error) {
+
+          console.error(
+            error
+          );
+
+
+          messageStatus.textContent =
+            "No se pudo enviar el mensaje. Intenta nuevamente.";
+
+        }
+
+
+        sendMessageButton.disabled =
+          false;
+
+
+        sendMessageButton.textContent =
+          "💌 Dejar mi mensaje";
+
+      }
+    );
+
+
+    /* ============================================
+       🎲 SORPRÉNDEME
+       ============================================ */
+
+    const randomMemoryButton =
+      document.getElementById(
+        "randomMemoryButton"
+      );
+
+
+    randomMemoryButton.addEventListener(
+      "click",
+      () => {
+
+        const allPhotos =
+          document.querySelectorAll(
+            ".photo img"
+          );
+
+
+        if (
+          allPhotos.length === 0
+        ) {
+
+          alert(
+            "Todavía no hay fotos para mostrar ✨"
+          );
+
+          return;
+
+        }
+
+
+        const randomIndex =
+          Math.floor(
+            Math.random() *
+            allPhotos.length
+          );
+
+
+        const selectedPhoto =
+          allPhotos[randomIndex];
+
+
+        modalImage.src =
+          selectedPhoto.src;
+
+
+        modal.classList.add(
+          "active"
+        );
+
+      }
+    );
+
+
+    /* ============================================
        MODAL
        ============================================ */
 
@@ -2037,14 +2822,39 @@
 
 
     /* ============================================
+       ESC PARA CERRAR MODAL
+       ============================================ */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          modal.classList.remove(
+            "active"
+          );
+
+        }
+
+      }
+    );
+
+
+    /* ============================================
        INICIO
        ============================================ */
 
     loadPhotos();
+
+    loadMessages();
 
 
   </script>
 
 
 </body>
+
 </html>
