@@ -1,15 +1,29 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
   <title>Danna Valentina | Mis 15 Años</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
 
   <style>
 
@@ -19,30 +33,58 @@
       padding: 0;
     }
 
+
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 85px;
+      scroll-padding-top: 80px;
     }
+
 
     body {
       min-height: 100vh;
       font-family: 'Montserrat', sans-serif;
       color: #4d3942;
+
       background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.8), transparent 25%),
-        radial-gradient(circle at 80% 10%, rgba(255,220,232,.7), transparent 25%),
-        linear-gradient(135deg, #fff7fa, #fce9f1 50%, #fffaf7);
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(255,255,255,.8),
+          transparent 25%
+        ),
+
+        radial-gradient(
+          circle at 80% 10%,
+          rgba(255,220,232,.7),
+          transparent 25%
+        ),
+
+        linear-gradient(
+          135deg,
+          #fff7fa,
+          #fce9f1 50%,
+          #fffaf7
+        );
+
       overflow-x: hidden;
     }
 
+
     body::before {
       content: "";
+
       position: fixed;
       inset: 0;
+
       pointer-events: none;
+
       opacity: .35;
+
       background-image:
-        radial-gradient(#d6a7b9 1px, transparent 1px);
+        radial-gradient(
+          #d6a7b9 1px,
+          transparent 1px
+        );
+
       background-size: 45px 45px;
     }
 
@@ -54,18 +96,42 @@
     .welcome-screen {
       position: fixed;
       inset: 0;
+
       z-index: 5000;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       text-align: center;
+
       padding: 30px;
+
       background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.9), transparent 30%),
-        radial-gradient(circle at 80% 20%, rgba(255,220,232,.7), transparent 30%),
-        linear-gradient(135deg, #fff7fa, #fce9f1 50%, #fffaf7);
-      transition: opacity .8s ease, visibility .8s ease;
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(255,255,255,.9),
+          transparent 30%
+        ),
+
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(255,220,232,.7),
+          transparent 30%
+        ),
+
+        linear-gradient(
+          135deg,
+          #fff7fa,
+          #fce9f1 50%,
+          #fffaf7
+        );
+
+      transition:
+        opacity .8s ease,
+        visibility .8s ease;
     }
+
 
     .welcome-screen.hidden {
       opacity: 0;
@@ -73,10 +139,12 @@
       pointer-events: none;
     }
 
+
     .welcome-content {
       max-width: 600px;
       animation: aparecer 1.2s ease;
     }
+
 
     .welcome-small {
       font-size: 11px;
@@ -85,6 +153,7 @@
       color: #a66b82;
       margin-bottom: 25px;
     }
+
 
     .welcome-content h2 {
       font-family: 'Cormorant Garamond', serif;
@@ -95,6 +164,7 @@
       margin-bottom: 10px;
     }
 
+
     .welcome-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(25px, 6vw, 45px);
@@ -102,6 +172,7 @@
       letter-spacing: 3px;
       margin-bottom: 25px;
     }
+
 
     .welcome-xv {
       font-family: 'Cormorant Garamond', serif;
@@ -111,6 +182,7 @@
       margin-bottom: 25px;
     }
 
+
     .welcome-divider {
       width: 80px;
       height: 1px;
@@ -118,25 +190,46 @@
       margin: 0 auto 30px;
     }
 
+
     .enter-button {
       border: none;
       border-radius: 50px;
+
       padding: 17px 35px;
-      background: linear-gradient(135deg, #b97691, #d49caf);
+
+      background:
+        linear-gradient(
+          135deg,
+          #b97691,
+          #d49caf
+        );
+
       color: white;
+
       font-family: 'Montserrat', sans-serif;
+
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 2px;
+
       cursor: pointer;
-      box-shadow: 0 10px 30px rgba(157, 91, 118, .25);
+
+      box-shadow:
+        0 10px 30px rgba(157, 91, 118, .25);
+
       transition: .3s ease;
     }
 
+
     .enter-button:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 15px 35px rgba(157, 91, 118, .35);
+      transform:
+        translateY(-3px)
+        scale(1.03);
+
+      box-shadow:
+        0 15px 35px rgba(157, 91, 118, .35);
     }
+
 
     .welcome-hint {
       margin-top: 18px;
@@ -147,85 +240,76 @@
 
 
     /* ==========================================
-       MÚSICA
-       ========================================== */
-
-    .music-button {
-      position: fixed;
-      bottom: 22px;
-      right: 22px;
-      z-index: 2000;
-      width: 58px;
-      height: 58px;
-      border: none;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #b97691, #d49caf);
-      color: white;
-      font-size: 23px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 25px rgba(157, 91, 118, .35);
-      transition: .3s ease;
-    }
-
-    .music-button:hover {
-      transform: scale(1.08);
-      box-shadow: 0 12px 30px rgba(157, 91, 118, .45);
-    }
-
-    .music-button.playing {
-      animation: musicaPulso 1.5s infinite;
-    }
-
-
-    /* ==========================================
-       BARRA DE NAVEGACIÓN
+       NAVEGACIÓN
        ========================================== */
 
     .navigation {
       position: sticky;
       top: 0;
-      z-index: 1500;
+
+      z-index: 900;
+
       width: 100%;
-      background: rgba(255, 247, 250, .92);
+
+      padding: 12px 15px;
+
+      background:
+        rgba(255, 247, 250, .92);
+
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(199, 154, 170, .35);
-      box-shadow: 0 5px 20px rgba(100, 55, 70, .08);
+
+      border-bottom:
+        1px solid rgba(199, 154, 170, .25);
+
+      box-shadow:
+        0 5px 20px rgba(100, 55, 70, .08);
     }
+
 
     .navigation-container {
       max-width: 1100px;
       margin: auto;
-      padding: 10px 15px;
+
       display: flex;
+
       justify-content: center;
       align-items: center;
+
       gap: 8px;
+
       overflow-x: auto;
+
       scrollbar-width: none;
     }
+
 
     .navigation-container::-webkit-scrollbar {
       display: none;
     }
 
+
     .navigation a {
       flex-shrink: 0;
+
       text-decoration: none;
+
       color: #805365;
+
       font-size: 11px;
       font-weight: 600;
+
       letter-spacing: .5px;
-      padding: 10px 14px;
+
+      padding: 9px 14px;
+
       border-radius: 30px;
+
       transition: .3s ease;
-      white-space: nowrap;
     }
 
+
     .navigation a:hover {
-      background: #f4dce5;
+      background: #f5dce6;
       color: #8d526b;
     }
 
@@ -236,19 +320,24 @@
 
     .hero {
       min-height: 100vh;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       text-align: center;
+
       padding: 50px 20px;
+
       position: relative;
-      scroll-margin-top: 80px;
     }
+
 
     .hero-content {
       max-width: 850px;
       animation: aparecer 1.4s ease;
     }
+
 
     .small-title {
       font-size: 13px;
@@ -258,81 +347,151 @@
       margin-bottom: 25px;
     }
 
+
     h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(48px, 10vw, 105px);
+
+      font-size: clamp(
+        48px,
+        10vw,
+        105px
+      );
+
       line-height: .85;
+
       font-weight: 500;
+
       color: #8d526b;
+
       margin-bottom: 15px;
     }
 
+
     .surname {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(25px, 5vw, 48px);
+
+      font-size: clamp(
+        25px,
+        5vw,
+        48px
+      );
+
       letter-spacing: 3px;
+
       color: #6d4a57;
     }
 
+
     .fifteen {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(55px, 12vw, 130px);
+
+      font-size: clamp(
+        55px,
+        12vw,
+        130px
+      );
+
       line-height: .9;
+
       color: #c493a7;
+
       font-weight: 600;
+
       margin: 25px 0;
     }
 
+
     .fifteen span {
       display: block;
+
       font-family: 'Montserrat', sans-serif;
+
       font-size: 12px;
+
       letter-spacing: 7px;
+
       text-transform: uppercase;
+
       color: #9b687c;
+
       margin-top: 12px;
     }
+
 
     .divider {
       width: 90px;
       height: 1px;
+
       background: #c79aaa;
+
       margin: 30px auto;
     }
 
+
     .message {
       max-width: 600px;
+
       margin: auto;
+
       font-family: 'Cormorant Garamond', serif;
+
       font-size: 22px;
+
       line-height: 1.6;
+
       color: #765561;
     }
 
+
     .photo-button {
       display: inline-flex;
+
       align-items: center;
       justify-content: center;
+
       gap: 10px;
+
       margin-top: 35px;
+
       padding: 17px 32px;
+
       border: none;
+
       border-radius: 50px;
-      background: linear-gradient(135deg, #b97691, #d49caf);
+
+      background:
+        linear-gradient(
+          135deg,
+          #b97691,
+          #d49caf
+        );
+
       color: white;
+
       font-family: 'Montserrat', sans-serif;
+
       font-size: 13px;
+
       font-weight: 600;
+
       letter-spacing: 1px;
+
       cursor: pointer;
-      box-shadow: 0 10px 30px rgba(157, 91, 118, .25);
+
+      box-shadow:
+        0 10px 30px rgba(157, 91, 118, .25);
+
       transition: .3s ease;
     }
 
+
     .photo-button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 15px 35px rgba(157, 91, 118, .35);
+
+      box-shadow:
+        0 15px 35px rgba(157, 91, 118, .35);
     }
+
 
     #photoInput {
       display: none;
@@ -345,96 +504,155 @@
 
     .gallery-section {
       padding: 70px 20px 100px;
+
       max-width: 1200px;
+
       margin: auto;
     }
 
-    .gallery-category {
-      scroll-margin-top: 85px;
-      margin-bottom: 80px;
-    }
 
     .section-title {
       text-align: center;
+
       margin-bottom: 45px;
     }
 
+
     .section-title small {
       display: block;
+
       font-size: 11px;
+
       letter-spacing: 4px;
+
       color: #a66b82;
+
       text-transform: uppercase;
+
       margin-bottom: 10px;
     }
 
+
     .section-title h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(38px, 6vw, 58px);
+
+      font-size: clamp(
+        38px,
+        6vw,
+        58px
+      );
+
       font-weight: 500;
+
       color: #805365;
     }
 
+
     .favorites-title {
+      margin-top: 70px;
       margin-bottom: 35px;
     }
+
 
     .favorites-title h2 {
       color: #9b687c;
     }
 
+
+    .birthday-title {
+      margin-top: 80px;
+      margin-bottom: 35px;
+    }
+
+
     .birthday-title h2 {
       color: #9b687c;
     }
+
+
+    .album-title {
+      margin-top: 80px;
+    }
+
 
     .gallery {
       columns: 3 250px;
       column-gap: 18px;
     }
 
+
     .photo {
       width: 100%;
+
       margin-bottom: 18px;
+
       border-radius: 16px;
+
       overflow: hidden;
+
       background: white;
-      box-shadow: 0 8px 30px rgba(100, 55, 70, .12);
+
+      box-shadow:
+        0 8px 30px rgba(100, 55, 70, .12);
+
       break-inside: avoid;
+
       cursor: pointer;
+
       transition: .3s ease;
     }
 
+
     .photo:hover {
       transform: translateY(-4px);
-      box-shadow: 0 15px 35px rgba(100, 55, 70, .18);
+
+      box-shadow:
+        0 15px 35px rgba(100, 55, 70, .18);
     }
+
 
     .photo img {
       display: block;
+
       width: 100%;
+
       height: auto;
     }
 
+
     .empty {
       text-align: center;
+
       padding: 50px 20px;
+
       color: #a47888;
+
       font-family: 'Cormorant Garamond', serif;
+
       font-size: 22px;
     }
 
+
     .loading {
       text-align: center;
+
       color: #a66b82;
+
       padding: 30px;
     }
 
+
     .footer {
       text-align: center;
+
       padding: 50px 20px;
+
       color: #a47787;
+
       font-size: 11px;
+
       letter-spacing: 2px;
+
       text-transform: uppercase;
     }
 
@@ -445,129 +663,235 @@
 
     .modal {
       display: none;
+
       position: fixed;
+
       inset: 0;
-      z-index: 3000;
-      background: rgba(40, 22, 30, .92);
+
+      z-index: 1000;
+
+      background:
+        rgba(40, 22, 30, .92);
+
       align-items: center;
+
       justify-content: center;
+
       padding: 20px;
     }
+
 
     .modal.active {
       display: flex;
     }
 
+
     .modal img {
       max-width: 95vw;
+
       max-height: 90vh;
+
       object-fit: contain;
+
       border-radius: 10px;
     }
 
+
     .close {
       position: fixed;
+
       top: 20px;
+
       right: 25px;
+
       color: white;
+
       font-size: 35px;
+
       cursor: pointer;
     }
 
+
     .upload-status {
       display: none;
+
       margin: 20px auto 0;
+
       max-width: 350px;
+
       padding: 12px 18px;
+
       border-radius: 30px;
-      background: rgba(255,255,255,.75);
+
+      background:
+        rgba(255,255,255,.75);
+
       color: #8d526b;
+
       font-size: 13px;
     }
 
 
     /* ==========================================
-       ANIMACIONES
+       BOTÓN DE MÚSICA
        ========================================== */
+
+    .music-button {
+      position: fixed;
+
+      bottom: 22px;
+
+      right: 22px;
+
+      z-index: 2000;
+
+      width: 58px;
+
+      height: 58px;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b97691,
+          #d49caf
+        );
+
+      color: white;
+
+      font-size: 23px;
+
+      cursor: pointer;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      box-shadow:
+        0 8px 25px rgba(157, 91, 118, .35);
+
+      transition: .3s ease;
+    }
+
+
+    .music-button:hover {
+      transform: scale(1.08);
+
+      box-shadow:
+        0 12px 30px rgba(157, 91, 118, .45);
+    }
+
+
+    .music-button.playing {
+      animation:
+        musicaPulso 1.5s infinite;
+    }
+
 
     @keyframes musicaPulso {
 
       0% {
-        box-shadow: 0 8px 25px rgba(157, 91, 118, .35);
+        box-shadow:
+          0 8px 25px rgba(157, 91, 118, .35);
       }
 
       50% {
-        box-shadow: 0 8px 35px rgba(157, 91, 118, .65);
+        box-shadow:
+          0 8px 35px rgba(157, 91, 118, .65);
       }
 
       100% {
-        box-shadow: 0 8px 25px rgba(157, 91, 118, .35);
+        box-shadow:
+          0 8px 25px rgba(157, 91, 118, .35);
       }
 
     }
+
 
     @keyframes aparecer {
 
       from {
         opacity: 0;
-        transform: translateY(25px);
+
+        transform:
+          translateY(25px);
       }
 
       to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+          translateY(0);
       }
 
     }
 
 
     /* ==========================================
-       MÓVIL
+       CELULAR
        ========================================== */
 
     @media (max-width: 700px) {
-
-      .navigation-container {
-        justify-content: flex-start;
-        padding: 8px 10px;
-      }
-
-      .navigation a {
-        font-size: 10px;
-        padding: 9px 12px;
-      }
 
       .hero {
         min-height: 90vh;
       }
 
+
+      .navigation {
+        padding: 9px 8px;
+      }
+
+
+      .navigation-container {
+        justify-content: flex-start;
+      }
+
+
+      .navigation a {
+        font-size: 10px;
+        padding: 8px 11px;
+      }
+
+
       .gallery {
         columns: 2 150px;
+
         column-gap: 10px;
       }
 
+
       .photo {
         margin-bottom: 10px;
+
         border-radius: 10px;
       }
+
 
       .message {
         font-size: 20px;
       }
 
+
       .music-button {
         width: 52px;
+
         height: 52px;
+
         bottom: 18px;
+
         right: 18px;
+
         font-size: 20px;
       }
 
-      .gallery-category {
-        margin-bottom: 60px;
-      }
-
     }
+
 
     @media (max-width: 400px) {
 
@@ -578,7 +902,9 @@
     }
 
   </style>
+
 </head>
+
 
 <body>
 
@@ -587,7 +913,9 @@
        PANTALLA DE ENTRADA
        ========================================== -->
 
-  <div class="welcome-screen" id="welcomeScreen">
+  <div
+    class="welcome-screen"
+    id="welcomeScreen">
 
     <div class="welcome-content">
 
@@ -595,17 +923,24 @@
         Una noche para recordar
       </div>
 
-      <h2>Danna</h2>
+
+      <h2>
+        Danna
+      </h2>
+
 
       <div class="welcome-name">
         Valentina Garzón Medina
       </div>
 
+
       <div class="welcome-xv">
         XV
       </div>
 
+
       <div class="welcome-divider"></div>
+
 
       <button
         class="enter-button"
@@ -614,6 +949,7 @@
         ✨ TOCAR PARA ENTRAR
 
       </button>
+
 
       <div class="welcome-hint">
         🎵 La música comenzará al entrar
@@ -628,7 +964,10 @@
        MÚSICA
        ========================================== -->
 
-  <audio id="musica" loop preload="auto">
+  <audio
+    id="musica"
+    loop
+    preload="auto">
 
     <source
       src="musica.mp3"
@@ -636,39 +975,6 @@
 
   </audio>
 
-
-  <!-- ==========================================
-       BARRA DE NAVEGACIÓN
-       ========================================== -->
-
-  <nav class="navigation">
-
-    <div class="navigation-container">
-
-      <a href="#inicio">
-        🏠 Inicio
-      </a>
-
-      <a href="#cumpleanera">
-        👑 Cumpleañera
-      </a>
-
-      <a href="#noche">
-        ⭐ Fotos de la noche
-      </a>
-
-      <a href="#album">
-        📸 Álbum
-      </a>
-
-    </div>
-
-  </nav>
-
-
-  <!-- ==========================================
-       BOTÓN DE MÚSICA
-       ========================================== -->
 
   <button
     id="musicButton"
@@ -682,7 +988,36 @@
 
 
   <!-- ==========================================
-       HERO / INICIO
+       NAVEGACIÓN
+       ========================================== -->
+
+  <nav class="navigation">
+
+    <div class="navigation-container">
+
+      <a href="#inicio">
+        🏠 Inicio
+      </a>
+
+      <a href="#favoritas">
+        ⭐ Fotos de la noche
+      </a>
+
+      <a href="#cumpleanera">
+        👑 Cumpleañera
+      </a>
+
+      <a href="#album">
+        📸 Álbum
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- ==========================================
+       HERO
        ========================================== -->
 
   <section
@@ -695,13 +1030,16 @@
         Una noche para recordar
       </div>
 
+
       <h1>
         Danna
       </h1>
 
+
       <div class="surname">
         Valentina Garzón Medina
       </div>
+
 
       <div class="fifteen">
 
@@ -713,7 +1051,9 @@
 
       </div>
 
+
       <div class="divider"></div>
+
 
       <p class="message">
 
@@ -723,6 +1063,7 @@
 
       </p>
 
+
       <label
         class="photo-button"
         for="photoInput">
@@ -731,11 +1072,13 @@
 
       </label>
 
+
       <input
         type="file"
         id="photoInput"
         accept="image/*"
         multiple>
+
 
       <div
         class="upload-status"
@@ -748,10 +1091,11 @@
 
 
   <!-- ==========================================
-       GALERÍAS
+       GALERÍA
        ========================================== -->
 
   <section class="gallery-section">
+
 
     <div
       id="loading"
@@ -763,62 +1107,29 @@
 
 
     <!-- ==========================================
-         👑 CUMPLEAÑERA
-         ========================================== -->
-
-    <div
-      id="cumpleanera"
-      class="gallery-category">
-
-      <div class="section-title birthday-title">
-
-        <small>
-          Momentos especiales
-        </small>
-
-        <h2>
-          👑 Fotos de la cumpleañera
-        </h2>
-
-      </div>
-
-      <div
-        id="birthdayGallery"
-        class="gallery">
-      </div>
-
-      <div
-        id="birthdayEmpty"
-        class="empty"
-        style="display: none;">
-
-        Próximamente habrá fotos especiales de la cumpleañera ✨
-
-      </div>
-
-    </div>
-
-
-    <!-- ==========================================
          ⭐ FOTOS DE LA NOCHE
          ========================================== -->
 
     <div
-      id="noche"
-      class="gallery-category"
+      id="favoritesSection"
       style="display: none;">
 
-      <div class="section-title favorites-title">
+
+      <div
+        class="section-title favorites-title"
+        id="favoritas">
 
         <small>
           Seleccionadas para recordar
         </small>
+
 
         <h2>
           ⭐ Fotos de la noche
         </h2>
 
       </div>
+
 
       <div
         id="favoritesGallery"
@@ -829,40 +1140,74 @@
 
 
     <!-- ==========================================
-         📸 ÁLBUM DE RECUERDOS
+         👑 FOTOS DE LA CUMPLEAÑERA
          ========================================== -->
 
     <div
-      id="album"
-      class="gallery-category">
+      id="birthdaySection"
+      style="display: none;">
 
-      <div class="section-title">
+
+      <div
+        class="section-title birthday-title"
+        id="cumpleanera">
 
         <small>
-          Recuerdos de una noche mágica
+          Momentos especiales
         </small>
 
+
         <h2>
-          📸 Álbum de recuerdos
+          👑 Fotos de la cumpleañera
         </h2>
 
       </div>
 
+
       <div
-        id="gallery"
+        id="birthdayGallery"
         class="gallery">
       </div>
 
-      <div
-        id="empty"
-        class="empty"
-        style="display: none;">
+    </div>
 
-        Sé el primero en compartir una foto de esta noche ✨
 
-      </div>
+    <!-- ==========================================
+         📸 ÁLBUM DE RECUERDOS
+         SOLO FOTOS SIN CATEGORÍA
+         ========================================== -->
+
+    <div
+      class="section-title album-title"
+      id="album">
+
+      <small>
+        Recuerdos de una noche mágica
+      </small>
+
+
+      <h2>
+        📸 Álbum de recuerdos
+      </h2>
 
     </div>
+
+
+    <div
+      id="gallery"
+      class="gallery">
+    </div>
+
+
+    <div
+      id="empty"
+      class="empty"
+      style="display: none;">
+
+      Sé el primero en compartir una foto de esta noche ✨
+
+    </div>
+
 
   </section>
 
@@ -886,6 +1231,7 @@
     class="modal"
     id="modal">
 
+
     <div
       class="close"
       id="closeModal">
@@ -894,152 +1240,146 @@
 
     </div>
 
+
     <img
       id="modalImage"
       src=""
       alt="Foto de los 15 años">
 
+
   </div>
 
 
-<script>
+  <script>
 
 
-  /* ============================================
-     CONFIGURACIÓN
-     ============================================ */
+    /* ============================================
+       CONFIGURACIÓN
+       ============================================ */
 
-  const CLOUDINARY_CLOUD_NAME =
-    "sdijrxgo";
-
-  const CLOUDINARY_UPLOAD_PRESET =
-    "danna15";
-
-  const SUPABASE_URL =
-    "https://utkqspswdjamfmhzalov.supabase.co";
-
-  const SUPABASE_KEY =
-    "sb_publishable_rBWSVkYl3T_ai_0ZQ6Av1A_jTgXR_59";
+    const CLOUDINARY_CLOUD_NAME =
+      "sdijrxgo";
 
 
-  /* ============================================
-     ELEMENTOS
-     ============================================ */
-
-  const input =
-    document.getElementById("photoInput");
-
-  const gallery =
-    document.getElementById("gallery");
-
-  const favoritesGallery =
-    document.getElementById("favoritesGallery");
-
-  const birthdayGallery =
-    document.getElementById("birthdayGallery");
-
-  const favoritesSection =
-    document.getElementById("noche");
-
-  const birthdayEmpty =
-    document.getElementById("birthdayEmpty");
-
-  const loading =
-    document.getElementById("loading");
-
-  const empty =
-    document.getElementById("empty");
-
-  const status =
-    document.getElementById("uploadStatus");
-
-  const modal =
-    document.getElementById("modal");
-
-  const modalImage =
-    document.getElementById("modalImage");
-
-  const closeModal =
-    document.getElementById("closeModal");
+    const CLOUDINARY_UPLOAD_PRESET =
+      "danna15";
 
 
-  /* ============================================
-     MÚSICA
-     ============================================ */
-
-  const musica =
-    document.getElementById("musica");
-
-  const musicButton =
-    document.getElementById("musicButton");
-
-  const welcomeScreen =
-    document.getElementById("welcomeScreen");
-
-  const enterButton =
-    document.getElementById("enterButton");
-
-  let reproduciendo = false;
-
-  let silenciada = false;
+    const SUPABASE_URL =
+      "https://utkqspswdjamfmhzalov.supabase.co";
 
 
-  /* ============================================
-     ENTRAR Y COMENZAR MÚSICA
-     ============================================ */
-
-  enterButton.addEventListener(
-    "click",
-    async () => {
-
-      try {
-
-        musica.muted = false;
-
-        await musica.play();
-
-        reproduciendo = true;
-
-        silenciada = false;
-
-        actualizarBoton();
-
-      } catch (error) {
-
-        console.error(
-          "No se pudo reproducir la música:",
-          error
-        );
-
-      }
-
-      welcomeScreen.classList.add("hidden");
-
-    }
-  );
+    const SUPABASE_KEY =
+      "sb_publishable_rBWSVkYl3T_ai_0ZQ6Av1A_jTgXR_59";
 
 
-  /* ============================================
-     BOTÓN DE MÚSICA
-     ============================================ */
+    /* ============================================
+       ELEMENTOS
+       ============================================ */
 
-  musicButton.addEventListener(
-    "click",
-    async () => {
+    const input =
+      document.getElementById("photoInput");
 
-      if (!reproduciendo) {
+
+    const gallery =
+      document.getElementById("gallery");
+
+
+    const favoritesGallery =
+      document.getElementById("favoritesGallery");
+
+
+    const favoritesSection =
+      document.getElementById("favoritesSection");
+
+
+    const birthdayGallery =
+      document.getElementById("birthdayGallery");
+
+
+    const birthdaySection =
+      document.getElementById("birthdaySection");
+
+
+    const loading =
+      document.getElementById("loading");
+
+
+    const empty =
+      document.getElementById("empty");
+
+
+    const status =
+      document.getElementById("uploadStatus");
+
+
+    const modal =
+      document.getElementById("modal");
+
+
+    const modalImage =
+      document.getElementById("modalImage");
+
+
+    const closeModal =
+      document.getElementById("closeModal");
+
+
+    /* ============================================
+       MÚSICA
+       ============================================ */
+
+    const musica =
+      document.getElementById("musica");
+
+
+    const musicButton =
+      document.getElementById("musicButton");
+
+
+    const welcomeScreen =
+      document.getElementById("welcomeScreen");
+
+
+    const enterButton =
+      document.getElementById("enterButton");
+
+
+    let reproduciendo =
+      false;
+
+
+    let silenciada =
+      false;
+
+
+    /* ============================================
+       ENTRAR Y COMENZAR MÚSICA
+       ============================================ */
+
+    enterButton.addEventListener(
+      "click",
+      async () => {
 
         try {
 
-          musica.muted = false;
+          musica.muted =
+            false;
+
 
           await musica.play();
 
-          reproduciendo = true;
 
-          silenciada = false;
+          reproduciendo =
+            true;
+
+
+          silenciada =
+            false;
+
 
           actualizarBoton();
+
 
         } catch (error) {
 
@@ -1050,551 +1390,661 @@
 
         }
 
-        return;
 
-      }
-
-
-      if (!silenciada) {
-
-        musica.muted = true;
-
-        silenciada = true;
-
-      }
-
-      else {
-
-        musica.muted = false;
-
-        silenciada = false;
-
-      }
-
-      actualizarBoton();
-
-    }
-  );
-
-
-  /* ============================================
-     ACTUALIZAR BOTÓN DE MÚSICA
-     ============================================ */
-
-  function actualizarBoton() {
-
-    if (!reproduciendo) {
-
-      musicButton.textContent = "🎵";
-
-      musicButton.setAttribute(
-        "aria-label",
-        "Activar música"
-      );
-
-      musicButton.setAttribute(
-        "title",
-        "Activar música"
-      );
-
-      musicButton.classList.remove(
-        "playing"
-      );
-
-    }
-
-    else if (silenciada) {
-
-      musicButton.textContent = "🔇";
-
-      musicButton.setAttribute(
-        "aria-label",
-        "Activar música"
-      );
-
-      musicButton.setAttribute(
-        "title",
-        "Activar música"
-      );
-
-      musicButton.classList.remove(
-        "playing"
-      );
-
-    }
-
-    else {
-
-      musicButton.textContent = "🔊";
-
-      musicButton.setAttribute(
-        "aria-label",
-        "Silenciar música"
-      );
-
-      musicButton.setAttribute(
-        "title",
-        "Silenciar música"
-      );
-
-      musicButton.classList.add(
-        "playing"
-      );
-
-    }
-
-  }
-
-
-  /* ============================================
-     CARGAR GALERÍA
-     ============================================ */
-
-  async function loadPhotos() {
-
-    try {
-
-      const response =
-        await fetch(
-          `${SUPABASE_URL}/rest/v1/fotos?select=url,favorito,cumpleanera&order=created_at.desc`,
-          {
-            headers: {
-
-              "apikey":
-                SUPABASE_KEY,
-
-              "Authorization":
-                `Bearer ${SUPABASE_KEY}`
-
-            }
-          }
-        );
-
-
-      if (!response.ok) {
-
-        throw new Error(
-          "No se pudieron cargar las fotos."
+        welcomeScreen.classList.add(
+          "hidden"
         );
 
       }
+    );
 
 
-      const photos =
-        await response.json();
+    /* ============================================
+       BOTÓN DE MÚSICA
+       ============================================ */
+
+    musicButton.addEventListener(
+      "click",
+      async () => {
+
+        if (!reproduciendo) {
+
+          try {
+
+            musica.muted =
+              false;
 
 
-      loading.style.display =
-        "none";
+            await musica.play();
 
 
-      /* Limpiar galerías */
-
-      gallery.innerHTML =
-        "";
-
-      favoritesGallery.innerHTML =
-        "";
-
-      birthdayGallery.innerHTML =
-        "";
+            reproduciendo =
+              true;
 
 
-      /* ============================================
-         SEPARAR CATEGORÍAS
-         ============================================ */
-
-      const favoritas =
-        photos.filter(
-          photo =>
-            photo.favorito === true
-        );
+            silenciada =
+              false;
 
 
-      const cumpleanera =
-        photos.filter(
-          photo =>
-            photo.cumpleanera === true
-        );
+            actualizarBoton();
 
+          } catch (error) {
 
-      const normales =
-        photos.filter(
-          photo =>
-            photo.favorito !== true
-        );
-
-
-      /* ============================================
-         MOSTRAR CUMPLEAÑERA
-         ============================================ */
-
-      if (cumpleanera.length > 0) {
-
-        birthdayEmpty.style.display =
-          "none";
-
-
-        cumpleanera.forEach(
-          photo => {
-
-            crearFoto(
-              photo,
-              birthdayGallery
+            console.error(
+              "No se pudo reproducir la música:",
+              error
             );
 
           }
-        );
 
-      }
+          return;
 
-      else {
-
-        birthdayEmpty.style.display =
-          "block";
-
-      }
+        }
 
 
-      /* ============================================
-         MOSTRAR FAVORITAS
-         ============================================ */
+        if (!silenciada) {
 
-      if (favoritas.length > 0) {
-
-        favoritesSection.style.display =
-          "block";
+          musica.muted =
+            true;
 
 
-        favoritas.forEach(
-          photo => {
-
-            crearFoto(
-              photo,
-              favoritesGallery
-            );
-
-          }
-        );
-
-      }
-
-      else {
-
-        favoritesSection.style.display =
-          "none";
-
-      }
-
-
-      /* ============================================
-         MOSTRAR FOTOS NORMALES
-         ============================================ */
-
-      if (normales.length > 0) {
-
-        empty.style.display =
-          "none";
-
-
-        normales.forEach(
-          photo => {
-
-            crearFoto(
-              photo,
-              gallery
-            );
-
-          }
-        );
-
-      }
-
-      else {
-
-        if (photos.length === 0) {
-
-          empty.style.display =
-            "block";
+          silenciada =
+            true;
 
         }
 
         else {
 
-          empty.style.display =
+          musica.muted =
+            false;
+
+
+          silenciada =
+            false;
+
+        }
+
+
+        actualizarBoton();
+
+      }
+    );
+
+
+    /* ============================================
+       ACTUALIZAR BOTÓN DE MÚSICA
+       ============================================ */
+
+    function actualizarBoton() {
+
+      if (!reproduciendo) {
+
+        musicButton.textContent =
+          "🎵";
+
+
+        musicButton.setAttribute(
+          "aria-label",
+          "Activar música"
+        );
+
+
+        musicButton.setAttribute(
+          "title",
+          "Activar música"
+        );
+
+
+        musicButton.classList.remove(
+          "playing"
+        );
+
+      }
+
+      else if (silenciada) {
+
+        musicButton.textContent =
+          "🔇";
+
+
+        musicButton.setAttribute(
+          "aria-label",
+          "Activar música"
+        );
+
+
+        musicButton.setAttribute(
+          "title",
+          "Activar música"
+        );
+
+
+        musicButton.classList.remove(
+          "playing"
+        );
+
+      }
+
+      else {
+
+        musicButton.textContent =
+          "🔊";
+
+
+        musicButton.setAttribute(
+          "aria-label",
+          "Silenciar música"
+        );
+
+
+        musicButton.setAttribute(
+          "title",
+          "Silenciar música"
+        );
+
+
+        musicButton.classList.add(
+          "playing"
+        );
+
+      }
+
+    }
+
+
+    /* ============================================
+       CARGAR GALERÍA
+       ============================================ */
+
+    async function loadPhotos() {
+
+      try {
+
+        const response =
+          await fetch(
+            `${SUPABASE_URL}/rest/v1/fotos?select=url,favorito,cumpleanera&order=created_at.desc`,
+            {
+              headers: {
+
+                "apikey":
+                  SUPABASE_KEY,
+
+                "Authorization":
+                  `Bearer ${SUPABASE_KEY}`
+
+              }
+            }
+          );
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            "No se pudieron cargar las fotos."
+          );
+
+        }
+
+
+        const photos =
+          await response.json();
+
+
+        loading.style.display =
+          "none";
+
+
+        /* ==========================================
+           LIMPIAR TODAS LAS GALERÍAS
+           ========================================== */
+
+        gallery.innerHTML =
+          "";
+
+
+        favoritesGallery.innerHTML =
+          "";
+
+
+        birthdayGallery.innerHTML =
+          "";
+
+
+        /* ==========================================
+           SEPARAR LAS FOTOS
+           
+           IMPORTANTE:
+           
+           CUMPLEAÑERA TIENE PRIORIDAD.
+           
+           Una foto marcada como:
+           
+           favorito = true
+           cumpleanera = true
+           
+           SOLO aparecerá en Cumpleañera.
+           ========================================== */
+
+        const cumpleanera =
+          photos.filter(
+            photo =>
+              photo.cumpleanera === true
+          );
+
+
+        const favoritas =
+          photos.filter(
+            photo =>
+              photo.favorito === true &&
+              photo.cumpleanera !== true
+          );
+
+
+        const normales =
+          photos.filter(
+            photo =>
+              photo.favorito !== true &&
+              photo.cumpleanera !== true
+          );
+
+
+        /* ==========================================
+           MOSTRAR CUMPLEAÑERA
+           ========================================== */
+
+        if (cumpleanera.length > 0) {
+
+          birthdaySection.style.display =
+            "block";
+
+
+          cumpleanera.forEach(
+            photo => {
+
+              crearFoto(
+                photo,
+                birthdayGallery
+              );
+
+            }
+          );
+
+        }
+
+        else {
+
+          birthdaySection.style.display =
             "none";
 
         }
 
+
+        /* ==========================================
+           MOSTRAR FAVORITAS
+           ========================================== */
+
+        if (favoritas.length > 0) {
+
+          favoritesSection.style.display =
+            "block";
+
+
+          favoritas.forEach(
+            photo => {
+
+              crearFoto(
+                photo,
+                favoritesGallery
+              );
+
+            }
+          );
+
+        }
+
+        else {
+
+          favoritesSection.style.display =
+            "none";
+
+        }
+
+
+        /* ==========================================
+           MOSTRAR FOTOS NORMALES
+           ========================================== */
+
+        if (normales.length > 0) {
+
+          empty.style.display =
+            "none";
+
+
+          normales.forEach(
+            photo => {
+
+              crearFoto(
+                photo,
+                gallery
+              );
+
+            }
+          );
+
+        }
+
+        else {
+
+          /*
+           * Solo mostrar este mensaje cuando
+           * realmente no existe ninguna foto.
+           */
+
+          if (photos.length === 0) {
+
+            empty.style.display =
+              "block";
+
+          }
+
+          else {
+
+            empty.style.display =
+              "none";
+
+          }
+
+        }
+
+      } catch (error) {
+
+        console.error(error);
+
+
+        loading.innerHTML =
+          "No se pudieron cargar las fotos. Intenta nuevamente.";
+
       }
-
-    } catch (error) {
-
-      console.error(error);
-
-      loading.innerHTML =
-        "No se pudieron cargar las fotos. Intenta nuevamente.";
 
     }
 
-  }
+
+    /* ============================================
+       CREAR FOTO
+       ============================================ */
+
+    function crearFoto(
+      photo,
+      contenedor
+    ) {
+
+      const container =
+        document.createElement("div");
 
 
-  /* ============================================
-     CREAR FOTO
-     ============================================ */
-
-  function crearFoto(
-    photo,
-    contenedor
-  ) {
-
-    const container =
-      document.createElement("div");
-
-    container.className =
-      "photo";
+      container.className =
+        "photo";
 
 
-    const img =
-      document.createElement("img");
-
-    img.src =
-      photo.url;
-
-    img.loading =
-      "lazy";
-
-    img.alt =
-      "Foto de los 15 años de Danna";
+      const img =
+        document.createElement("img");
 
 
-    img.onclick = () => {
-
-      modalImage.src =
+      img.src =
         photo.url;
 
-      modal.classList.add(
+
+      img.loading =
+        "lazy";
+
+
+      img.alt =
+        "Foto de los 15 años de Danna";
+
+
+      img.onclick = () => {
+
+        modalImage.src =
+          photo.url;
+
+
+        modal.classList.add(
+          "active"
+        );
+
+      };
+
+
+      container.appendChild(
+        img
+      );
+
+
+      contenedor.appendChild(
+        container
+      );
+
+    }
+
+
+    /* ============================================
+       SUBIR FOTOS
+       ============================================ */
+
+    input.addEventListener(
+      "change",
+      async function() {
+
+        const files =
+          Array.from(
+            this.files
+          );
+
+
+        if (!files.length)
+          return;
+
+
+        status.style.display =
+          "block";
+
+
+        status.textContent =
+          "Preparando tus fotos...";
+
+
+        for (
+          let i = 0;
+          i < files.length;
+          i++
+        ) {
+
+          const file =
+            files[i];
+
+
+          try {
+
+            status.textContent =
+              `Subiendo foto ${i + 1} de ${files.length}...`;
+
+
+            /* ======================================
+               CLOUDINARY
+               ====================================== */
+
+            const formData =
+              new FormData();
+
+
+            formData.append(
+              "file",
+              file
+            );
+
+
+            formData.append(
+              "upload_preset",
+              CLOUDINARY_UPLOAD_PRESET
+            );
+
+
+            const cloudinaryResponse =
+              await fetch(
+                `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+                {
+                  method: "POST",
+
+                  body:
+                    formData
+                }
+              );
+
+
+            if (!cloudinaryResponse.ok) {
+
+              throw new Error(
+                "Error subiendo la imagen."
+              );
+
+            }
+
+
+            const cloudinaryData =
+              await cloudinaryResponse.json();
+
+
+            /* ======================================
+               SUPABASE
+               ====================================== */
+
+            const supabaseResponse =
+              await fetch(
+                `${SUPABASE_URL}/rest/v1/fotos`,
+                {
+                  method: "POST",
+
+                  headers: {
+
+                    "Content-Type":
+                      "application/json",
+
+                    "apikey":
+                      SUPABASE_KEY,
+
+                    "Authorization":
+                      `Bearer ${SUPABASE_KEY}`,
+
+                    "Prefer":
+                      "return=minimal"
+
+                  },
+
+                  body:
+                    JSON.stringify({
+
+                      url:
+                        cloudinaryData.secure_url,
+
+                      public_id:
+                        cloudinaryData.public_id,
+
+                      favorito:
+                        false,
+
+                      cumpleanera:
+                        false
+
+                    })
+
+                }
+              );
+
+
+            if (!supabaseResponse.ok) {
+
+              throw new Error(
+                "La imagen se subió, pero no pudo registrarse."
+              );
+
+            }
+
+          } catch (error) {
+
+            console.error(
+              error
+            );
+
+
+            status.textContent =
+              "Hubo un problema al subir una de las fotos.";
+
+
+            break;
+
+          }
+
+        }
+
+
+        status.textContent =
+          "✨ ¡Fotos compartidas!";
+
+
+        input.value =
+          "";
+
+
+        setTimeout(
+          () => {
+
+            location.reload();
+
+          },
+          1200
+        );
+
+      }
+    );
+
+
+    /* ============================================
+       MODAL
+       ============================================ */
+
+    closeModal.onclick = () => {
+
+      modal.classList.remove(
         "active"
       );
 
     };
 
 
-    container.appendChild(
-      img
-    );
+    modal.onclick = (event) => {
 
-    contenedor.appendChild(
-      container
-    );
-
-  }
-
-
-  /* ============================================
-     SUBIR FOTOS
-     ============================================ */
-
-  input.addEventListener(
-    "change",
-    async function() {
-
-      const files =
-        Array.from(this.files);
-
-
-      if (!files.length)
-        return;
-
-
-      status.style.display =
-        "block";
-
-
-      status.textContent =
-        "Preparando tus fotos...";
-
-
-      for (
-        let i = 0;
-        i < files.length;
-        i++
+      if (
+        event.target === modal
       ) {
 
-        const file =
-          files[i];
-
-
-        try {
-
-          status.textContent =
-            `Subiendo foto ${i + 1} de ${files.length}...`;
-
-
-          /* Cloudinary */
-
-          const formData =
-            new FormData();
-
-
-          formData.append(
-            "file",
-            file
-          );
-
-
-          formData.append(
-            "upload_preset",
-            CLOUDINARY_UPLOAD_PRESET
-          );
-
-
-          const cloudinaryResponse =
-            await fetch(
-              `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
-              {
-                method: "POST",
-
-                body:
-                  formData
-              }
-            );
-
-
-          if (!cloudinaryResponse.ok) {
-
-            throw new Error(
-              "Error subiendo la imagen."
-            );
-
-          }
-
-
-          const cloudinaryData =
-            await cloudinaryResponse.json();
-
-
-          /* Supabase */
-
-          const supabaseResponse =
-            await fetch(
-              `${SUPABASE_URL}/rest/v1/fotos`,
-              {
-                method: "POST",
-
-                headers: {
-
-                  "Content-Type":
-                    "application/json",
-
-                  "apikey":
-                    SUPABASE_KEY,
-
-                  "Authorization":
-                    `Bearer ${SUPABASE_KEY}`,
-
-                  "Prefer":
-                    "return=minimal"
-
-                },
-
-                body:
-                  JSON.stringify({
-
-                    url:
-                      cloudinaryData.secure_url,
-
-                    public_id:
-                      cloudinaryData.public_id
-
-                  })
-
-              }
-            );
-
-
-          if (!supabaseResponse.ok) {
-
-            throw new Error(
-              "La imagen se subió, pero no pudo registrarse."
-            );
-
-          }
-
-        } catch (error) {
-
-          console.error(error);
-
-
-          status.textContent =
-            "Hubo un problema al subir una de las fotos.";
-
-
-          break;
-
-        }
+        modal.classList.remove(
+          "active"
+        );
 
       }
 
-
-      status.textContent =
-        "✨ ¡Fotos compartidas!";
+    };
 
 
-      input.value =
-        "";
+    /* ============================================
+       INICIO
+       ============================================ */
+
+    loadPhotos();
 
 
-      setTimeout(
-        () => {
+  </script>
 
-          location.reload();
-
-        },
-        1200
-      );
-
-    }
-  );
-
-
-  /* ============================================
-     MODAL
-     ============================================ */
-
-  closeModal.onclick = () => {
-
-    modal.classList.remove(
-      "active"
-    );
-
-  };
-
-
-  modal.onclick = (event) => {
-
-    if (
-      event.target === modal
-    ) {
-
-      modal.classList.remove(
-        "active"
-      );
-
-    }
-
-  };
-
-
-  /* ============================================
-     INICIO
-     ============================================ */
-
-  loadPhotos();
-
-</script>
 
 </body>
 </html>
-```
