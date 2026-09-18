@@ -86,7 +86,7 @@
 
 
     /* ==========================================
-       PANTALLA DE ENTRADA
+       PANTALLA DE ENTRADA - INVITACIÓN
        ========================================== */
 
     .welcome-screen {
@@ -101,16 +101,16 @@
 
       text-align: center;
 
-      padding: 30px;
+      padding: 25px;
 
       overflow: hidden;
 
       background:
         radial-gradient(
-          circle at 50% 45%,
-          rgba(255,255,255,.98),
-          rgba(255,241,247,.94) 35%,
-          rgba(248,222,233,.98) 100%
+          ellipse at center,
+          rgba(255,248,242,.98) 0%,
+          rgba(247,225,217,.97) 48%,
+          rgba(224,184,185,.98) 100%
         );
 
       transition:
@@ -124,47 +124,54 @@
       pointer-events: none;
     }
 
-    /* Brillo central */
+
+    /* Textura del papel */
 
     .welcome-screen::before {
       content: "";
 
       position: absolute;
-
-      width: 600px;
-      height: 600px;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(255,255,255,.95) 0%,
-          rgba(255,220,233,.35) 35%,
-          transparent 70%
-        );
-
-      animation:
-        welcomeGlow 5s ease-in-out infinite;
+      inset: 0;
 
       pointer-events: none;
+
+      opacity: .55;
+
+      background-image:
+        radial-gradient(
+          rgba(126,82,72,.10) .7px,
+          transparent .7px
+        ),
+        radial-gradient(
+          rgba(255,255,255,.55) 1px,
+          transparent 1px
+        );
+
+      background-size:
+        9px 9px,
+        13px 13px;
+
+      mix-blend-mode: multiply;
     }
 
-    /* Marco decorativo */
+
+    /* Marco exterior */
 
     .welcome-screen::after {
       content: "";
 
       position: absolute;
 
-      inset: 22px;
+      inset: 18px;
 
       border:
-        1px solid rgba(185,118,145,.22);
-
-      border-radius: 22px;
+        1px solid rgba(117,75,73,.35);
 
       pointer-events: none;
+
+      box-shadow:
+        inset 0 0 0 7px rgba(255,255,255,.18),
+        inset 0 0 35px rgba(105,65,62,.12);
 
       animation:
         marcoEntrada 2s ease both;
@@ -188,15 +195,15 @@
     .particle {
       position: absolute;
 
-      width: 5px;
-      height: 5px;
+      width: 4px;
+      height: 4px;
 
       border-radius: 50%;
 
-      background: rgba(190,126,151,.45);
+      background: rgba(132,82,81,.35);
 
       box-shadow:
-        0 0 10px rgba(190,126,151,.35);
+        0 0 8px rgba(132,82,81,.25);
 
       animation:
         flotarParticula linear infinite;
@@ -268,120 +275,260 @@
 
 
     /* ==========================================
-       DESTELLOS
+       FLORES DECORATIVAS
        ========================================== */
 
-    .sparkle {
+    .floral-decoration {
       position: absolute;
 
-      color: #c493a7;
+      pointer-events: none;
 
-      font-size: 18px;
-
-      opacity: 0;
-
-      animation:
-        aparecerDestello 3s ease-in-out infinite;
+      z-index: 1;
     }
 
-    .sparkle.s1 {
-      top: 18%;
-      left: 20%;
-      animation-delay: .5s;
+    .floral-top {
+      top: -5px;
+      left: 50%;
+
+      width: min(850px, 100vw);
+
+      transform:
+        translateX(-50%);
+
+      opacity: .9;
     }
 
-    .sparkle.s2 {
-      top: 27%;
-      right: 18%;
-      font-size: 14px;
-      animation-delay: 1.4s;
+    .floral-bottom {
+      bottom: -8px;
+      left: 50%;
+
+      width: min(850px, 100vw);
+
+      transform:
+        translateX(-50%)
+        rotate(180deg);
+
+      opacity: .9;
     }
 
-    .sparkle.s3 {
-      bottom: 23%;
-      left: 17%;
-      font-size: 13px;
-      animation-delay: 2.2s;
+    .floral-left {
+      left: -20px;
+      top: 12%;
+
+      width: 180px;
+      height: 75%;
+
+      opacity: .82;
     }
 
-    .sparkle.s4 {
-      bottom: 18%;
-      right: 20%;
-      font-size: 20px;
-      animation-delay: 1s;
+    .floral-right {
+      right: -20px;
+      top: 12%;
+
+      width: 180px;
+      height: 75%;
+
+      opacity: .82;
+
+      transform: scaleX(-1);
+    }
+
+    .floral-decoration svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .floral-decoration path {
+      fill: none;
+
+      stroke: #8d6260;
+
+      stroke-width: 1.4;
+
+      stroke-linecap: round;
+
+      stroke-linejoin: round;
+
+      opacity: .65;
+    }
+
+    .floral-decoration .leaf {
+      fill: #a97b79;
+
+      stroke: none;
+
+      opacity: .45;
+    }
+
+    .floral-decoration .flower {
+      fill: #d9aaa8;
+
+      stroke: #8d6260;
+
+      stroke-width: .8;
+
+      opacity: .85;
+    }
+
+    .floral-decoration .flower-center {
+      fill: #b98772;
+
+      stroke: none;
     }
 
 
     /* ==========================================
-       CONTENIDO DE ENTRADA
+       INVITACIÓN / PAPEL
        ========================================== */
 
     .welcome-content {
       position: relative;
 
-      z-index: 2;
+      z-index: 3;
 
-      width: min(620px, 100%);
+      width: min(600px, 88vw);
 
-      padding: 20px;
+      min-height: min(700px, 88vh);
+
+      padding:
+        95px
+        55px
+        80px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          105deg,
+          rgba(255,251,244,.97),
+          rgba(249,235,225,.96) 50%,
+          rgba(255,248,239,.97)
+        );
+
+      border:
+        1px solid rgba(132,91,82,.45);
+
+      box-shadow:
+        0 25px 70px rgba(82,50,48,.22),
+        0 5px 15px rgba(82,50,48,.12),
+        inset 0 0 45px rgba(139,91,78,.08);
+
+      transform:
+        rotate(-.5deg);
 
       animation:
         entradaPrincipal 1.5s ease both;
     }
 
-    .welcome-small {
-      font-size: 11px;
 
-      letter-spacing: 6px;
+    /* Bordes internos de la invitación */
+
+    .welcome-content::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 13px;
+
+      border:
+        1px solid rgba(141,98,96,.42);
+
+      pointer-events: none;
+    }
+
+    .welcome-content::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 21px;
+
+      border:
+        1px solid rgba(180,137,132,.25);
+
+      pointer-events: none;
+    }
+
+
+    /* ==========================================
+       CONTENIDO
+       ========================================== */
+
+    .welcome-small {
+      position: relative;
+
+      z-index: 4;
+
+      font-size: 10px;
+
+      letter-spacing: 5px;
 
       text-transform: uppercase;
 
-      color: #a66b82;
+      color: #8d6260;
 
-      margin-bottom: 28px;
+      margin-bottom: 25px;
 
       animation:
         aparecerEntrada 1s ease .3s both;
     }
 
     .welcome-content h2 {
+      position: relative;
+
+      z-index: 4;
+
       font-family: 'Cormorant Garamond', serif;
 
       font-size: clamp(
         70px,
         15vw,
-        120px
+        115px
       );
 
-      line-height: .72;
+      line-height: .7;
 
       font-weight: 500;
 
-      color: #8d526b;
+      color: #855a62;
 
-      margin-bottom: 18px;
+      margin-bottom: 20px;
 
       text-shadow:
-        0 8px 25px rgba(141,82,107,.12);
+        1px 2px 0 rgba(255,255,255,.7),
+        0 8px 20px rgba(95,59,59,.12);
 
       animation:
         nombreEntrada 1.3s ease .5s both;
     }
 
     .welcome-name {
+      position: relative;
+
+      z-index: 4;
+
       font-family: 'Cormorant Garamond', serif;
 
       font-size: clamp(
-        24px,
+        23px,
         5vw,
-        40px
+        36px
       );
 
-      color: #6d4a57;
+      color: #674b4e;
 
-      letter-spacing: 3px;
+      letter-spacing: 2px;
 
-      margin-bottom: 20px;
+      margin-bottom: 12px;
 
       animation:
         aparecerEntrada 1s ease .8s both;
@@ -390,21 +537,23 @@
     .welcome-xv {
       position: relative;
 
+      z-index: 4;
+
       font-family: 'Cormorant Garamond', serif;
 
       font-size: clamp(
         65px,
         12vw,
-        95px
+        90px
       );
 
-      color: #c493a7;
+      color: #a9787a;
 
       font-weight: 600;
 
       line-height: 1;
 
-      margin: 5px 0 20px;
+      margin: 8px 0 10px;
 
       animation:
         xvEntrada 1.4s ease 1s both;
@@ -418,17 +567,17 @@
 
       vertical-align: middle;
 
-      width: 55px;
+      width: 50px;
 
       height: 1px;
 
-      margin: 0 15px;
+      margin: 0 13px;
 
       background:
         linear-gradient(
           90deg,
           transparent,
-          #c79aaa
+          #a9787a
         );
     }
 
@@ -436,13 +585,17 @@
       background:
         linear-gradient(
           90deg,
-          #c79aaa,
+          #a9787a,
           transparent
         );
     }
 
     .welcome-divider {
-      width: 110px;
+      position: relative;
+
+      z-index: 4;
+
+      width: 100px;
 
       height: 1px;
 
@@ -450,26 +603,34 @@
         linear-gradient(
           90deg,
           transparent,
-          #c79aaa,
+          #a9787a,
           transparent
         );
 
-      margin: 5px auto 28px;
+      margin: 5px auto 25px;
 
       animation:
         aparecerEntrada 1s ease 1.2s both;
     }
 
     .welcome-phrase {
+      position: relative;
+
+      z-index: 4;
+
+      max-width: 400px;
+
       font-family: 'Cormorant Garamond', serif;
 
       font-size: 20px;
 
+      line-height: 1.45;
+
       font-style: italic;
 
-      color: #805365;
+      color: #76585a;
 
-      margin-bottom: 30px;
+      margin-bottom: 28px;
 
       animation:
         aparecerEntrada 1s ease 1.35s both;
@@ -477,30 +638,33 @@
 
 
     /* ==========================================
-       BOTÓN DE ENTRADA
+       BOTÓN
        ========================================== */
 
     .enter-button {
       position: relative;
 
-      border: 1px solid rgba(255,255,255,.65);
+      z-index: 4;
 
-      border-radius: 50px;
+      border:
+        1px solid rgba(125,82,83,.45);
 
-      padding: 17px 35px;
+      border-radius: 2px;
+
+      padding: 15px 28px;
 
       background:
         linear-gradient(
           135deg,
-          #b97691,
-          #d49caf
+          #9e6b70,
+          #b98384
         );
 
-      color: white;
+      color: #fffaf6;
 
       font-family: 'Montserrat', sans-serif;
 
-      font-size: 12px;
+      font-size: 10px;
 
       font-weight: 600;
 
@@ -511,7 +675,7 @@
       overflow: hidden;
 
       box-shadow:
-        0 12px 35px rgba(157,91,118,.25);
+        0 8px 22px rgba(108,70,70,.2);
 
       transition:
         transform .3s ease,
@@ -536,11 +700,12 @@
         linear-gradient(
           90deg,
           transparent,
-          rgba(255,255,255,.5),
+          rgba(255,255,255,.45),
           transparent
         );
 
-      transform: skewX(-20deg);
+      transform:
+        skewX(-20deg);
 
       animation:
         brilloBoton 3.5s ease-in-out infinite;
@@ -548,30 +713,126 @@
 
     .enter-button:hover {
       transform:
-        translateY(-4px)
-        scale(1.04);
+        translateY(-3px);
 
       box-shadow:
-        0 18px 45px rgba(157,91,118,.35);
+        0 13px 28px rgba(108,70,70,.3);
     }
 
     .enter-button:active {
       transform:
-        translateY(-1px)
+        translateY(0)
         scale(.98);
     }
 
     .welcome-hint {
-      margin-top: 18px;
+      position: relative;
 
-      font-size: 10px;
+      z-index: 4;
 
-      color: #a47787;
+      margin-top: 15px;
 
-      letter-spacing: 1.5px;
+      font-size: 9px;
+
+      color: #967577;
+
+      letter-spacing: 1.2px;
 
       animation:
         aparecerEntrada 1s ease 1.8s both;
+    }
+
+
+    /* ==========================================
+       PÁJARO VOLANDO
+       ========================================== */
+
+    .flying-bird {
+      position: absolute;
+
+      z-index: 2;
+
+      top: 8%;
+
+      left: -150px;
+
+      width: 90px;
+
+      height: 45px;
+
+      pointer-events: none;
+
+      animation:
+        volarPajaro 5.6s linear forwards;
+    }
+
+    .flying-bird svg {
+      width: 100%;
+      height: 100%;
+
+      overflow: visible;
+    }
+
+    .flying-bird path {
+      fill: none;
+
+      stroke: #6f5555;
+
+      stroke-width: 2;
+
+      stroke-linecap: round;
+
+      opacity: .65;
+    }
+
+    @keyframes volarPajaro {
+
+      0% {
+        left: -150px;
+
+        transform:
+          translateY(20px)
+          scale(.7);
+
+        opacity: 0;
+      }
+
+      8% {
+        opacity: .7;
+      }
+
+      25% {
+        transform:
+          translateY(-5px)
+          scale(.82);
+      }
+
+      50% {
+        transform:
+          translateY(18px)
+          scale(.9);
+      }
+
+      75% {
+        transform:
+          translateY(-3px)
+          scale(.82);
+      }
+
+      92% {
+        opacity: .7;
+      }
+
+      100% {
+        left: calc(100% + 150px);
+
+        transform:
+          translateY(10px)
+          scale(.7);
+
+        opacity: 0;
+      }
+
     }
 
 
@@ -1198,12 +1459,16 @@
 
       from {
         opacity: 0;
-        transform: scale(.94);
+        transform:
+          scale(.94)
+          rotate(-2deg);
       }
 
       to {
         opacity: 1;
-        transform: scale(1);
+        transform:
+          scale(1)
+          rotate(-.5deg);
       }
 
     }
@@ -1264,35 +1529,20 @@
 
     }
 
-    @keyframes welcomeGlow {
-
-      0%,
-      100% {
-        transform: scale(.95);
-
-        opacity: .7;
-      }
-
-      50% {
-        transform: scale(1.08);
-
-        opacity: 1;
-      }
-
-    }
-
     @keyframes marcoEntrada {
 
       from {
         opacity: 0;
 
-        transform: scale(.96);
+        transform:
+          scale(.96);
       }
 
       to {
         opacity: 1;
 
-        transform: scale(1);
+        transform:
+          scale(1);
       }
 
     }
@@ -1331,27 +1581,6 @@
 
     }
 
-    @keyframes aparecerDestello {
-
-      0%,
-      100% {
-        opacity: 0;
-
-        transform:
-          scale(.6)
-          rotate(0deg);
-      }
-
-      50% {
-        opacity: 1;
-
-        transform:
-          scale(1.2)
-          rotate(20deg);
-      }
-
-    }
-
     @keyframes brilloBoton {
 
       0% {
@@ -1372,69 +1601,110 @@
 
     @media (max-width: 700px) {
 
-      .welcome-screen::after {
-        inset: 14px;
+      .welcome-screen {
+        padding: 12px;
+      }
 
-        border-radius: 18px;
+      .welcome-screen::after {
+        inset: 9px;
       }
 
       .welcome-content {
-        padding: 15px;
+        width: 92vw;
+
+        min-height: 88vh;
+
+        padding:
+          75px
+          28px
+          65px;
+      }
+
+      .welcome-content::before {
+        inset: 9px;
+      }
+
+      .welcome-content::after {
+        inset: 16px;
+      }
+
+      .floral-top,
+      .floral-bottom {
+        width: 150vw;
+      }
+
+      .floral-left,
+      .floral-right {
+        width: 100px;
+
+        top: 15%;
       }
 
       .welcome-small {
-        font-size: 9px;
+        font-size: 8px;
 
-        letter-spacing: 4px;
+        letter-spacing: 3px;
 
-        margin-bottom: 24px;
+        margin-bottom: 22px;
       }
 
       .welcome-content h2 {
         font-size: clamp(
-          65px,
-          19vw,
-          95px
+          62px,
+          20vw,
+          90px
         );
-      }
-
-      .welcome-name {
-        font-size: 23px;
-
-        letter-spacing: 2px;
-
-        line-height: 1.15;
 
         margin-bottom: 15px;
       }
 
+      .welcome-name {
+        font-size: 21px;
+
+        letter-spacing: 1.5px;
+
+        line-height: 1.15;
+
+        margin-bottom: 10px;
+      }
+
       .welcome-xv {
-        font-size: 65px;
+        font-size: 63px;
       }
 
       .welcome-xv::before,
       .welcome-xv::after {
-        width: 30px;
+        width: 25px;
 
-        margin: 0 8px;
+        margin: 0 7px;
       }
 
       .welcome-phrase {
+        max-width: 270px;
+
         font-size: 18px;
 
-        margin-bottom: 25px;
+        margin-bottom: 23px;
       }
 
       .enter-button {
-        padding: 16px 25px;
+        padding: 15px 19px;
 
-        font-size: 10px;
+        font-size: 9px;
 
-        letter-spacing: 1.5px;
+        letter-spacing: 1.3px;
       }
 
       .welcome-hint {
-        font-size: 9px;
+        font-size: 8px;
+      }
+
+      .flying-bird {
+        width: 65px;
+
+        height: 35px;
+
+        top: 10%;
       }
 
       .hero {
@@ -1493,6 +1763,18 @@
 
 
     @media (max-width: 400px) {
+
+      .welcome-content {
+        padding:
+          65px
+          20px
+          55px;
+      }
+
+      .floral-left,
+      .floral-right {
+        opacity: .5;
+      }
 
       .gallery {
         columns: 1;
@@ -1575,26 +1857,479 @@
     </div>
 
 
-    <!-- DESTELLOS -->
+    <!-- ==========================================
+         FLORES SUPERIORES
+         ========================================== -->
 
-    <div class="sparkle s1">
-      ✦
+    <div class="floral-decoration floral-top">
+
+      <svg
+        viewBox="0 0 850 180"
+        preserveAspectRatio="none">
+
+        <path
+          d="M0 115 C100 55, 160 145, 255 82 C350 20, 420 115, 510 65 C610 10, 680 105, 850 35" />
+
+        <path
+          d="M0 145 C120 92, 160 165, 270 105 C365 55, 430 145, 535 88 C650 28, 720 115, 850 65" />
+
+        <path
+          d="M105 92 C90 65, 65 60, 48 72" />
+
+        <path
+          d="M170 115 C185 83, 210 72, 235 80" />
+
+        <path
+          d="M350 75 C335 45, 310 35, 285 48" />
+
+        <path
+          d="M455 92 C475 62, 505 53, 528 67" />
+
+        <path
+          d="M650 72 C630 43, 610 35, 590 48" />
+
+        <path
+          d="M755 80 C775 52, 800 48, 820 60" />
+
+
+        <ellipse
+          class="leaf"
+          cx="78"
+          cy="67"
+          rx="13"
+          ry="5"
+          transform="rotate(-28 78 67)" />
+
+        <ellipse
+          class="leaf"
+          cx="210"
+          cy="82"
+          rx="13"
+          ry="5"
+          transform="rotate(25 210 82)" />
+
+        <ellipse
+          class="leaf"
+          cx="320"
+          cy="39"
+          rx="13"
+          ry="5"
+          transform="rotate(-25 320 39)" />
+
+        <ellipse
+          class="leaf"
+          cx="495"
+          cy="55"
+          rx="13"
+          ry="5"
+          transform="rotate(25 495 55)" />
+
+        <ellipse
+          class="leaf"
+          cx="620"
+          cy="40"
+          rx="13"
+          ry="5"
+          transform="rotate(-25 620 40)" />
+
+        <ellipse
+          class="leaf"
+          cx="790"
+          cy="48"
+          rx="13"
+          ry="5"
+          transform="rotate(25 790 48)" />
+
+
+        <circle
+          class="flower"
+          cx="50"
+          cy="72"
+          r="11" />
+
+        <circle
+          class="flower-center"
+          cx="50"
+          cy="72"
+          r="4" />
+
+        <circle
+          class="flower"
+          cx="235"
+          cy="80"
+          r="10" />
+
+        <circle
+          class="flower-center"
+          cx="235"
+          cy="80"
+          r="3.5" />
+
+        <circle
+          class="flower"
+          cx="285"
+          cy="48"
+          r="12" />
+
+        <circle
+          class="flower-center"
+          cx="285"
+          cy="48"
+          r="4" />
+
+        <circle
+          class="flower"
+          cx="528"
+          cy="67"
+          r="10" />
+
+        <circle
+          class="flower-center"
+          cx="528"
+          cy="67"
+          r="3.5" />
+
+        <circle
+          class="flower"
+          cx="590"
+          cy="48"
+          r="12" />
+
+        <circle
+          class="flower-center"
+          cx="590"
+          cy="48"
+          r="4" />
+
+        <circle
+          class="flower"
+          cx="820"
+          cy="60"
+          r="10" />
+
+        <circle
+          class="flower-center"
+          cx="820"
+          cy="60"
+          r="3.5" />
+
+      </svg>
+
     </div>
 
-    <div class="sparkle s2">
-      ✧
+
+    <!-- ==========================================
+         FLORES LADO IZQUIERDO
+         ========================================== -->
+
+    <div class="floral-decoration floral-left">
+
+      <svg
+        viewBox="0 0 180 700"
+        preserveAspectRatio="none">
+
+        <path
+          d="M30 700 C15 580, 80 520, 48 420 C20 330, 95 270, 55 180 C35 135, 70 80, 105 35" />
+
+        <path
+          d="M48 420 C85 405, 110 380, 115 345" />
+
+        <path
+          d="M55 180 C95 175, 125 150, 130 120" />
+
+        <ellipse
+          class="leaf"
+          cx="67"
+          cy="520"
+          rx="18"
+          ry="7"
+          transform="rotate(-35 67 520)" />
+
+        <ellipse
+          class="leaf"
+          cx="61"
+          cy="450"
+          rx="17"
+          ry="7"
+          transform="rotate(25 61 450)" />
+
+        <ellipse
+          class="leaf"
+          cx="94"
+          cy="390"
+          rx="17"
+          ry="7"
+          transform="rotate(-30 94 390)" />
+
+        <ellipse
+          class="leaf"
+          cx="47"
+          cy="315"
+          rx="17"
+          ry="7"
+          transform="rotate(28 47 315)" />
+
+        <ellipse
+          class="leaf"
+          cx="87"
+          cy="230"
+          rx="17"
+          ry="7"
+          transform="rotate(-30 87 230)" />
+
+        <ellipse
+          class="leaf"
+          cx="60"
+          cy="145"
+          rx="17"
+          ry="7"
+          transform="rotate(30 60 145)" />
+
+        <circle
+          class="flower"
+          cx="115"
+          cy="345"
+          r="13" />
+
+        <circle
+          class="flower-center"
+          cx="115"
+          cy="345"
+          r="4" />
+
+        <circle
+          class="flower"
+          cx="130"
+          cy="120"
+          r="13" />
+
+        <circle
+          class="flower-center"
+          cx="130"
+          cy="120"
+          r="4" />
+
+      </svg>
+
     </div>
 
-    <div class="sparkle s3">
-      ✦
+
+    <!-- ==========================================
+         FLORES LADO DERECHO
+         ========================================== -->
+
+    <div class="floral-decoration floral-right">
+
+      <svg
+        viewBox="0 0 180 700"
+        preserveAspectRatio="none">
+
+        <path
+          d="M30 700 C15 580, 80 520, 48 420 C20 330, 95 270, 55 180 C35 135, 70 80, 105 35" />
+
+        <path
+          d="M48 420 C85 405, 110 380, 115 345" />
+
+        <path
+          d="M55 180 C95 175, 125 150, 130 120" />
+
+        <ellipse
+          class="leaf"
+          cx="67"
+          cy="520"
+          rx="18"
+          ry="7"
+          transform="rotate(-35 67 520)" />
+
+        <ellipse
+          class="leaf"
+          cx="61"
+          cy="450"
+          rx="17"
+          ry="7"
+          transform="rotate(25 61 450)" />
+
+        <ellipse
+          class="leaf"
+          cx="94"
+          cy="390"
+          rx="17"
+          ry="7"
+          transform="rotate(-30 94 390)" />
+
+        <ellipse
+          class="leaf"
+          cx="47"
+          cy="315"
+          rx="17"
+          ry="7"
+          transform="rotate(28 47 315)" />
+
+        <ellipse
+          class="leaf"
+          cx="87"
+          cy="230"
+          rx="17"
+          ry="7"
+          transform="rotate(-30 87 230)" />
+
+        <ellipse
+          class="leaf"
+          cx="60"
+          cy="145"
+          rx="17"
+          ry="7"
+          transform="rotate(30 60 145)" />
+
+        <circle
+          class="flower"
+          cx="115"
+          cy="345"
+          r="13" />
+
+        <circle
+          class="flower-center"
+          cx="115"
+          cy="345"
+          r="4" />
+
+        <circle
+          class="flower"
+          cx="130"
+          cy="120"
+          r="13" />
+
+        <circle
+          class="flower-center"
+          cx="130"
+          cy="120"
+          r="4" />
+
+      </svg>
+
     </div>
 
-    <div class="sparkle s4">
-      ✧
+
+    <!-- ==========================================
+         FLORES INFERIORES
+         ========================================== -->
+
+    <div class="floral-decoration floral-bottom">
+
+      <svg
+        viewBox="0 0 850 180"
+        preserveAspectRatio="none">
+
+        <path
+          d="M0 115 C100 55, 160 145, 255 82 C350 20, 420 115, 510 65 C610 10, 680 105, 850 35" />
+
+        <path
+          d="M0 145 C120 92, 160 165, 270 105 C365 55, 430 145, 535 88 C650 28, 720 115, 850 65" />
+
+        <ellipse
+          class="leaf"
+          cx="78"
+          cy="67"
+          rx="13"
+          ry="5"
+          transform="rotate(-28 78 67)" />
+
+        <ellipse
+          class="leaf"
+          cx="210"
+          cy="82"
+          rx="13"
+          ry="5"
+          transform="rotate(25 210 82)" />
+
+        <ellipse
+          class="leaf"
+          cx="320"
+          cy="39"
+          rx="13"
+          ry="5"
+          transform="rotate(-25 320 39)" />
+
+        <ellipse
+          class="leaf"
+          cx="495"
+          cy="55"
+          rx="13"
+          ry="5"
+          transform="rotate(25 495 55)" />
+
+        <ellipse
+          class="leaf"
+          cx="620"
+          cy="40"
+          rx="13"
+          ry="5"
+          transform="rotate(-25 620 40)" />
+
+        <ellipse
+          class="leaf"
+          cx="790"
+          cy="48"
+          rx="13"
+          ry="5"
+          transform="rotate(25 790 48)" />
+
+        <circle
+          class="flower"
+          cx="50"
+          cy="72"
+          r="11" />
+
+        <circle
+          class="flower-center"
+          cx="50"
+          cy="72"
+          r="4" />
+
+        <circle
+          class="flower"
+          cx="285"
+          cy="48"
+          r="12" />
+
+        <circle
+          class="flower-center"
+          cx="285"
+          cy="48"
+          r="4" />
+
+        <circle
+          class="flower"
+          cx="590"
+          cy="48"
+          r="12" />
+
+        <circle
+          class="flower-center"
+          cx="590"
+          cy="48"
+          r="4" />
+
+        <circle
+          class="flower"
+          cx="820"
+          cy="60"
+          r="10" />
+
+        <circle
+          class="flower-center"
+          cx="820"
+          cy="60"
+          r="3.5" />
+
+      </svg>
+
     </div>
 
 
-    <!-- CONTENIDO -->
+    <!-- ==========================================
+         CONTENIDO DE LA INVITACIÓN
+         ========================================== -->
 
     <div class="welcome-content">
 
@@ -2101,30 +2836,16 @@
       async () => {
 
 
-        /*
-          GUARDAMOS LA ENTRADA ANTES
-          DE HACER CUALQUIER OTRA COSA.
-        */
-
         localStorage.setItem(
           "danna15_entrada",
           "true"
         );
 
 
-        /*
-          DESAPARECE LA INVITACIÓN.
-        */
-
         welcomeScreen.classList.add(
           "hidden"
         );
 
-
-        /*
-          LA MÚSICA COMIENZA CON
-          EL MISMO CLIC DEL USUARIO.
-        */
 
         try {
 
@@ -2156,6 +2877,80 @@
         }
 
       }
+    );
+
+
+    /* ============================================
+       🕊️ PÁJARO DECORATIVO
+       ============================================ */
+
+    function crearPajaro() {
+
+      if (
+        welcomeScreen.classList.contains(
+          "hidden"
+        )
+      ) {
+
+        return;
+
+      }
+
+
+      const bird =
+        document.createElement(
+          "div"
+        );
+
+
+      bird.className =
+        "flying-bird";
+
+
+      bird.innerHTML = `
+
+        <svg viewBox="0 0 120 60">
+
+          <path
+            d="M8 34
+               C25 18, 38 18, 55 30
+               C72 18, 88 18, 112 34" />
+
+          <path
+            d="M55 30
+               C52 20, 47 15, 40 12" />
+
+        </svg>
+
+      `;
+
+
+      welcomeScreen.appendChild(
+        bird
+      );
+
+
+      setTimeout(
+        () => {
+
+          bird.remove();
+
+        },
+        5600
+      );
+
+    }
+
+
+    setTimeout(
+      crearPajaro,
+      1800
+    );
+
+
+    setInterval(
+      crearPajaro,
+      3000
     );
 
 
