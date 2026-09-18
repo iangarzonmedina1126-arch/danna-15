@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,9 +9,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.gofogleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap"
+    rel="stylesheet">
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -155,7 +160,8 @@
       gap: 20px;
     }
 
-    #favoritesGallery {
+    #favoritesGallery,
+    #birthdayGallery {
       margin-bottom: 35px;
     }
 
@@ -177,11 +183,14 @@
       padding: 12px;
       display: flex;
       gap: 8px;
+      flex-wrap: wrap;
     }
 
     .favorite-button,
+    .birthday-button,
     .delete-button {
       flex: 1;
+      min-width: 100px;
       padding: 11px 5px;
       border-radius: 10px;
       font-size: 13px;
@@ -196,6 +205,16 @@
     .favorite-button.active {
       background: #e7c85a;
       color: #5f4c00;
+    }
+
+    .birthday-button {
+      background: #f8e2eb;
+      color: #9a5d73;
+    }
+
+    .birthday-button.active {
+      background: #d99ab2;
+      color: white;
     }
 
     .delete-button {
@@ -246,12 +265,15 @@
       }
 
     }
+
   </style>
+
 </head>
 
 <body>
 
   <!-- LOGIN -->
+
   <section class="login-screen" id="loginScreen">
 
     <div class="login-box">
@@ -294,6 +316,7 @@
 
 
   <!-- PANEL -->
+
   <main
     class="admin-panel"
     id="adminPanel"
@@ -314,6 +337,8 @@
 
     </div>
 
+
+    <!-- ESTADÍSTICAS -->
 
     <div class="stats">
 
@@ -342,6 +367,19 @@
 
       </div>
 
+
+      <div class="stat">
+
+        <span>
+          Cumpleañera
+        </span>
+
+        <strong id="birthdayPhotos">
+          0
+        </strong>
+
+      </div>
+
     </div>
 
 
@@ -354,6 +392,7 @@
 
 
     <!-- FAVORITAS -->
+
     <h2
       class="section-title"
       id="favoritesTitle"
@@ -367,7 +406,23 @@
     ></div>
 
 
+    <!-- CUMPLEAÑERA -->
+
+    <h2
+      class="section-title"
+      id="birthdayTitle"
+    >
+      👑 Fotos de la cumpleañera
+    </h2>
+
+    <div
+      class="gallery"
+      id="birthdayGallery"
+    ></div>
+
+
     <!-- TODAS -->
+
     <h2
       class="section-title"
       id="allPhotosTitle"
@@ -413,6 +468,9 @@
   const favoritesGallery =
     document.getElementById("favoritesGallery");
 
+  const birthdayGallery =
+    document.getElementById("birthdayGallery");
+
   const loading =
     document.getElementById("loading");
 
@@ -421,6 +479,9 @@
 
   const favoritePhotos =
     document.getElementById("favoritePhotos");
+
+  const birthdayPhotos =
+    document.getElementById("birthdayPhotos");
 
 
   let session = null;
@@ -550,6 +611,7 @@
 
             headers: {
               "apikey": SUPABASE_KEY,
+
               "Authorization":
                 `Bearer ${session.access_token}`
             }
@@ -591,15 +653,19 @@
 
     favoritesGallery.innerHTML = "";
 
+    birthdayGallery.innerHTML = "";
+
 
     try {
 
       const response =
         await fetch(
-          `${SUPABASE_URL}/rest/v1/fotos?select=id,url,public_id,favorito,created_at&order=created_at.desc`,
+          `${SUPABASE_URL}/rest/v1/fotos?select=id,url,public_id,favorito,cumpleanera,created_at&order=created_at.desc`,
           {
             headers: {
-              "apikey": SUPABASE_KEY,
+              "apikey":
+                SUPABASE_KEY,
+
               "Authorization":
                 `Bearer ${session.access_token}`
             }
@@ -656,16 +722,19 @@
 
     favoritesGallery.innerHTML = "";
 
-
-    const favoritas =
-      photos.filter(
-        photo => photo.favorito === true
-      );
+    birthdayGallery.innerHTML = "";
 
 
     // ==========================
     // FAVORITAS
     // ==========================
+
+    const favoritas =
+      photos.filter(
+        photo =>
+          photo.favorito === true
+      );
+
 
     if (favoritas.length === 0) {
 
@@ -691,14 +760,42 @@
 
 
     // ==========================
-    // TODAS
+    // CUMPLEAÑERA
     // ==========================
 
-    const normales =
+    const cumpleanera =
       photos.filter(
-        photo => photo.favorito !== true
+        photo =>
+          photo.cumpleanera === true
       );
 
+
+    if (cumpleanera.length === 0) {
+
+      birthdayGallery.innerHTML =
+        `<div class="empty">
+          Todavía no has seleccionado fotos de la cumpleañera 👑
+        </div>`;
+
+    } else {
+
+      cumpleanera.forEach(
+        photo => {
+
+          crearTarjetaFoto(
+            photo,
+            birthdayGallery
+          );
+
+        }
+      );
+
+    }
+
+
+    // ==========================
+    // TODAS LAS FOTOS
+    // ==========================
 
     if (photos.length === 0) {
 
@@ -712,19 +809,7 @@
     }
 
 
-    if (normales.length === 0) {
-
-      gallery.innerHTML =
-        `<div class="empty">
-          Todas las fotos han sido seleccionadas como favoritas ⭐
-        </div>`;
-
-      return;
-
-    }
-
-
-    normales.forEach(
+    photos.forEach(
       photo => {
 
         crearTarjetaFoto(
@@ -774,6 +859,10 @@
       "photo-actions";
 
 
+    // ==========================
+    // FAVORITA
+    // ==========================
+
     const favoriteButton =
       document.createElement("button");
 
@@ -805,6 +894,45 @@
     );
 
 
+    // ==========================
+    // CUMPLEAÑERA
+    // ==========================
+
+    const birthdayButton =
+      document.createElement("button");
+
+    birthdayButton.className =
+      "birthday-button" +
+      (
+        photo.cumpleanera
+          ? " active"
+          : ""
+      );
+
+
+    birthdayButton.textContent =
+      photo.cumpleanera
+        ? "👑 Cumpleañera"
+        : "♕ Cumpleañera";
+
+
+    birthdayButton.addEventListener(
+      "click",
+      () => {
+
+        cambiarCumpleanera(
+          photo.id,
+          !photo.cumpleanera
+        );
+
+      }
+    );
+
+
+    // ==========================
+    // ELIMINAR
+    // ==========================
+
     const deleteButton =
       document.createElement("button");
 
@@ -827,6 +955,10 @@
 
     actions.appendChild(
       favoriteButton
+    );
+
+    actions.appendChild(
+      birthdayButton
     );
 
     actions.appendChild(
@@ -901,7 +1033,8 @@
 
       const photo =
         photos.find(
-          item => item.id === id
+          item =>
+            item.id === id
         );
 
 
@@ -933,6 +1066,89 @@
 
 
   // ==========================
+  // CUMPLEAÑERA
+  // ==========================
+
+  async function cambiarCumpleanera(
+    id,
+    cumpleanera
+  ) {
+
+    try {
+
+      const response =
+        await fetch(
+          `${SUPABASE_URL}/rest/v1/fotos?id=eq.${id}`,
+          {
+            method: "PATCH",
+
+            headers: {
+              "Content-Type":
+                "application/json",
+
+              "apikey":
+                SUPABASE_KEY,
+
+              "Authorization":
+                `Bearer ${session.access_token}`,
+
+              "Prefer":
+                "return=minimal"
+            },
+
+            body: JSON.stringify({
+              cumpleanera:
+                cumpleanera
+            })
+
+          }
+        );
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          "No se pudo cambiar la categoría."
+        );
+
+      }
+
+
+      const photo =
+        photos.find(
+          item =>
+            item.id === id
+        );
+
+
+      if (photo) {
+
+        photo.cumpleanera =
+          cumpleanera;
+
+      }
+
+
+      actualizarContadores();
+
+      mostrarFotos();
+
+
+    } catch (error) {
+
+      console.error(error);
+
+
+      alert(
+        "No se pudo cambiar la categoría de la cumpleañera."
+      );
+
+    }
+
+  }
+
+
+  // ==========================
   // ELIMINAR FOTO
   // ==========================
 
@@ -948,7 +1164,8 @@
       );
 
 
-    if (!confirmar) return;
+    if (!confirmar)
+      return;
 
 
     try {
@@ -971,11 +1188,13 @@
             },
 
             body: JSON.stringify({
+
               id:
                 photo.id,
 
               public_id:
                 photo.public_id
+
             })
 
           }
@@ -1043,6 +1262,13 @@
       photos.filter(
         photo =>
           photo.favorito === true
+      ).length;
+
+
+    birthdayPhotos.textContent =
+      photos.filter(
+        photo =>
+          photo.cumpleanera === true
       ).length;
 
   }
