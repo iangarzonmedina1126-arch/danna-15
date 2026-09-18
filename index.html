@@ -103,29 +103,19 @@
 
       padding: 30px;
 
+      overflow: hidden;
+
       background:
         radial-gradient(
-          circle at 20% 20%,
-          rgba(255,255,255,.9),
-          transparent 30%
-        ),
-
-        radial-gradient(
-          circle at 80% 20%,
-          rgba(255,220,232,.7),
-          transparent 30%
-        ),
-
-        linear-gradient(
-          135deg,
-          #fff7fa,
-          #fce9f1 50%,
-          #fffaf7
+          circle at 50% 45%,
+          rgba(255,255,255,.98),
+          rgba(255,241,247,.94) 35%,
+          rgba(248,222,233,.98) 100%
         );
 
       transition:
-        opacity 1s ease,
-        visibility 1s ease;
+        opacity 1.2s ease,
+        visibility 1.2s ease;
     }
 
     .welcome-screen.hidden {
@@ -134,89 +124,366 @@
       pointer-events: none;
     }
 
+    /* Brillo central */
+
+    .welcome-screen::before {
+      content: "";
+
+      position: absolute;
+
+      width: 600px;
+      height: 600px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,.95) 0%,
+          rgba(255,220,233,.35) 35%,
+          transparent 70%
+        );
+
+      animation:
+        welcomeGlow 5s ease-in-out infinite;
+
+      pointer-events: none;
+    }
+
+    /* Marco decorativo */
+
+    .welcome-screen::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 22px;
+
+      border:
+        1px solid rgba(185,118,145,.22);
+
+      border-radius: 22px;
+
+      pointer-events: none;
+
+      animation:
+        marcoEntrada 2s ease both;
+    }
+
+
+    /* ==========================================
+       PARTÍCULAS
+       ========================================== */
+
+    .welcome-particles {
+      position: absolute;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+
+      width: 5px;
+      height: 5px;
+
+      border-radius: 50%;
+
+      background: rgba(190,126,151,.45);
+
+      box-shadow:
+        0 0 10px rgba(190,126,151,.35);
+
+      animation:
+        flotarParticula linear infinite;
+    }
+
+    .particle:nth-child(1) {
+      left: 10%;
+      bottom: -10px;
+      animation-duration: 7s;
+      animation-delay: 0s;
+    }
+
+    .particle:nth-child(2) {
+      left: 20%;
+      bottom: -10px;
+      width: 3px;
+      height: 3px;
+      animation-duration: 9s;
+      animation-delay: 1s;
+    }
+
+    .particle:nth-child(3) {
+      left: 32%;
+      bottom: -10px;
+      animation-duration: 8s;
+      animation-delay: 2s;
+    }
+
+    .particle:nth-child(4) {
+      left: 45%;
+      bottom: -10px;
+      width: 4px;
+      height: 4px;
+      animation-duration: 10s;
+      animation-delay: .5s;
+    }
+
+    .particle:nth-child(5) {
+      left: 58%;
+      bottom: -10px;
+      animation-duration: 8s;
+      animation-delay: 3s;
+    }
+
+    .particle:nth-child(6) {
+      left: 70%;
+      bottom: -10px;
+      width: 3px;
+      height: 3px;
+      animation-duration: 9s;
+      animation-delay: 1.5s;
+    }
+
+    .particle:nth-child(7) {
+      left: 82%;
+      bottom: -10px;
+      animation-duration: 7s;
+      animation-delay: 2.5s;
+    }
+
+    .particle:nth-child(8) {
+      left: 92%;
+      bottom: -10px;
+      width: 4px;
+      height: 4px;
+      animation-duration: 11s;
+      animation-delay: 4s;
+    }
+
+
+    /* ==========================================
+       DESTELLOS
+       ========================================== */
+
+    .sparkle {
+      position: absolute;
+
+      color: #c493a7;
+
+      font-size: 18px;
+
+      opacity: 0;
+
+      animation:
+        aparecerDestello 3s ease-in-out infinite;
+    }
+
+    .sparkle.s1 {
+      top: 18%;
+      left: 20%;
+      animation-delay: .5s;
+    }
+
+    .sparkle.s2 {
+      top: 27%;
+      right: 18%;
+      font-size: 14px;
+      animation-delay: 1.4s;
+    }
+
+    .sparkle.s3 {
+      bottom: 23%;
+      left: 17%;
+      font-size: 13px;
+      animation-delay: 2.2s;
+    }
+
+    .sparkle.s4 {
+      bottom: 18%;
+      right: 20%;
+      font-size: 20px;
+      animation-delay: 1s;
+    }
+
+
+    /* ==========================================
+       CONTENIDO DE ENTRADA
+       ========================================== */
+
     .welcome-content {
-      max-width: 600px;
-      animation: aparecer 1.2s ease;
+      position: relative;
+
+      z-index: 2;
+
+      width: min(620px, 100%);
+
+      padding: 20px;
+
+      animation:
+        entradaPrincipal 1.5s ease both;
     }
 
     .welcome-small {
       font-size: 11px;
-      letter-spacing: 5px;
+
+      letter-spacing: 6px;
+
       text-transform: uppercase;
+
       color: #a66b82;
-      margin-bottom: 25px;
-      animation: aparecer 1s ease .2s both;
+
+      margin-bottom: 28px;
+
+      animation:
+        aparecerEntrada 1s ease .3s both;
     }
 
     .welcome-content h2 {
       font-family: 'Cormorant Garamond', serif;
 
       font-size: clamp(
-        55px,
-        12vw,
-        100px
+        70px,
+        15vw,
+        120px
       );
 
-      line-height: .8;
+      line-height: .72;
 
       font-weight: 500;
 
       color: #8d526b;
 
-      margin-bottom: 10px;
+      margin-bottom: 18px;
+
+      text-shadow:
+        0 8px 25px rgba(141,82,107,.12);
 
       animation:
-        aparecer 1s ease .4s both;
+        nombreEntrada 1.3s ease .5s both;
     }
 
     .welcome-name {
       font-family: 'Cormorant Garamond', serif;
 
       font-size: clamp(
-        25px,
-        6vw,
-        45px
+        24px,
+        5vw,
+        40px
       );
 
       color: #6d4a57;
 
       letter-spacing: 3px;
 
-      margin-bottom: 25px;
+      margin-bottom: 20px;
 
       animation:
-        aparecer 1s ease .6s both;
+        aparecerEntrada 1s ease .8s both;
     }
 
     .welcome-xv {
+      position: relative;
+
       font-family: 'Cormorant Garamond', serif;
 
-      font-size: 70px;
+      font-size: clamp(
+        65px,
+        12vw,
+        95px
+      );
 
       color: #c493a7;
 
       font-weight: 600;
 
-      margin-bottom: 25px;
+      line-height: 1;
+
+      margin: 5px 0 20px;
 
       animation:
-        aparecer 1s ease .8s both;
+        xvEntrada 1.4s ease 1s both;
+    }
+
+    .welcome-xv::before,
+    .welcome-xv::after {
+      content: "";
+
+      display: inline-block;
+
+      vertical-align: middle;
+
+      width: 55px;
+
+      height: 1px;
+
+      margin: 0 15px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #c79aaa
+        );
+    }
+
+    .welcome-xv::after {
+      background:
+        linear-gradient(
+          90deg,
+          #c79aaa,
+          transparent
+        );
     }
 
     .welcome-divider {
-      width: 80px;
+      width: 110px;
+
       height: 1px;
 
-      background: #c79aaa;
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #c79aaa,
+          transparent
+        );
 
-      margin: 0 auto 30px;
+      margin: 5px auto 28px;
 
       animation:
-        aparecer 1s ease 1s both;
+        aparecerEntrada 1s ease 1.2s both;
     }
 
+    .welcome-phrase {
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 20px;
+
+      font-style: italic;
+
+      color: #805365;
+
+      margin-bottom: 30px;
+
+      animation:
+        aparecerEntrada 1s ease 1.35s both;
+    }
+
+
+    /* ==========================================
+       BOTÓN DE ENTRADA
+       ========================================== */
+
     .enter-button {
-      border: none;
+      position: relative;
+
+      border: 1px solid rgba(255,255,255,.65);
 
       border-radius: 50px;
 
@@ -233,7 +500,7 @@
 
       font-family: 'Montserrat', sans-serif;
 
-      font-size: 13px;
+      font-size: 12px;
 
       font-weight: 600;
 
@@ -241,35 +508,70 @@
 
       cursor: pointer;
 
-      box-shadow:
-        0 10px 30px rgba(157, 91, 118, .25);
+      overflow: hidden;
 
-      transition: .3s ease;
+      box-shadow:
+        0 12px 35px rgba(157,91,118,.25);
+
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease;
 
       animation:
-        aparecer 1s ease 1.2s both;
+        aparecerEntrada 1s ease 1.55s both;
+    }
+
+    .enter-button::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: -100%;
+
+      width: 60%;
+      height: 100%;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.5),
+          transparent
+        );
+
+      transform: skewX(-20deg);
+
+      animation:
+        brilloBoton 3.5s ease-in-out infinite;
     }
 
     .enter-button:hover {
       transform:
-        translateY(-3px)
-        scale(1.03);
+        translateY(-4px)
+        scale(1.04);
 
       box-shadow:
-        0 15px 35px rgba(157, 91, 118, .35);
+        0 18px 45px rgba(157,91,118,.35);
+    }
+
+    .enter-button:active {
+      transform:
+        translateY(-1px)
+        scale(.98);
     }
 
     .welcome-hint {
       margin-top: 18px;
 
-      font-size: 11px;
+      font-size: 10px;
 
       color: #a47787;
 
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
 
       animation:
-        aparecer 1s ease 1.4s both;
+        aparecerEntrada 1s ease 1.8s both;
     }
 
 
@@ -347,8 +649,6 @@
 
       color: #8d526b;
     }
-
-    /* BOTÓN SORPRÉNDEME EN LA NAVEGACIÓN */
 
     .nav-random-button {
       flex-shrink: 0;
@@ -894,12 +1194,248 @@
 
     }
 
+    @keyframes entradaPrincipal {
+
+      from {
+        opacity: 0;
+        transform: scale(.94);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+    }
+
+    @keyframes aparecerEntrada {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
+
+    }
+
+    @keyframes nombreEntrada {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(25px)
+          scale(.96);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0)
+          scale(1);
+      }
+
+    }
+
+    @keyframes xvEntrada {
+
+      from {
+        opacity: 0;
+
+        transform:
+          scale(.7);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          scale(1);
+      }
+
+    }
+
+    @keyframes welcomeGlow {
+
+      0%,
+      100% {
+        transform: scale(.95);
+
+        opacity: .7;
+      }
+
+      50% {
+        transform: scale(1.08);
+
+        opacity: 1;
+      }
+
+    }
+
+    @keyframes marcoEntrada {
+
+      from {
+        opacity: 0;
+
+        transform: scale(.96);
+      }
+
+      to {
+        opacity: 1;
+
+        transform: scale(1);
+      }
+
+    }
+
+    @keyframes flotarParticula {
+
+      0% {
+        transform:
+          translateY(0)
+          translateX(0);
+
+        opacity: 0;
+      }
+
+      10% {
+        opacity: .8;
+      }
+
+      50% {
+        transform:
+          translateY(-50vh)
+          translateX(25px);
+      }
+
+      90% {
+        opacity: .5;
+      }
+
+      100% {
+        transform:
+          translateY(-110vh)
+          translateX(-20px);
+
+        opacity: 0;
+      }
+
+    }
+
+    @keyframes aparecerDestello {
+
+      0%,
+      100% {
+        opacity: 0;
+
+        transform:
+          scale(.6)
+          rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+
+        transform:
+          scale(1.2)
+          rotate(20deg);
+      }
+
+    }
+
+    @keyframes brilloBoton {
+
+      0% {
+        left: -100%;
+      }
+
+      35%,
+      100% {
+        left: 150%;
+      }
+
+    }
+
 
     /* ==========================================
        CELULAR
        ========================================== */
 
     @media (max-width: 700px) {
+
+      .welcome-screen::after {
+        inset: 14px;
+
+        border-radius: 18px;
+      }
+
+      .welcome-content {
+        padding: 15px;
+      }
+
+      .welcome-small {
+        font-size: 9px;
+
+        letter-spacing: 4px;
+
+        margin-bottom: 24px;
+      }
+
+      .welcome-content h2 {
+        font-size: clamp(
+          65px,
+          19vw,
+          95px
+        );
+      }
+
+      .welcome-name {
+        font-size: 23px;
+
+        letter-spacing: 2px;
+
+        line-height: 1.15;
+
+        margin-bottom: 15px;
+      }
+
+      .welcome-xv {
+        font-size: 65px;
+      }
+
+      .welcome-xv::before,
+      .welcome-xv::after {
+        width: 30px;
+
+        margin: 0 8px;
+      }
+
+      .welcome-phrase {
+        font-size: 18px;
+
+        margin-bottom: 25px;
+      }
+
+      .enter-button {
+        padding: 16px 25px;
+
+        font-size: 10px;
+
+        letter-spacing: 1.5px;
+      }
+
+      .welcome-hint {
+        font-size: 9px;
+      }
 
       .hero {
         min-height: 90vh;
@@ -978,6 +1514,36 @@
 
   </style>
 
+
+  <!-- ==========================================
+       EVITAR QUE LA ENTRADA APAREZCA OTRA VEZ
+       ========================================== -->
+
+  <script>
+
+    if (
+      localStorage.getItem(
+        "danna15_entrada"
+      ) === "true"
+    ) {
+
+      document.documentElement.classList.add(
+        "entrada-realizada"
+      );
+
+    }
+
+  </script>
+
+
+  <style>
+
+    .entrada-realizada .welcome-screen {
+      display: none !important;
+    }
+
+  </style>
+
 </head>
 
 
@@ -992,37 +1558,89 @@
     class="welcome-screen"
     id="welcomeScreen">
 
+
+    <!-- PARTÍCULAS -->
+
+    <div class="welcome-particles">
+
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+
+    </div>
+
+
+    <!-- DESTELLOS -->
+
+    <div class="sparkle s1">
+      ✦
+    </div>
+
+    <div class="sparkle s2">
+      ✧
+    </div>
+
+    <div class="sparkle s3">
+      ✦
+    </div>
+
+    <div class="sparkle s4">
+      ✧
+    </div>
+
+
+    <!-- CONTENIDO -->
+
     <div class="welcome-content">
+
 
       <div class="welcome-small">
         Una noche para recordar
       </div>
 
+
       <h2>
         Danna
       </h2>
+
 
       <div class="welcome-name">
         Valentina Garzón Medina
       </div>
 
+
       <div class="welcome-xv">
         XV
       </div>
 
+
       <div class="welcome-divider"></div>
+
+
+      <div class="welcome-phrase">
+        Una celebración hecha de sueños,
+        momentos y recuerdos.
+      </div>
+
 
       <button
         class="enter-button"
         id="enterButton">
 
-        ✨ TOCAR PARA ENTRAR
+        ✨ ENTRAR A LA CELEBRACIÓN
 
       </button>
 
+
       <div class="welcome-hint">
-        🎵 La música comenzará al entrar
+        🎵 Pulsa una vez para comenzar
       </div>
+
 
     </div>
 
@@ -1462,12 +2080,51 @@
 
 
     /* ============================================
-       ENTRAR Y COMENZAR MÚSICA
+       ENTRADA
        ============================================ */
+
+    if (
+      localStorage.getItem(
+        "danna15_entrada"
+      ) === "true"
+    ) {
+
+      welcomeScreen.classList.add(
+        "hidden"
+      );
+
+    }
+
 
     enterButton.addEventListener(
       "click",
       async () => {
+
+
+        /*
+          GUARDAMOS LA ENTRADA ANTES
+          DE HACER CUALQUIER OTRA COSA.
+        */
+
+        localStorage.setItem(
+          "danna15_entrada",
+          "true"
+        );
+
+
+        /*
+          DESAPARECE LA INVITACIÓN.
+        */
+
+        welcomeScreen.classList.add(
+          "hidden"
+        );
+
+
+        /*
+          LA MÚSICA COMIENZA CON
+          EL MISMO CLIC DEL USUARIO.
+        */
 
         try {
 
@@ -1497,11 +2154,6 @@
           );
 
         }
-
-
-        welcomeScreen.classList.add(
-          "hidden"
-        );
 
       }
     );
