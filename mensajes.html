@@ -1,1 +1,1082 @@
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>Mensajes para Danna | Mis 15 Años</title>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      min-height: 100vh;
+
+      font-family: 'Montserrat', sans-serif;
+
+      color: #4d3942;
+
+      background:
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(255,255,255,.8),
+          transparent 25%
+        ),
+
+        radial-gradient(
+          circle at 80% 10%,
+          rgba(255,220,232,.7),
+          transparent 25%
+        ),
+
+        linear-gradient(
+          135deg,
+          #fff7fa,
+          #fce9f1 50%,
+          #fffaf7
+        );
+
+      overflow-x: hidden;
+    }
+
+
+    body::before {
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      opacity: .35;
+
+      background-image:
+        radial-gradient(
+          #d6a7b9 1px,
+          transparent 1px
+        );
+
+      background-size: 45px 45px;
+    }
+
+
+    /* ==========================================
+       NAVEGACIÓN
+       ========================================== */
+
+    .navigation {
+      position: sticky;
+
+      top: 0;
+
+      z-index: 900;
+
+      width: 100%;
+
+      padding: 12px 15px;
+
+      background:
+        rgba(255, 247, 250, .92);
+
+      backdrop-filter: blur(12px);
+
+      border-bottom:
+        1px solid rgba(199, 154, 170, .25);
+
+      box-shadow:
+        0 5px 20px rgba(100, 55, 70, .08);
+    }
+
+
+    .navigation-container {
+      max-width: 1100px;
+
+      margin: auto;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 8px;
+
+      overflow-x: auto;
+
+      scrollbar-width: none;
+    }
+
+
+    .navigation-container::-webkit-scrollbar {
+      display: none;
+    }
+
+
+    .navigation a {
+      flex-shrink: 0;
+
+      text-decoration: none;
+
+      color: #805365;
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: .5px;
+
+      padding: 9px 14px;
+
+      border-radius: 30px;
+
+      transition: .3s ease;
+    }
+
+
+    .navigation a:hover {
+      background: #f5dce6;
+
+      color: #8d526b;
+    }
+
+
+    /* ==========================================
+       CONTENIDO
+       ========================================== */
+
+    .messages-page {
+      max-width: 900px;
+
+      margin: auto;
+
+      padding: 100px 20px;
+    }
+
+
+    .page-title {
+      text-align: center;
+
+      margin-bottom: 55px;
+    }
+
+
+    .page-title small {
+      display: block;
+
+      font-size: 11px;
+
+      letter-spacing: 4px;
+
+      color: #a66b82;
+
+      text-transform: uppercase;
+
+      margin-bottom: 12px;
+    }
+
+
+    .page-title h1 {
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size:
+        clamp(
+          45px,
+          8vw,
+          75px
+        );
+
+      font-weight: 500;
+
+      color: #8d526b;
+
+      line-height: 1;
+    }
+
+
+    .page-title p {
+      max-width: 600px;
+
+      margin: 20px auto 0;
+
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size: 21px;
+
+      line-height: 1.5;
+
+      color: #765561;
+    }
+
+
+    /* ==========================================
+       FORMULARIO
+       ========================================== */
+
+    .message-form {
+      max-width: 650px;
+
+      margin: 0 auto 70px;
+
+      padding: 30px;
+
+      background:
+        rgba(255,255,255,.72);
+
+      border-radius: 22px;
+
+      box-shadow:
+        0 10px 35px rgba(100,55,70,.10);
+
+      border:
+        1px solid rgba(228,196,208,.6);
+    }
+
+
+    .message-form-title {
+      text-align: center;
+
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size: 32px;
+
+      color: #805365;
+
+      margin-bottom: 22px;
+    }
+
+
+    .message-form input,
+    .message-form textarea {
+      width: 100%;
+
+      border:
+        1px solid #e4c4d0;
+
+      border-radius: 15px;
+
+      padding: 14px 16px;
+
+      margin-bottom: 12px;
+
+      background:
+        rgba(255,255,255,.85);
+
+      color: #5d424d;
+
+      font-family:
+        'Montserrat',
+        sans-serif;
+
+      outline: none;
+
+      font-size: 14px;
+    }
+
+
+    .message-form textarea {
+      min-height: 130px;
+
+      resize: vertical;
+    }
+
+
+    .message-form input:focus,
+    .message-form textarea:focus {
+      border-color: #b97691;
+
+      box-shadow:
+        0 0 0 3px rgba(185,118,145,.08);
+    }
+
+
+    .message-form button {
+      width: 100%;
+
+      border: none;
+
+      border-radius: 30px;
+
+      padding: 15px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b97691,
+          #d49caf
+        );
+
+      color: white;
+
+      font-family:
+        'Montserrat',
+        sans-serif;
+
+      font-weight: 600;
+
+      letter-spacing: .5px;
+
+      cursor: pointer;
+
+      transition: .3s ease;
+    }
+
+
+    .message-form button:hover {
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 8px 20px rgba(157,91,118,.20);
+    }
+
+
+    .message-form button:disabled {
+      opacity: .6;
+
+      cursor: wait;
+
+      transform: none;
+    }
+
+
+    .message-status {
+      text-align: center;
+
+      color: #8d526b;
+
+      font-size: 13px;
+
+      min-height: 20px;
+
+      margin-top: 14px;
+    }
+
+
+    /* ==========================================
+       MENSAJES
+       ========================================== */
+
+    .messages-title {
+      text-align: center;
+
+      margin-bottom: 30px;
+    }
+
+
+    .messages-title small {
+      display: block;
+
+      font-size: 11px;
+
+      letter-spacing: 4px;
+
+      color: #a66b82;
+
+      text-transform: uppercase;
+
+      margin-bottom: 10px;
+    }
+
+
+    .messages-title h2 {
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size:
+        clamp(
+          38px,
+          6vw,
+          58px
+        );
+
+      font-weight: 500;
+
+      color: #805365;
+    }
+
+
+    .messages-container {
+      display: grid;
+
+      gap: 18px;
+    }
+
+
+    .message-card {
+      background:
+        rgba(255,255,255,.75);
+
+      border-radius: 18px;
+
+      padding: 22px;
+
+      box-shadow:
+        0 8px 25px rgba(100,55,70,.08);
+
+      border:
+        1px solid rgba(228,196,208,.45);
+
+      animation:
+        aparecer .5s ease;
+    }
+
+
+    .message-card strong {
+      display: block;
+
+      color: #8d526b;
+
+      margin-bottom: 8px;
+
+      font-size: 14px;
+    }
+
+
+    .message-card p {
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size: 21px;
+
+      line-height: 1.5;
+
+      color: #765561;
+
+      white-space: pre-wrap;
+
+      overflow-wrap: anywhere;
+    }
+
+
+    .loading {
+      text-align: center;
+
+      color: #a66b82;
+
+      padding: 30px;
+    }
+
+
+    .empty {
+      text-align: center;
+
+      padding: 50px 20px;
+
+      color: #a47888;
+
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size: 22px;
+    }
+
+
+    /* ==========================================
+       FOOTER
+       ========================================== */
+
+    .footer {
+      text-align: center;
+
+      padding: 50px 20px;
+
+      color: #a47787;
+
+      font-size: 11px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+    }
+
+
+    /* ==========================================
+       ANIMACIÓN
+       ========================================== */
+
+    @keyframes aparecer {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
+
+    }
+
+
+    /* ==========================================
+       CELULAR
+       ========================================== */
+
+    @media (max-width: 700px) {
+
+      .navigation {
+        padding: 9px 8px;
+      }
+
+
+      .navigation-container {
+        justify-content: flex-start;
+      }
+
+
+      .navigation a {
+        font-size: 10px;
+
+        padding: 8px 11px;
+      }
+
+
+      .messages-page {
+        padding:
+          70px 15px;
+      }
+
+
+      .message-form {
+        padding: 22px;
+
+        margin-bottom: 55px;
+      }
+
+
+      .message-form-title {
+        font-size: 28px;
+      }
+
+    }
+
+
+    @media (max-width: 400px) {
+
+      .navigation a {
+        font-size: 9px;
+
+        padding: 8px 9px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- ==========================================
+       NAVEGACIÓN
+       ========================================== -->
+
+  <nav class="navigation">
+
+    <div class="navigation-container">
+
+      <a href="index.html">
+        🏠 Inicio
+      </a>
+
+
+      <a href="index.html#favoritas">
+        ⭐ Fotos de la noche
+      </a>
+
+
+      <a href="index.html#cumpleanera">
+        👑 Cumpleañera
+      </a>
+
+
+      <a href="index.html#album">
+        📸 Álbum
+      </a>
+
+
+      <a href="mensajes.html">
+        💌 Mensajes para Danna
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- ==========================================
+       CONTENIDO
+       ========================================== -->
+
+  <main class="messages-page">
+
+
+    <div class="page-title">
+
+      <small>
+        Palabras para recordar
+      </small>
+
+
+      <h1>
+        💌 Mensajes para Danna
+      </h1>
+
+
+      <p>
+
+        Déjale a Danna unas palabras para recordar
+        este momento tan especial. ✨
+
+      </p>
+
+    </div>
+
+
+    <!-- ==========================================
+         FORMULARIO
+         ========================================== -->
+
+    <div class="message-form">
+
+
+      <div class="message-form-title">
+        💗 Deja tu mensaje
+      </div>
+
+
+      <input
+        type="text"
+        id="messageName"
+        placeholder="Tu nombre"
+        maxlength="50">
+
+
+      <textarea
+        id="messageText"
+        placeholder="Escribe un mensaje para Danna..."
+        maxlength="300"></textarea>
+
+
+      <button
+        id="sendMessageButton">
+
+        💌 Dejar mi mensaje
+
+      </button>
+
+
+      <div
+        id="messageStatus"
+        class="message-status">
+      </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         MENSAJES RECIBIDOS
+         ========================================== -->
+
+    <div class="messages-title">
+
+      <small>
+        Recuerdos escritos
+      </small>
+
+
+      <h2>
+        💕 Mensajes recibidos
+      </h2>
+
+    </div>
+
+
+    <div
+      id="messagesContainer"
+      class="messages-container">
+
+      <div class="loading">
+        Cargando mensajes...
+      </div>
+
+    </div>
+
+
+  </main>
+
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+
+  <footer class="footer">
+
+    Danna Valentina Garzón Medina · Mis 15 Años
+
+  </footer>
+
+
+  <script>
+
+
+    /* ============================================
+       SUPABASE
+       ============================================ */
+
+    const SUPABASE_URL =
+      "https://utkqspswdjamfmhzalov.supabase.co";
+
+
+    const SUPABASE_KEY =
+      "sb_publishable_rBWSVkYl3T_ai_0ZQ6Av1A_jTgXR_59";
+
+
+    /* ============================================
+       ELEMENTOS
+       ============================================ */
+
+    const messageName =
+      document.getElementById(
+        "messageName"
+      );
+
+
+    const messageText =
+      document.getElementById(
+        "messageText"
+      );
+
+
+    const sendMessageButton =
+      document.getElementById(
+        "sendMessageButton"
+      );
+
+
+    const messagesContainer =
+      document.getElementById(
+        "messagesContainer"
+      );
+
+
+    const messageStatus =
+      document.getElementById(
+        "messageStatus"
+      );
+
+
+    /* ============================================
+       CARGAR MENSAJES
+       ============================================ */
+
+    async function loadMessages() {
+
+      try {
+
+        const response =
+          await fetch(
+            `${SUPABASE_URL}/rest/v1/mensajes?select=nombre,mensaje,created_at&order=created_at.desc`,
+            {
+              headers: {
+
+                "apikey":
+                  SUPABASE_KEY,
+
+                "Authorization":
+                  `Bearer ${SUPABASE_KEY}`
+
+              }
+            }
+          );
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            "No se pudieron cargar los mensajes."
+          );
+
+        }
+
+
+        const messages =
+          await response.json();
+
+
+        messagesContainer.innerHTML =
+          "";
+
+
+        if (
+          messages.length === 0
+        ) {
+
+          messagesContainer.innerHTML =
+            `<div class="empty">
+              Todavía no hay mensajes. Sé el primero en dejar uno 💌
+            </div>`;
+
+          return;
+
+        }
+
+
+        messages.forEach(
+          message => {
+
+            const card =
+              document.createElement(
+                "div"
+              );
+
+
+            card.className =
+              "message-card";
+
+
+            const name =
+              document.createElement(
+                "strong"
+              );
+
+
+            name.textContent =
+              `💗 ${message.nombre}`;
+
+
+            const text =
+              document.createElement(
+                "p"
+              );
+
+
+            text.textContent =
+              message.mensaje;
+
+
+            card.appendChild(
+              name
+            );
+
+
+            card.appendChild(
+              text
+            );
+
+
+            messagesContainer.appendChild(
+              card
+            );
+
+          }
+        );
+
+
+      } catch (error) {
+
+        console.error(
+          error
+        );
+
+
+        messagesContainer.innerHTML =
+          `<div class="empty">
+            No se pudieron cargar los mensajes.
+          </div>`;
+
+      }
+
+    }
+
+
+    /* ============================================
+       ENVIAR MENSAJE
+       ============================================ */
+
+    sendMessageButton.addEventListener(
+      "click",
+      async () => {
+
+        const nombre =
+          messageName.value.trim();
+
+
+        const mensaje =
+          messageText.value.trim();
+
+
+        if (
+          !nombre ||
+          !mensaje
+        ) {
+
+          messageStatus.textContent =
+            "Por favor escribe tu nombre y tu mensaje 💗";
+
+          return;
+
+        }
+
+
+        sendMessageButton.disabled =
+          true;
+
+
+        sendMessageButton.textContent =
+          "Enviando...";
+
+
+        messageStatus.textContent =
+          "";
+
+
+        try {
+
+          const response =
+            await fetch(
+              `${SUPABASE_URL}/rest/v1/mensajes`,
+              {
+                method: "POST",
+
+                headers: {
+
+                  "Content-Type":
+                    "application/json",
+
+                  "apikey":
+                    SUPABASE_KEY,
+
+                  "Authorization":
+                    `Bearer ${SUPABASE_KEY}`,
+
+                  "Prefer":
+                    "return=minimal"
+
+                },
+
+                body:
+                  JSON.stringify({
+
+                    nombre:
+                      nombre,
+
+                    mensaje:
+                      mensaje
+
+                  })
+
+              }
+            );
+
+
+          if (
+            !response.ok
+          ) {
+
+            throw new Error(
+              "No se pudo enviar el mensaje."
+            );
+
+          }
+
+
+          messageName.value =
+            "";
+
+
+          messageText.value =
+            "";
+
+
+          messageStatus.textContent =
+            "✨ ¡Tu mensaje fue enviado!";
+
+
+          await loadMessages();
+
+
+        } catch (error) {
+
+          console.error(
+            error
+          );
+
+
+          messageStatus.textContent =
+            "No se pudo enviar el mensaje. Intenta nuevamente.";
+
+        }
+
+
+        sendMessageButton.disabled =
+          false;
+
+
+        sendMessageButton.textContent =
+          "💌 Dejar mi mensaje";
+
+      }
+    );
+
+
+    /* ============================================
+       INICIO
+       ============================================ */
+
+    loadMessages();
+
+
+  </script>
+
+
+</body>
+
+</html>
