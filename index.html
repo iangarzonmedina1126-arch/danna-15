@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,6 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
@@ -15,6 +17,11 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
     }
 
     body {
@@ -38,6 +45,7 @@
         radial-gradient(#d6a7b9 1px, transparent 1px);
       background-size: 45px 45px;
     }
+
 
     /* ==========================================
        PANTALLA DE ENTRADA
@@ -137,6 +145,95 @@
       letter-spacing: 1px;
     }
 
+
+    /* ==========================================
+       MÚSICA
+       ========================================== */
+
+    .music-button {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 2000;
+      width: 58px;
+      height: 58px;
+      border: none;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b97691, #d49caf);
+      color: white;
+      font-size: 23px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(157, 91, 118, .35);
+      transition: .3s ease;
+    }
+
+    .music-button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 30px rgba(157, 91, 118, .45);
+    }
+
+    .music-button.playing {
+      animation: musicaPulso 1.5s infinite;
+    }
+
+
+    /* ==========================================
+       BARRA DE NAVEGACIÓN
+       ========================================== */
+
+    .navigation {
+      position: sticky;
+      top: 0;
+      z-index: 1500;
+      width: 100%;
+      background: rgba(255, 247, 250, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(199, 154, 170, .35);
+      box-shadow: 0 5px 20px rgba(100, 55, 70, .08);
+    }
+
+    .navigation-container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 10px 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .navigation-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .navigation a {
+      flex-shrink: 0;
+      text-decoration: none;
+      color: #805365;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .5px;
+      padding: 10px 14px;
+      border-radius: 30px;
+      transition: .3s ease;
+      white-space: nowrap;
+    }
+
+    .navigation a:hover {
+      background: #f4dce5;
+      color: #8d526b;
+    }
+
+
+    /* ==========================================
+       HERO
+       ========================================== */
+
     .hero {
       min-height: 100vh;
       display: flex;
@@ -145,6 +242,7 @@
       text-align: center;
       padding: 50px 20px;
       position: relative;
+      scroll-margin-top: 80px;
     }
 
     .hero-content {
@@ -240,6 +338,7 @@
       display: none;
     }
 
+
     /* ==========================================
        GALERÍA
        ========================================== */
@@ -248,6 +347,11 @@
       padding: 70px 20px 100px;
       max-width: 1200px;
       margin: auto;
+    }
+
+    .gallery-category {
+      scroll-margin-top: 85px;
+      margin-bottom: 80px;
     }
 
     .section-title {
@@ -272,11 +376,14 @@
     }
 
     .favorites-title {
-      margin-top: 70px;
       margin-bottom: 35px;
     }
 
     .favorites-title h2 {
+      color: #9b687c;
+    }
+
+    .birthday-title h2 {
       color: #9b687c;
     }
 
@@ -331,6 +438,7 @@
       text-transform: uppercase;
     }
 
+
     /* ==========================================
        MODAL
        ========================================== */
@@ -339,7 +447,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      z-index: 1000;
+      z-index: 3000;
       background: rgba(40, 22, 30, .92);
       align-items: center;
       justify-content: center;
@@ -377,38 +485,10 @@
       font-size: 13px;
     }
 
+
     /* ==========================================
-       BOTÓN DE MÚSICA
+       ANIMACIONES
        ========================================== */
-
-    .music-button {
-      position: fixed;
-      bottom: 22px;
-      right: 22px;
-      z-index: 2000;
-      width: 58px;
-      height: 58px;
-      border: none;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #b97691, #d49caf);
-      color: white;
-      font-size: 23px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 25px rgba(157, 91, 118, .35);
-      transition: .3s ease;
-    }
-
-    .music-button:hover {
-      transform: scale(1.08);
-      box-shadow: 0 12px 30px rgba(157, 91, 118, .45);
-    }
-
-    .music-button.playing {
-      animation: musicaPulso 1.5s infinite;
-    }
 
     @keyframes musicaPulso {
 
@@ -440,7 +520,22 @@
 
     }
 
+
+    /* ==========================================
+       MÓVIL
+       ========================================== */
+
     @media (max-width: 700px) {
+
+      .navigation-container {
+        justify-content: flex-start;
+        padding: 8px 10px;
+      }
+
+      .navigation a {
+        font-size: 10px;
+        padding: 9px 12px;
+      }
 
       .hero {
         min-height: 90vh;
@@ -468,6 +563,10 @@
         font-size: 20px;
       }
 
+      .gallery-category {
+        margin-bottom: 60px;
+      }
+
     }
 
     @media (max-width: 400px) {
@@ -482,6 +581,7 @@
 </head>
 
 <body>
+
 
   <!-- ==========================================
        PANTALLA DE ENTRADA
@@ -523,6 +623,7 @@
 
   </div>
 
+
   <!-- ==========================================
        MÚSICA
        ========================================== -->
@@ -535,6 +636,40 @@
 
   </audio>
 
+
+  <!-- ==========================================
+       BARRA DE NAVEGACIÓN
+       ========================================== -->
+
+  <nav class="navigation">
+
+    <div class="navigation-container">
+
+      <a href="#inicio">
+        🏠 Inicio
+      </a>
+
+      <a href="#cumpleanera">
+        👑 Cumpleañera
+      </a>
+
+      <a href="#noche">
+        ⭐ Fotos de la noche
+      </a>
+
+      <a href="#album">
+        📸 Álbum
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- ==========================================
+       BOTÓN DE MÚSICA
+       ========================================== -->
+
   <button
     id="musicButton"
     class="music-button"
@@ -545,11 +680,14 @@
 
   </button>
 
+
   <!-- ==========================================
-       HERO
+       HERO / INICIO
        ========================================== -->
 
-  <section class="hero">
+  <section
+    class="hero"
+    id="inicio">
 
     <div class="hero-content">
 
@@ -608,8 +746,9 @@
 
   </section>
 
+
   <!-- ==========================================
-       GALERÍA
+       GALERÍAS
        ========================================== -->
 
   <section class="gallery-section">
@@ -624,12 +763,49 @@
 
 
     <!-- ==========================================
-         ⭐ FOTOS DE LA NOCHE
-         SOLO FAVORITAS
+         👑 CUMPLEAÑERA
          ========================================== -->
 
     <div
-      id="favoritesSection"
+      id="cumpleanera"
+      class="gallery-category">
+
+      <div class="section-title birthday-title">
+
+        <small>
+          Momentos especiales
+        </small>
+
+        <h2>
+          👑 Fotos de la cumpleañera
+        </h2>
+
+      </div>
+
+      <div
+        id="birthdayGallery"
+        class="gallery">
+      </div>
+
+      <div
+        id="birthdayEmpty"
+        class="empty"
+        style="display: none;">
+
+        Próximamente habrá fotos especiales de la cumpleañera ✨
+
+      </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         ⭐ FOTOS DE LA NOCHE
+         ========================================== -->
+
+    <div
+      id="noche"
+      class="gallery-category"
       style="display: none;">
 
       <div class="section-title favorites-title">
@@ -654,36 +830,42 @@
 
     <!-- ==========================================
          📸 ÁLBUM DE RECUERDOS
-         SOLO FOTOS NO FAVORITAS
          ========================================== -->
 
-    <div class="section-title">
-
-      <small>
-        Recuerdos de una noche mágica
-      </small>
-
-      <h2>
-        📸 Álbum de recuerdos
-      </h2>
-
-    </div>
-
     <div
-      id="gallery"
-      class="gallery">
-    </div>
+      id="album"
+      class="gallery-category">
 
-    <div
-      id="empty"
-      class="empty"
-      style="display: none;">
+      <div class="section-title">
 
-      Sé el primero en compartir una foto de esta noche ✨
+        <small>
+          Recuerdos de una noche mágica
+        </small>
+
+        <h2>
+          📸 Álbum de recuerdos
+        </h2>
+
+      </div>
+
+      <div
+        id="gallery"
+        class="gallery">
+      </div>
+
+      <div
+        id="empty"
+        class="empty"
+        style="display: none;">
+
+        Sé el primero en compartir una foto de esta noche ✨
+
+      </div>
 
     </div>
 
   </section>
+
 
   <!-- ==========================================
        FOOTER
@@ -694,6 +876,7 @@
     Danna Valentina Garzón Medina · Mis 15 Años
 
   </footer>
+
 
   <!-- ==========================================
        MODAL
@@ -718,7 +901,9 @@
 
   </div>
 
+
 <script>
+
 
   /* ============================================
      CONFIGURACIÓN
@@ -750,8 +935,14 @@
   const favoritesGallery =
     document.getElementById("favoritesGallery");
 
+  const birthdayGallery =
+    document.getElementById("birthdayGallery");
+
   const favoritesSection =
-    document.getElementById("favoritesSection");
+    document.getElementById("noche");
+
+  const birthdayEmpty =
+    document.getElementById("birthdayEmpty");
 
   const loading =
     document.getElementById("loading");
@@ -965,7 +1156,7 @@
 
       const response =
         await fetch(
-          `${SUPABASE_URL}/rest/v1/fotos?select=url,favorito&order=created_at.desc`,
+          `${SUPABASE_URL}/rest/v1/fotos?select=url,favorito,cumpleanera&order=created_at.desc`,
           {
             headers: {
 
@@ -1005,9 +1196,12 @@
       favoritesGallery.innerHTML =
         "";
 
+      birthdayGallery.innerHTML =
+        "";
+
 
       /* ============================================
-         SEPARAR FAVORITAS Y NORMALES
+         SEPARAR CATEGORÍAS
          ============================================ */
 
       const favoritas =
@@ -1016,11 +1210,50 @@
             photo.favorito === true
         );
 
+
+      const cumpleanera =
+        photos.filter(
+          photo =>
+            photo.cumpleanera === true
+        );
+
+
       const normales =
         photos.filter(
           photo =>
             photo.favorito !== true
         );
+
+
+      /* ============================================
+         MOSTRAR CUMPLEAÑERA
+         ============================================ */
+
+      if (cumpleanera.length > 0) {
+
+        birthdayEmpty.style.display =
+          "none";
+
+
+        cumpleanera.forEach(
+          photo => {
+
+            crearFoto(
+              photo,
+              birthdayGallery
+            );
+
+          }
+        );
+
+      }
+
+      else {
+
+        birthdayEmpty.style.display =
+          "block";
+
+      }
 
 
       /* ============================================
@@ -1078,14 +1311,6 @@
       }
 
       else {
-
-        /*
-         * Si no hay ninguna foto en absoluto,
-         * mostramos el mensaje.
-         *
-         * Si solamente hay favoritas,
-         * no mostramos "Sé el primero..."
-         */
 
         if (photos.length === 0) {
 
@@ -1372,3 +1597,4 @@
 
 </body>
 </html>
+```
