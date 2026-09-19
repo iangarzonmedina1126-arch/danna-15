@@ -624,9 +624,9 @@
           "block";
 
 
-        cargarFotos();
+        await cargarFotos();
 
-        cargarMensajes();
+        await cargarMensajes();
 
 
       } catch (error) {
@@ -872,7 +872,7 @@
 
 
   // ==========================
-  // CREAR TARJETA
+  // CREAR TARJETA FOTO
   // ==========================
 
   function crearTarjetaFoto(
@@ -1041,9 +1041,13 @@
 
     try {
 
+      const photoId =
+        String(id).trim();
+
+
       const response =
         await fetch(
-          `${SUPABASE_URL}/rest/v1/fotos?id=eq.${id}`,
+          `${SUPABASE_URL}/rest/v1/fotos?id=eq.${encodeURIComponent(photoId)}`,
           {
             method: "PATCH",
 
@@ -1086,7 +1090,7 @@
       const photo =
         photos.find(
           item =>
-            item.id === id
+            String(item.id) === photoId
         );
 
 
@@ -1128,9 +1132,13 @@
 
     try {
 
+      const photoId =
+        String(id).trim();
+
+
       const response =
         await fetch(
-          `${SUPABASE_URL}/rest/v1/fotos?id=eq.${id}`,
+          `${SUPABASE_URL}/rest/v1/fotos?id=eq.${encodeURIComponent(photoId)}`,
           {
             method: "PATCH",
 
@@ -1173,7 +1181,7 @@
       const photo =
         photos.find(
           item =>
-            item.id === id
+            String(item.id) === photoId
         );
 
 
@@ -1208,9 +1216,7 @@
   // ELIMINAR FOTO
   // ==================================================
 
-  async function eliminarFoto(
-    photo
-  ) {
+  async function eliminarFoto(photo) {
 
     const confirmar =
       confirm(
@@ -1220,42 +1226,22 @@
       );
 
 
-    if (!confirmar)
+    if (!confirmar) {
       return;
-
-
-    // ==========================
-    // VERIFICAR ID
-    // ==========================
-
-    const photoId =
-      Number(photo.id);
-
-
-    if (
-      !Number.isInteger(photoId)
-    ) {
-
-      alert(
-        "Error: el ID de la foto no es válido.\n\n" +
-        "ID recibido: " +
-        photo.id
-      );
-
-      console.error(
-        "ID de foto inválido:",
-        photo.id,
-        photo
-      );
-
-      return;
-
     }
 
 
-    if (
-      !photo.public_id
-    ) {
+    // ==========================
+    // USAR PUBLIC_ID
+    // ==========================
+
+    const publicId =
+      String(
+        photo?.public_id || ""
+      ).trim();
+
+
+    if (!publicId) {
 
       alert(
         "Error: esta foto no tiene public_id de Cloudinary."
@@ -1267,11 +1253,16 @@
       );
 
       return;
-
     }
 
 
     try {
+
+      console.log(
+        "Eliminando foto con public_id:",
+        publicId
+      );
+
 
       const response =
         await fetch(
@@ -1297,11 +1288,8 @@
               action:
                 "delete_photo",
 
-              id:
-                photoId,
-
               public_id:
-                photo.public_id
+                publicId
 
             })
 
@@ -1333,7 +1321,9 @@
       photos =
         photos.filter(
           item =>
-            Number(item.id) !== photoId
+            String(
+              item.public_id
+            ) !== publicId
         );
 
 
@@ -1540,9 +1530,7 @@
   // ELIMINAR MENSAJE
   // ==================================================
 
-  async function eliminarMensaje(
-    message
-  ) {
+  async function eliminarMensaje(message) {
 
     const confirmar =
       confirm(
@@ -1551,33 +1539,51 @@
       );
 
 
-    if (!confirmar)
+    if (!confirmar) {
       return;
+    }
 
+
+    // ==========================
+    // MENSAJES.ID = INT8 / BIGINT
+    // ==========================
 
     const messageId =
-      Number(message.id);
+      String(
+        message?.id ?? ""
+      ).trim();
 
 
+    // Solo permitimos números
     if (
-      !Number.isInteger(messageId)
+      !/^\d+$/.test(messageId)
     ) {
 
       alert(
-        "Error: el ID del mensaje no es válido."
+        "Error: el ID del mensaje no es válido.\n\n" +
+        "ID recibido: " +
+        message?.id
       );
 
       console.error(
         "ID de mensaje inválido:",
-        message.id
+        message?.id,
+        message
       );
 
       return;
-
     }
 
 
     try {
+
+      console.log(
+        "Eliminando mensaje con ID:",
+        messageId,
+        "Tipo:",
+        typeof messageId
+      );
+
 
       const response =
         await fetch(
@@ -1636,7 +1642,8 @@
       messages =
         messages.filter(
           item =>
-            Number(item.id) !== messageId
+            String(item.id) !==
+            messageId
         );
 
 
