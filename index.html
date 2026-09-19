@@ -1731,17 +1731,24 @@
         padding: 8px 11px;
       }
 
-      .gallery {
-        columns: 2 150px;
 
-        column-gap: 10px;
+      /* ======================================
+         GALERÍA EN CELULAR
+         5 FOTOS POR FILA
+         ====================================== */
+
+      .gallery {
+        columns: 5 1fr;
+
+        column-gap: 6px;
       }
 
       .photo {
-        margin-bottom: 10px;
+        margin-bottom: 6px;
 
-        border-radius: 10px;
+        border-radius: 6px;
       }
+
 
       .message {
         font-size: 20px;
@@ -1762,6 +1769,10 @@
     }
 
 
+    /* ==========================================
+       CELULARES PEQUEÑOS
+       ========================================== */
+
     @media (max-width: 400px) {
 
       .welcome-content {
@@ -1776,9 +1787,21 @@
         opacity: .5;
       }
 
+
+      /* 5 FOTOS TAMBIÉN EN CELULARES PEQUEÑOS */
+
       .gallery {
-        columns: 1;
+        columns: 5 1fr;
+
+        column-gap: 4px;
       }
+
+      .photo {
+        margin-bottom: 4px;
+
+        border-radius: 5px;
+      }
+
 
       .navigation a {
         font-size: 9px;
