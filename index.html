@@ -124,9 +124,6 @@
       pointer-events: none;
     }
 
-
-    /* Textura del papel */
-
     .welcome-screen::before {
       content: "";
 
@@ -153,9 +150,6 @@
 
       mix-blend-mode: multiply;
     }
-
-
-    /* Marco exterior */
 
     .welcome-screen::after {
       content: "";
@@ -280,56 +274,42 @@
 
     .floral-decoration {
       position: absolute;
-
       pointer-events: none;
-
       z-index: 1;
     }
 
     .floral-top {
       top: -5px;
       left: 50%;
-
       width: min(850px, 100vw);
-
-      transform:
-        translateX(-50%);
-
+      transform: translateX(-50%);
       opacity: .9;
     }
 
     .floral-bottom {
       bottom: -8px;
       left: 50%;
-
       width: min(850px, 100vw);
-
       transform:
         translateX(-50%)
         rotate(180deg);
-
       opacity: .9;
     }
 
     .floral-left {
       left: -20px;
       top: 12%;
-
       width: 180px;
       height: 75%;
-
       opacity: .82;
     }
 
     .floral-right {
       right: -20px;
       top: 12%;
-
       width: 180px;
       height: 75%;
-
       opacity: .82;
-
       transform: scaleX(-1);
     }
 
@@ -341,39 +321,28 @@
 
     .floral-decoration path {
       fill: none;
-
       stroke: #8d6260;
-
       stroke-width: 1.4;
-
       stroke-linecap: round;
-
       stroke-linejoin: round;
-
       opacity: .65;
     }
 
     .floral-decoration .leaf {
       fill: #a97b79;
-
       stroke: none;
-
       opacity: .45;
     }
 
     .floral-decoration .flower {
       fill: #d9aaa8;
-
       stroke: #8d6260;
-
       stroke-width: .8;
-
       opacity: .85;
     }
 
     .floral-decoration .flower-center {
       fill: #b98772;
-
       stroke: none;
     }
 
@@ -384,11 +353,9 @@
 
     .welcome-content {
       position: relative;
-
       z-index: 3;
 
       width: min(600px, 88vw);
-
       min-height: min(700px, 88vh);
 
       padding:
@@ -397,11 +364,8 @@
         80px;
 
       display: flex;
-
       flex-direction: column;
-
       align-items: center;
-
       justify-content: center;
 
       overflow: hidden;
@@ -422,21 +386,16 @@
         0 5px 15px rgba(82,50,48,.12),
         inset 0 0 45px rgba(139,91,78,.08);
 
-      transform:
-        rotate(-.5deg);
+      transform: rotate(-.5deg);
 
       animation:
         entradaPrincipal 1.5s ease both;
     }
 
-
-    /* Bordes internos de la invitación */
-
     .welcome-content::before {
       content: "";
 
       position: absolute;
-
       inset: 13px;
 
       border:
@@ -449,7 +408,6 @@
       content: "";
 
       position: absolute;
-
       inset: 21px;
 
       border:
@@ -465,17 +423,12 @@
 
     .welcome-small {
       position: relative;
-
       z-index: 4;
 
       font-size: 10px;
-
       letter-spacing: 5px;
-
       text-transform: uppercase;
-
       color: #8d6260;
-
       margin-bottom: 25px;
 
       animation:
@@ -484,7 +437,6 @@
 
     .welcome-content h2 {
       position: relative;
-
       z-index: 4;
 
       font-family: 'Cormorant Garamond', serif;
@@ -496,11 +448,8 @@
       );
 
       line-height: .7;
-
       font-weight: 500;
-
       color: #855a62;
-
       margin-bottom: 20px;
 
       text-shadow:
@@ -513,7 +462,6 @@
 
     .welcome-name {
       position: relative;
-
       z-index: 4;
 
       font-family: 'Cormorant Garamond', serif;
@@ -525,9 +473,7 @@
       );
 
       color: #674b4e;
-
       letter-spacing: 2px;
-
       margin-bottom: 12px;
 
       animation:
@@ -536,7 +482,6 @@
 
     .welcome-xv {
       position: relative;
-
       z-index: 4;
 
       font-family: 'Cormorant Garamond', serif;
@@ -548,9 +493,7 @@
       );
 
       color: #a9787a;
-
       font-weight: 600;
-
       line-height: 1;
 
       margin: 8px 0 10px;
@@ -564,11 +507,9 @@
       content: "";
 
       display: inline-block;
-
       vertical-align: middle;
 
       width: 50px;
-
       height: 1px;
 
       margin: 0 13px;
@@ -592,11 +533,9 @@
 
     .welcome-divider {
       position: relative;
-
       z-index: 4;
 
       width: 100px;
-
       height: 1px;
 
       background:
@@ -615,7 +554,6 @@
 
     .welcome-phrase {
       position: relative;
-
       z-index: 4;
 
       max-width: 400px;
@@ -623,11 +561,8 @@
       font-family: 'Cormorant Garamond', serif;
 
       font-size: 20px;
-
       line-height: 1.45;
-
       font-style: italic;
-
       color: #76585a;
 
       margin-bottom: 28px;
@@ -643,7 +578,6 @@
 
     .enter-button {
       position: relative;
-
       z-index: 4;
 
       border:
@@ -665,13 +599,10 @@
       font-family: 'Montserrat', sans-serif;
 
       font-size: 10px;
-
       font-weight: 600;
-
       letter-spacing: 2px;
 
       cursor: pointer;
-
       overflow: hidden;
 
       box-shadow:
@@ -689,7 +620,6 @@
       content: "";
 
       position: absolute;
-
       top: 0;
       left: -100%;
 
@@ -704,16 +634,14 @@
           transparent
         );
 
-      transform:
-        skewX(-20deg);
+      transform: skewX(-20deg);
 
       animation:
         brilloBoton 3.5s ease-in-out infinite;
     }
 
     .enter-button:hover {
-      transform:
-        translateY(-3px);
+      transform: translateY(-3px);
 
       box-shadow:
         0 13px 28px rgba(108,70,70,.3);
@@ -727,15 +655,12 @@
 
     .welcome-hint {
       position: relative;
-
       z-index: 4;
 
       margin-top: 15px;
 
       font-size: 9px;
-
       color: #967577;
-
       letter-spacing: 1.2px;
 
       animation:
@@ -749,15 +674,12 @@
 
     .flying-bird {
       position: absolute;
-
       z-index: 2;
 
       top: 8%;
-
       left: -150px;
 
       width: 90px;
-
       height: 45px;
 
       pointer-events: none;
@@ -769,19 +691,14 @@
     .flying-bird svg {
       width: 100%;
       height: 100%;
-
       overflow: visible;
     }
 
     .flying-bird path {
       fill: none;
-
       stroke: #6f5555;
-
       stroke-width: 2;
-
       stroke-linecap: round;
-
       opacity: .65;
     }
 
@@ -842,9 +759,7 @@
 
     .navigation {
       position: sticky;
-
       top: 0;
-
       z-index: 900;
 
       width: 100%;
@@ -865,13 +780,11 @@
 
     .navigation-container {
       max-width: 1100px;
-
       margin: auto;
 
       display: flex;
 
       justify-content: center;
-
       align-items: center;
 
       gap: 8px;
@@ -893,9 +806,7 @@
       color: #805365;
 
       font-size: 11px;
-
       font-weight: 600;
-
       letter-spacing: .5px;
 
       padding: 9px 14px;
@@ -907,7 +818,6 @@
 
     .navigation a:hover {
       background: #f5dce6;
-
       color: #8d526b;
     }
 
@@ -915,7 +825,6 @@
       flex-shrink: 0;
 
       border: none;
-
       background: transparent;
 
       color: #805365;
@@ -923,9 +832,7 @@
       font-family: 'Montserrat', sans-serif;
 
       font-size: 11px;
-
       font-weight: 600;
-
       letter-spacing: .5px;
 
       padding: 9px 14px;
@@ -939,7 +846,6 @@
 
     .nav-random-button:hover {
       background: #f5dce6;
-
       color: #8d526b;
     }
 
@@ -952,9 +858,7 @@
       min-height: 100vh;
 
       display: flex;
-
       align-items: center;
-
       justify-content: center;
 
       text-align: center;
@@ -973,9 +877,7 @@
 
     .small-title {
       font-size: 13px;
-
       letter-spacing: 5px;
-
       text-transform: uppercase;
 
       color: #a66b82;
@@ -993,7 +895,6 @@
       );
 
       line-height: .85;
-
       font-weight: 500;
 
       color: #8d526b;
@@ -1011,7 +912,6 @@
       );
 
       letter-spacing: 3px;
-
       color: #6d4a57;
     }
 
@@ -1039,9 +939,7 @@
       font-family: 'Montserrat', sans-serif;
 
       font-size: 12px;
-
       letter-spacing: 7px;
-
       text-transform: uppercase;
 
       color: #9b687c;
@@ -1051,7 +949,6 @@
 
     .divider {
       width: 90px;
-
       height: 1px;
 
       background: #c79aaa;
@@ -1067,7 +964,6 @@
       font-family: 'Cormorant Garamond', serif;
 
       font-size: 22px;
-
       line-height: 1.6;
 
       color: #765561;
@@ -1077,7 +973,6 @@
       display: inline-flex;
 
       align-items: center;
-
       justify-content: center;
 
       gap: 10px;
@@ -1087,7 +982,6 @@
       padding: 17px 32px;
 
       border: none;
-
       border-radius: 50px;
 
       background:
@@ -1102,9 +996,7 @@
       font-family: 'Montserrat', sans-serif;
 
       font-size: 13px;
-
       font-weight: 600;
-
       letter-spacing: 1px;
 
       cursor: pointer;
@@ -1149,7 +1041,6 @@
       display: block;
 
       font-size: 11px;
-
       letter-spacing: 4px;
 
       color: #a66b82;
@@ -1175,7 +1066,6 @@
 
     .favorites-title {
       margin-top: 70px;
-
       margin-bottom: 35px;
     }
 
@@ -1185,7 +1075,6 @@
 
     .birthday-title {
       margin-top: 80px;
-
       margin-bottom: 35px;
     }
 
@@ -1197,9 +1086,10 @@
       margin-top: 80px;
     }
 
+    /* GALERÍA EN COMPUTADOR */
+
     .gallery {
       columns: 3 250px;
-
       column-gap: 18px;
     }
 
@@ -1369,7 +1259,6 @@
       z-index: 2000;
 
       width: 58px;
-
       height: 58px;
 
       border: none;
@@ -1392,7 +1281,6 @@
       display: flex;
 
       align-items: center;
-
       justify-content: center;
 
       box-shadow:
@@ -1459,6 +1347,7 @@
 
       from {
         opacity: 0;
+
         transform:
           scale(.94)
           rotate(-2deg);
@@ -1466,6 +1355,7 @@
 
       to {
         opacity: 1;
+
         transform:
           scale(1)
           rotate(-.5deg);
@@ -1636,15 +1526,12 @@
       .floral-left,
       .floral-right {
         width: 100px;
-
         top: 15%;
       }
 
       .welcome-small {
         font-size: 8px;
-
         letter-spacing: 3px;
-
         margin-bottom: 22px;
       }
 
@@ -1734,19 +1621,38 @@
 
       /* ======================================
          GALERÍA EN CELULAR
-         5 FOTOS POR FILA
+         EXACTAMENTE 5 FOTOS POR FILA
          ====================================== */
 
       .gallery {
-        columns: 5 1fr;
+        columns: unset;
 
-        column-gap: 6px;
+        display: grid;
+
+        grid-template-columns:
+          repeat(5, minmax(0, 1fr));
+
+        gap: 6px;
+
+        width: 100%;
       }
 
       .photo {
-        margin-bottom: 6px;
+        width: 100%;
+
+        margin-bottom: 0;
 
         border-radius: 6px;
+
+        break-inside: auto;
+      }
+
+      .photo img {
+        display: block;
+
+        width: 100%;
+
+        height: auto;
       }
 
 
@@ -1788,18 +1694,37 @@
       }
 
 
-      /* 5 FOTOS TAMBIÉN EN CELULARES PEQUEÑOS */
+      /* ======================================
+         EXACTAMENTE 5 FOTOS POR FILA
+         ====================================== */
 
       .gallery {
-        columns: 5 1fr;
+        columns: unset;
 
-        column-gap: 4px;
+        display: grid;
+
+        grid-template-columns:
+          repeat(5, minmax(0, 1fr));
+
+        gap: 4px;
+
+        width: 100%;
       }
 
       .photo {
-        margin-bottom: 4px;
+        width: 100%;
+
+        margin-bottom: 0;
 
         border-radius: 5px;
+      }
+
+      .photo img {
+        width: 100%;
+
+        height: auto;
+
+        display: block;
       }
 
 
@@ -1864,8 +1789,6 @@
     id="welcomeScreen">
 
 
-    <!-- PARTÍCULAS -->
-
     <div class="welcome-particles">
 
       <span class="particle"></span>
@@ -1880,9 +1803,7 @@
     </div>
 
 
-    <!-- ==========================================
-         FLORES SUPERIORES
-         ========================================== -->
+    <!-- FLORES SUPERIORES -->
 
     <div class="floral-decoration floral-top">
 
@@ -2041,9 +1962,7 @@
     </div>
 
 
-    <!-- ==========================================
-         FLORES LADO IZQUIERDO
-         ========================================== -->
+    <!-- FLORES LADO IZQUIERDO -->
 
     <div class="floral-decoration floral-left">
 
@@ -2137,9 +2056,7 @@
     </div>
 
 
-    <!-- ==========================================
-         FLORES LADO DERECHO
-         ========================================== -->
+    <!-- FLORES LADO DERECHO -->
 
     <div class="floral-decoration floral-right">
 
@@ -2233,9 +2150,7 @@
     </div>
 
 
-    <!-- ==========================================
-         FLORES INFERIORES
-         ========================================== -->
+    <!-- FLORES INFERIORES -->
 
     <div class="floral-decoration floral-bottom">
 
@@ -2350,41 +2265,32 @@
     </div>
 
 
-    <!-- ==========================================
-         CONTENIDO DE LA INVITACIÓN
-         ========================================== -->
+    <!-- CONTENIDO DE LA INVITACIÓN -->
 
     <div class="welcome-content">
-
 
       <div class="welcome-small">
         Una noche para recordar
       </div>
 
-
       <h2>
         Danna
       </h2>
-
 
       <div class="welcome-name">
         Valentina Garzón Medina
       </div>
 
-
       <div class="welcome-xv">
         XV
       </div>
 
-
       <div class="welcome-divider"></div>
-
 
       <div class="welcome-phrase">
         Una celebración hecha de sueños,
         momentos y recuerdos.
       </div>
-
 
       <button
         class="enter-button"
@@ -2394,20 +2300,16 @@
 
       </button>
 
-
       <div class="welcome-hint">
         🎵 Pulsa una vez para comenzar
       </div>
-
 
     </div>
 
   </div>
 
 
-  <!-- ==========================================
-       MÚSICA
-       ========================================== -->
+  <!-- MÚSICA -->
 
   <audio
     id="musica"
@@ -2432,9 +2334,7 @@
   </button>
 
 
-  <!-- ==========================================
-       NAVEGACIÓN
-       ========================================== -->
+  <!-- NAVEGACIÓN -->
 
   <nav class="navigation">
 
@@ -2448,26 +2348,21 @@
 
       </button>
 
-
       <a href="#inicio">
         🏠 Inicio
       </a>
-
 
       <a href="#favoritas">
         ⭐ Fotos de la noche
       </a>
 
-
       <a href="#cumpleanera">
         👑 Cumpleañera
       </a>
 
-
       <a href="#album">
         📸 Álbum
       </a>
-
 
       <a href="mensajes.html">
         💌 Mensajes para Danna
@@ -2478,9 +2373,7 @@
   </nav>
 
 
-  <!-- ==========================================
-       HERO
-       ========================================== -->
+  <!-- HERO -->
 
   <section
     class="hero"
@@ -2528,13 +2421,11 @@
 
       </label>
 
-
       <input
         type="file"
         id="photoInput"
         accept="image/*"
         multiple>
-
 
       <div
         class="upload-status"
@@ -2546,12 +2437,9 @@
   </section>
 
 
-  <!-- ==========================================
-       GALERÍA
-       ========================================== -->
+  <!-- GALERÍA -->
 
   <section class="gallery-section">
-
 
     <div
       id="loading"
@@ -2562,14 +2450,11 @@
     </div>
 
 
-    <!-- ==========================================
-         ⭐ FOTOS DE LA NOCHE
-         ========================================== -->
+    <!-- FOTOS DE LA NOCHE -->
 
     <div
       id="favoritesSection"
       style="display: none;">
-
 
       <div
         class="section-title favorites-title"
@@ -2585,7 +2470,6 @@
 
       </div>
 
-
       <div
         id="favoritesGallery"
         class="gallery">
@@ -2594,14 +2478,11 @@
     </div>
 
 
-    <!-- ==========================================
-         👑 FOTOS DE LA CUMPLEAÑERA
-         ========================================== -->
+    <!-- FOTOS DE LA CUMPLEAÑERA -->
 
     <div
       id="birthdaySection"
       style="display: none;">
-
 
       <div
         class="section-title birthday-title"
@@ -2617,7 +2498,6 @@
 
       </div>
 
-
       <div
         id="birthdayGallery"
         class="gallery">
@@ -2626,9 +2506,7 @@
     </div>
 
 
-    <!-- ==========================================
-         📸 ÁLBUM DE RECUERDOS
-         ========================================== -->
+    <!-- ÁLBUM DE RECUERDOS -->
 
     <div
       class="section-title album-title"
@@ -2644,12 +2522,10 @@
 
     </div>
 
-
     <div
       id="gallery"
       class="gallery">
     </div>
-
 
     <div
       id="empty"
@@ -2660,13 +2536,10 @@
 
     </div>
 
-
   </section>
 
 
-  <!-- ==========================================
-       FOOTER
-       ========================================== -->
+  <!-- FOOTER -->
 
   <footer class="footer">
 
@@ -2675,14 +2548,11 @@
   </footer>
 
 
-  <!-- ==========================================
-       MODAL
-       ========================================== -->
+  <!-- MODAL -->
 
   <div
     class="modal"
     id="modal">
-
 
     <div
       class="close"
@@ -2692,12 +2562,10 @@
 
     </div>
 
-
     <img
       id="modalImage"
       src=""
       alt="Foto de los 15 años">
-
 
   </div>
 
@@ -2712,14 +2580,11 @@
     const CLOUDINARY_CLOUD_NAME =
       "sdijrxgo";
 
-
     const CLOUDINARY_UPLOAD_PRESET =
       "danna15";
 
-
     const SUPABASE_URL =
       "https://utkqspswdjamfmhzalov.supabase.co";
-
 
     const SUPABASE_KEY =
       "sb_publishable_rBWSVkYl3T_ai_0ZQ6Av1A_jTgXR_59";
@@ -2734,66 +2599,55 @@
         "photoInput"
       );
 
-
     const gallery =
       document.getElementById(
         "gallery"
       );
-
 
     const favoritesGallery =
       document.getElementById(
         "favoritesGallery"
       );
 
-
     const favoritesSection =
       document.getElementById(
         "favoritesSection"
       );
-
 
     const birthdayGallery =
       document.getElementById(
         "birthdayGallery"
       );
 
-
     const birthdaySection =
       document.getElementById(
         "birthdaySection"
       );
-
 
     const loading =
       document.getElementById(
         "loading"
       );
 
-
     const empty =
       document.getElementById(
         "empty"
       );
-
 
     const status =
       document.getElementById(
         "uploadStatus"
       );
 
-
     const modal =
       document.getElementById(
         "modal"
       );
 
-
     const modalImage =
       document.getElementById(
         "modalImage"
       );
-
 
     const closeModal =
       document.getElementById(
@@ -2810,28 +2664,23 @@
         "musica"
       );
 
-
     const musicButton =
       document.getElementById(
         "musicButton"
       );
-
 
     const welcomeScreen =
       document.getElementById(
         "welcomeScreen"
       );
 
-
     const enterButton =
       document.getElementById(
         "enterButton"
       );
 
-
     let reproduciendo =
       false;
-
 
     let silenciada =
       false;
@@ -2858,37 +2707,29 @@
       "click",
       async () => {
 
-
         localStorage.setItem(
           "danna15_entrada",
           "true"
         );
 
-
         welcomeScreen.classList.add(
           "hidden"
         );
-
 
         try {
 
           musica.muted =
             false;
 
-
           await musica.play();
-
 
           reproduciendo =
             true;
 
-
           silenciada =
             false;
 
-
           actualizarBoton();
-
 
         } catch (error) {
 
@@ -2904,7 +2745,7 @@
 
 
     /* ============================================
-       🕊️ PÁJARO DECORATIVO
+       PÁJARO DECORATIVO
        ============================================ */
 
     function crearPajaro() {
@@ -2919,16 +2760,13 @@
 
       }
 
-
       const bird =
         document.createElement(
           "div"
         );
 
-
       bird.className =
         "flying-bird";
-
 
       bird.innerHTML = `
 
@@ -2947,11 +2785,9 @@
 
       `;
 
-
       welcomeScreen.appendChild(
         bird
       );
-
 
       setTimeout(
         () => {
@@ -2969,7 +2805,6 @@
       crearPajaro,
       1800
     );
-
 
     setInterval(
       crearPajaro,
@@ -2992,20 +2827,15 @@
             musica.muted =
               false;
 
-
             await musica.play();
-
 
             reproduciendo =
               true;
 
-
             silenciada =
               false;
 
-
             actualizarBoton();
-
 
           } catch (error) {
 
@@ -3020,12 +2850,10 @@
 
         }
 
-
         if (!silenciada) {
 
           musica.muted =
             true;
-
 
           silenciada =
             true;
@@ -3037,12 +2865,10 @@
           musica.muted =
             false;
 
-
           silenciada =
             false;
 
         }
-
 
         actualizarBoton();
 
@@ -3061,18 +2887,15 @@
         musicButton.textContent =
           "🎵";
 
-
         musicButton.setAttribute(
           "aria-label",
           "Activar música"
         );
 
-
         musicButton.setAttribute(
           "title",
           "Activar música"
         );
-
 
         musicButton.classList.remove(
           "playing"
@@ -3085,18 +2908,15 @@
         musicButton.textContent =
           "🔇";
 
-
         musicButton.setAttribute(
           "aria-label",
           "Activar música"
         );
 
-
         musicButton.setAttribute(
           "title",
           "Activar música"
         );
-
 
         musicButton.classList.remove(
           "playing"
@@ -3109,18 +2929,15 @@
         musicButton.textContent =
           "🔊";
 
-
         musicButton.setAttribute(
           "aria-label",
           "Silenciar música"
         );
 
-
         musicButton.setAttribute(
           "title",
           "Silenciar música"
         );
-
 
         musicButton.classList.add(
           "playing"
@@ -3172,14 +2989,11 @@
         loading.style.display =
           "none";
 
-
         gallery.innerHTML =
           "";
 
-
         favoritesGallery.innerHTML =
           "";
-
 
         birthdayGallery.innerHTML =
           "";
@@ -3224,7 +3038,6 @@
           birthdaySection.style.display =
             "block";
 
-
           cumpleanera.forEach(
             photo => {
 
@@ -3257,7 +3070,6 @@
           favoritesSection.style.display =
             "block";
 
-
           favoritas.forEach(
             photo => {
 
@@ -3289,7 +3101,6 @@
 
           empty.style.display =
             "none";
-
 
           normales.forEach(
             photo => {
@@ -3330,7 +3141,6 @@
           error
         );
 
-
         loading.innerHTML =
           "No se pudieron cargar las fotos. Intenta nuevamente.";
 
@@ -3353,34 +3163,27 @@
           "div"
         );
 
-
       container.className =
         "photo";
-
 
       const img =
         document.createElement(
           "img"
         );
 
-
       img.src =
         photo.url;
-
 
       img.loading =
         "lazy";
 
-
       img.alt =
         "Foto de los 15 años de Danna";
-
 
       img.onclick = () => {
 
         modalImage.src =
           photo.url;
-
 
         modal.classList.add(
           "active"
@@ -3388,11 +3191,9 @@
 
       };
 
-
       container.appendChild(
         img
       );
-
 
       contenedor.appendChild(
         container
@@ -3414,16 +3215,13 @@
             this.files
           );
 
-
         if (
           !files.length
         )
           return;
 
-
         status.style.display =
           "block";
-
 
         status.textContent =
           "Preparando tus fotos...";
@@ -3438,7 +3236,6 @@
           const file =
             files[i];
 
-
           try {
 
             status.textContent =
@@ -3452,12 +3249,10 @@
             const formData =
               new FormData();
 
-
             formData.append(
               "file",
               file
             );
-
 
             formData.append(
               "upload_preset",
@@ -3555,10 +3350,8 @@
               error
             );
 
-
             status.textContent =
               "Hubo un problema al subir una de las fotos.";
-
 
             break;
 
@@ -3569,7 +3362,6 @@
 
         status.textContent =
           "✨ ¡Fotos compartidas!";
-
 
         input.value =
           "";
@@ -3589,7 +3381,7 @@
 
 
     /* ============================================
-       🎲 SORPRÉNDEME
+       SORPRÉNDEME
        ============================================ */
 
     const randomMemoryButton =
@@ -3699,7 +3491,6 @@
        ============================================ */
 
     loadPhotos();
-
 
   </script>
 
