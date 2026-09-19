@@ -241,10 +241,6 @@
       color: #8c737b;
     }
 
-    /* ==========================
-       MENSAJES
-       ========================== */
-
     .messages-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -334,8 +330,6 @@
 
 <body>
 
-  <!-- LOGIN -->
-
   <section class="login-screen" id="loginScreen">
 
     <div class="login-box">
@@ -377,8 +371,6 @@
   </section>
 
 
-  <!-- PANEL -->
-
   <main
     class="admin-panel"
     id="adminPanel"
@@ -400,59 +392,26 @@
     </div>
 
 
-    <!-- ESTADÍSTICAS -->
-
     <div class="stats">
 
       <div class="stat">
-
-        <span>
-          Fotos
-        </span>
-
-        <strong id="totalPhotos">
-          0
-        </strong>
-
+        <span>Fotos</span>
+        <strong id="totalPhotos">0</strong>
       </div>
 
-
       <div class="stat">
-
-        <span>
-          Favoritas
-        </span>
-
-        <strong id="favoritePhotos">
-          0
-        </strong>
-
+        <span>Favoritas</span>
+        <strong id="favoritePhotos">0</strong>
       </div>
 
-
       <div class="stat">
-
-        <span>
-          Cumpleañera
-        </span>
-
-        <strong id="birthdayPhotos">
-          0
-        </strong>
-
+        <span>Cumpleañera</span>
+        <strong id="birthdayPhotos">0</strong>
       </div>
 
-
       <div class="stat">
-
-        <span>
-          Mensajes
-        </span>
-
-        <strong id="totalMessages">
-          0
-        </strong>
-
+        <span>Mensajes</span>
+        <strong id="totalMessages">0</strong>
       </div>
 
     </div>
@@ -465,8 +424,6 @@
       Cargando fotos...
     </div>
 
-
-    <!-- FAVORITAS -->
 
     <h2
       class="section-title"
@@ -481,8 +438,6 @@
     ></div>
 
 
-    <!-- CUMPLEAÑERA -->
-
     <h2
       class="section-title"
       id="birthdayTitle"
@@ -496,8 +451,6 @@
     ></div>
 
 
-    <!-- TODAS -->
-
     <h2
       class="section-title"
       id="allPhotosTitle"
@@ -510,10 +463,6 @@
       id="gallery"
     ></div>
 
-
-    <!-- ==========================
-         MENSAJES
-         ========================== -->
 
     <h2
       class="section-title"
@@ -771,11 +720,13 @@
           `${SUPABASE_URL}/rest/v1/fotos?select=id,url,public_id,favorito,cumpleanera,created_at&order=created_at.desc`,
           {
             headers: {
+
               "apikey":
                 SUPABASE_KEY,
 
               "Authorization":
                 `Bearer ${session.access_token}`
+
             }
           }
         );
@@ -833,10 +784,6 @@
     birthdayGallery.innerHTML = "";
 
 
-    // ==========================
-    // FAVORITAS
-    // ==========================
-
     const favoritas =
       photos.filter(
         photo =>
@@ -868,10 +815,6 @@
     }
 
 
-    // ==========================
-    // CUMPLEAÑERA
-    // ==========================
-
     const cumpleanera =
       photos.filter(
         photo =>
@@ -901,10 +844,6 @@
 
     }
 
-
-    // ==========================
-    // TODAS LAS FOTOS
-    // ==========================
 
     if (photos.length === 0) {
 
@@ -1109,6 +1048,7 @@
             method: "PATCH",
 
             headers: {
+
               "Content-Type":
                 "application/json",
 
@@ -1120,11 +1060,14 @@
 
               "Prefer":
                 "return=minimal"
+
             },
 
             body: JSON.stringify({
+
               favorito:
                 favorito
+
             })
 
           }
@@ -1192,6 +1135,7 @@
             method: "PATCH",
 
             headers: {
+
               "Content-Type":
                 "application/json",
 
@@ -1203,11 +1147,14 @@
 
               "Prefer":
                 "return=minimal"
+
             },
 
             body: JSON.stringify({
+
               cumpleanera:
                 cumpleanera
+
             })
 
           }
@@ -1257,9 +1204,9 @@
   }
 
 
-  // ==========================
+  // ==================================================
   // ELIMINAR FOTO
-  // ==========================
+  // ==================================================
 
   async function eliminarFoto(
     photo
@@ -1277,6 +1224,53 @@
       return;
 
 
+    // ==========================
+    // VERIFICAR ID
+    // ==========================
+
+    const photoId =
+      Number(photo.id);
+
+
+    if (
+      !Number.isInteger(photoId)
+    ) {
+
+      alert(
+        "Error: el ID de la foto no es válido.\n\n" +
+        "ID recibido: " +
+        photo.id
+      );
+
+      console.error(
+        "ID de foto inválido:",
+        photo.id,
+        photo
+      );
+
+      return;
+
+    }
+
+
+    if (
+      !photo.public_id
+    ) {
+
+      alert(
+        "Error: esta foto no tiene public_id de Cloudinary."
+      );
+
+      console.error(
+        "Foto sin public_id:",
+        photo
+      );
+
+      return;
+
+    }
+
+
     try {
 
       const response =
@@ -1286,6 +1280,7 @@
             method: "POST",
 
             headers: {
+
               "Content-Type":
                 "application/json",
 
@@ -1294,12 +1289,16 @@
 
               "Authorization":
                 `Bearer ${session.access_token}`
+
             },
 
             body: JSON.stringify({
 
+              action:
+                "delete_photo",
+
               id:
-                photo.id,
+                photoId,
 
               public_id:
                 photo.public_id
@@ -1312,6 +1311,12 @@
 
       const data =
         await response.json();
+
+
+      console.log(
+        "Respuesta eliminar foto:",
+        data
+      );
 
 
       if (!response.ok) {
@@ -1328,7 +1333,7 @@
       photos =
         photos.filter(
           item =>
-            item.id !== photo.id
+            Number(item.id) !== photoId
         );
 
 
@@ -1344,7 +1349,10 @@
 
     } catch (error) {
 
-      console.error(error);
+      console.error(
+        "Error eliminando foto:",
+        error
+      );
 
 
       alert(
@@ -1528,9 +1536,9 @@
   }
 
 
-  // ==========================
+  // ==================================================
   // ELIMINAR MENSAJE
-  // ==========================
+  // ==================================================
 
   async function eliminarMensaje(
     message
@@ -1545,6 +1553,28 @@
 
     if (!confirmar)
       return;
+
+
+    const messageId =
+      Number(message.id);
+
+
+    if (
+      !Number.isInteger(messageId)
+    ) {
+
+      alert(
+        "Error: el ID del mensaje no es válido."
+      );
+
+      console.error(
+        "ID de mensaje inválido:",
+        message.id
+      );
+
+      return;
+
+    }
 
 
     try {
@@ -1570,8 +1600,11 @@
 
             body: JSON.stringify({
 
+              action:
+                "delete_message",
+
               id:
-                message.id
+                messageId
 
             })
 
@@ -1581,6 +1614,12 @@
 
       const data =
         await response.json();
+
+
+      console.log(
+        "Respuesta eliminar mensaje:",
+        data
+      );
 
 
       if (!response.ok) {
@@ -1597,7 +1636,7 @@
       messages =
         messages.filter(
           item =>
-            item.id !== message.id
+            Number(item.id) !== messageId
         );
 
 
@@ -1611,7 +1650,10 @@
 
     } catch (error) {
 
-      console.error(error);
+      console.error(
+        "Error eliminando mensaje:",
+        error
+      );
 
 
       alert(
