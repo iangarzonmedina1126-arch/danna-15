@@ -606,6 +606,375 @@
 
     }
 
+/* ==========================================
+   REDISEÑO VINTAGE - CARTAS ANTIGUAS
+   ========================================== */
+
+:root {
+  --paper: #eadbbd;
+  --paper-light: #f5e9d0;
+  --paper-dark: #d5bd91;
+  --ink: #493326;
+  --wine: #713d36;
+  --gold: #a8874d;
+}
+
+/* FONDO DE PERGAMINO */
+
+body {
+  background:
+    radial-gradient(
+      ellipse at 15% 15%,
+      rgba(255,255,255,.55),
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 85% 80%,
+      rgba(120,75,35,.12),
+      transparent 40%
+    ),
+    linear-gradient(
+      135deg,
+      #d9c49d,
+      #f0e2c5 45%,
+      #d7c19a
+    );
+
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', serif;
+}
+
+body::before {
+  opacity: .25;
+
+  background-image:
+    radial-gradient(#8e7047 1px, transparent 1px);
+
+  background-size: 30px 30px;
+}
+
+/* NAVEGACIÓN COMO CINTA ANTIGUA */
+
+.navigation {
+  background: rgba(65, 43, 31, .96);
+
+  border-bottom: 2px solid var(--gold);
+
+  box-shadow: 0 5px 20px rgba(40,25,15,.25);
+}
+
+.navigation a {
+  color: #ead9b8;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 16px;
+
+  letter-spacing: 1px;
+}
+
+.navigation a:hover {
+  background: rgba(207,174,112,.2);
+
+  color: #f5d99e;
+}
+
+/* CONTENEDOR PRINCIPAL */
+
+.messages-page {
+  max-width: 950px;
+
+  padding-top: 85px;
+  padding-bottom: 100px;
+}
+
+/* TÍTULOS */
+
+.page-title small,
+.messages-title small {
+  color: #86633b;
+
+  font-family: 'Montserrat', sans-serif;
+
+  letter-spacing: 5px;
+}
+
+.page-title h1 {
+  color: #573a2c;
+
+  font-size: clamp(48px, 8vw, 82px);
+
+  text-shadow: 1px 2px 1px rgba(255,255,255,.5);
+}
+
+.page-title p {
+  color: #72543d;
+
+  font-size: 25px;
+}
+
+/* FORMULARIO COMO PERGAMINO */
+
+.message-form {
+  position: relative;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f5e9d0,
+      #e9d7b5,
+      #f4e6c9
+    );
+
+  border: 1px solid #b99a67;
+
+  border-radius: 3px;
+
+  padding: 45px;
+
+  box-shadow:
+    0 15px 35px rgba(57,38,22,.18),
+    inset 0 0 30px rgba(143,105,56,.10);
+}
+
+.message-form::before {
+  content: "✦";
+
+  position: absolute;
+
+  top: 12px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  color: #a8874d;
+
+  font-size: 25px;
+}
+
+.message-form::after {
+  content: "✦";
+
+  position: absolute;
+
+  bottom: 10px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  color: #a8874d;
+
+  font-size: 20px;
+}
+
+.message-form-title {
+  color: #684432;
+
+  font-size: 38px;
+
+  margin-bottom: 30px;
+}
+
+/* CAMPOS */
+
+.message-form input,
+.message-form textarea {
+  background: rgba(255,250,235,.65);
+
+  border: none;
+
+  border-bottom: 1px solid #b99a67;
+
+  border-radius: 0;
+
+  color: #493326;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 21px;
+
+  padding: 16px;
+}
+
+.message-form input::placeholder,
+.message-form textarea::placeholder {
+  color: #92775b;
+  font-style: italic;
+}
+
+.message-form input:focus,
+.message-form textarea:focus {
+  border-color: #805239;
+
+  box-shadow: 0 2px 0 rgba(128,82,57,.15);
+
+  background: rgba(255,250,235,.9);
+}
+
+/* BOTÓN CON ASPECTO DE SELLO */
+
+.message-form button {
+  background:
+    linear-gradient(
+      135deg,
+      #713d36,
+      #4b2925
+    );
+
+  border: 1px solid #a8874d;
+
+  border-radius: 3px;
+
+  color: #f5e6c5;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 19px;
+
+  letter-spacing: 1px;
+
+  padding: 16px;
+
+  box-shadow: 0 5px 12px rgba(55,32,22,.2);
+}
+
+.message-form button:hover {
+  background: #895044;
+
+  transform: translateY(-2px);
+}
+
+.message-status {
+  color: #684432;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 19px;
+}
+
+/* TÍTULO DE MENSAJES */
+
+.messages-title h2 {
+  color: #573a2c;
+
+  font-size: 55px;
+}
+
+/* CADA MENSAJE ES UNA CARTA */
+
+.messages-container {
+  gap: 25px;
+}
+
+.message-card {
+  position: relative;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f7ecd5,
+      #e9d7b5
+    );
+
+  border: 1px solid #c2a475;
+
+  border-radius: 2px;
+
+  padding: 30px 35px;
+
+  box-shadow:
+    0 9px 22px rgba(57,38,22,.14),
+    inset 0 0 20px rgba(143,105,56,.08);
+}
+
+.message-card::before {
+  content: "❧";
+
+  position: absolute;
+
+  top: 8px;
+  right: 15px;
+
+  color: #a8874d;
+
+  font-size: 28px;
+}
+
+.message-card strong {
+  color: #713d36;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 25px;
+}
+
+.message-card p {
+  color: #493326;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 25px;
+
+  line-height: 1.6;
+}
+
+/* CARGA Y MENSAJES VACÍOS */
+
+.loading,
+.empty {
+  color: #76563d;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 24px;
+}
+
+/* PIE DE PÁGINA */
+
+.footer {
+  background: #493326;
+
+  border-top: 2px solid #a8874d;
+
+  color: #ead9b8;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 16px;
+
+  letter-spacing: 2px;
+}
+
+/* CELULARES */
+
+@media (max-width: 700px) {
+
+  .message-form {
+    padding: 35px 22px;
+  }
+
+  .message-form-title {
+    font-size: 31px;
+  }
+
+  .message-card {
+    padding: 25px 22px;
+  }
+
+  .message-card p {
+    font-size: 22px;
+  }
+
+  .messages-title h2 {
+    font-size: 42px;
+  }
+
+  .page-title p {
+    font-size: 21px;
+  }
+
+}
+    
   </style>
 
 </head>
